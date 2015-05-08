@@ -1,0 +1,11 @@
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.exe.config
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.exe
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.pdb
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.csprojResolveAssemblyReference.cache
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Form1.resources
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Properties.Resources.resources
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.csproj.GenerateResource.Cache
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.exe
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.pdb
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\System.Data.SQLite.dll
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\System.Data.SQLite.pdb

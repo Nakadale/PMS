@@ -1,0 +1,13 @@
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\bin\Debug\WindowsFormsApplication10.exe.config
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\obj\Debug\WindowsFormsApplication10.StationList.resources
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\obj\Debug\WindowsFormsApplication10.Properties.Resources.resources
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\obj\Debug\WindowsFormsApplication10.csproj.GenerateResource.Cache
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\bin\Debug\WindowsFormsApplication10.exe
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\bin\Debug\WindowsFormsApplication10.pdb
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\bin\Debug\System.Data.SQLite.dll
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\bin\Debug\System.Data.SQLite.pdb
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\obj\Debug\WindowsFormsApplication10.exe
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\obj\Debug\WindowsFormsApplication10.pdb
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\obj\Debug\WindowsFormsApplication10.FrmAddStn.resources
+c:\users\sherwinaquino\documents\visual studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\obj\Debug\WindowsFormsApplication10.FrmEditStn.resources
+C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\obj\Debug\WindowsFormsApplication10.csprojResolveAssemblyReference.cache

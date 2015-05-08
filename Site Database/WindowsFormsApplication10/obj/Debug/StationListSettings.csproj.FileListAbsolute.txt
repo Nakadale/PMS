@@ -1,0 +1,3 @@
+C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\bin\Debug\WindowsFormsApplication10.exe.config
+C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\obj\Debug\WindowsFormsApplication10.exe
+C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\WindowsFormsApplication10\WindowsFormsApplication10\obj\Debug\WindowsFormsApplication10.pdb
