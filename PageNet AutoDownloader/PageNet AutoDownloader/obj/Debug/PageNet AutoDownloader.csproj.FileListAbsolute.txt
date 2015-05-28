@@ -15,3 +15,10 @@ C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\PageNet AutoDownloa
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.exe.config
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.exe
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.pdb
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.exe
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.pdb
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\System.Data.SQLite.dll
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\System.Data.SQLite.pdb
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Form1.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Properties.Resources.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.csproj.GenerateResource.Cache

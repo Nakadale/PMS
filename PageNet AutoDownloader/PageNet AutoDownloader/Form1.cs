@@ -845,22 +845,30 @@ namespace PageNet_AutoDownloader
                     file.WriteLine("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[counter].Cells[0].Value.ToString());
                     //logs activity
                     UpdateStatusBar("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[counter].Cells[0].Value.ToString() + "");
-                }
-                if (CancelProg == true)
-                {
-                    this.timer2.Enabled = false;
-                    UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-                    return;
+                    if (CancelProg == true)
+                    {
+                        this.timer2.Enabled = false;
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        return;
+                    }
+
+                    ParameterizedThreadStart NPT = new ParameterizedThreadStart(DoDownloadFile);
+                    Thread T1 = new Thread(NPT);
+                    T1.Start(counter);
+
+                    Thread T2 = new Thread(NPT);
+                    T2.Start((counter+1));
+
+                    //Downloadfile(
+                    //Grid2.Rows[counter].Cells[5].Value.ToString(),//url
+                    //Grid2.Rows[counter].Cells[0].Value.ToString(),//filename
+                    //Grid2.Rows[counter].Cells[6].Value.ToString(),//user
+                    //Grid2.Rows[counter].Cells[7].Value.ToString(),//pass
+                    //Grid2.Rows[counter].Cells[8].Value.ToString(),//rownumbergrid1
+                    //counter, //rownumbergrid2
+                    //Grid2.Rows[counter].Cells[4].Value.ToString());//file size;
 
                 }
-                Downloadfile(
-                Grid2.Rows[counter].Cells[5].Value.ToString(),//url
-                Grid2.Rows[counter].Cells[0].Value.ToString(),//filename
-                Grid2.Rows[counter].Cells[6].Value.ToString(),//user
-                Grid2.Rows[counter].Cells[7].Value.ToString(),//pass
-                Grid2.Rows[counter].Cells[8].Value.ToString(),//rownumbergrid1
-                counter, //rownumbergrid2
-                Grid2.Rows[counter].Cells[4].Value.ToString());//file size;
                 //logs activity
                 //UpdateGrid2("Done", counter, 2);
 
@@ -871,6 +879,23 @@ namespace PageNet_AutoDownloader
             UpdateStatusBar("Program will automatically compare files at " + DTPTimeSched.Value + " on " + DateTime.Now.AddDays(1).ToShortDateString());
             //UpdateGrid2Clear();
         }
+
+
+        public void DoDownloadFile(object Counter)
+        {
+            int counter = 0;
+            int.TryParse(Counter.ToString(), out counter);
+
+            Downloadfile(
+                    Grid2.Rows[counter].Cells[5].Value.ToString(),//url
+                    Grid2.Rows[counter].Cells[0].Value.ToString(),//filename
+                    Grid2.Rows[counter].Cells[6].Value.ToString(),//user
+                    Grid2.Rows[counter].Cells[7].Value.ToString(),//pass
+                    Grid2.Rows[counter].Cells[8].Value.ToString(),//rownumbergrid1
+                    counter, //rownumbergrid2
+                    Grid2.Rows[counter].Cells[4].Value.ToString());//file size;
+        }
+
 
         //this is for updating file list grid and textbox. this is needed for threading
         public void Update(string x)
