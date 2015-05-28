@@ -51,14 +51,6 @@
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Grid2 = new System.Windows.Forms.DataGridView();
-            this.button6 = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Compression_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +60,14 @@
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RowNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button6 = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -316,6 +316,68 @@
             this.Grid2.Size = new System.Drawing.Size(928, 278);
             this.Grid2.TabIndex = 0;
             // 
+            // FileName
+            // 
+            this.FileName.HeaderText = "File";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            this.FileName.Width = 150;
+            // 
+            // Progress
+            // 
+            this.Progress.FillWeight = 150F;
+            this.Progress.HeaderText = "Download Progress";
+            this.Progress.Name = "Progress";
+            this.Progress.ReadOnly = true;
+            this.Progress.Width = 150;
+            // 
+            // Compression_Progress
+            // 
+            this.Compression_Progress.HeaderText = "Compression Progress";
+            this.Compression_Progress.Name = "Compression_Progress";
+            this.Compression_Progress.ReadOnly = true;
+            // 
+            // Upload_Progress
+            // 
+            this.Upload_Progress.HeaderText = "Upload Progress";
+            this.Upload_Progress.Name = "Upload_Progress";
+            this.Upload_Progress.ReadOnly = true;
+            // 
+            // FileSize
+            // 
+            this.FileSize.HeaderText = "File Size(Bytes)";
+            this.FileSize.Name = "FileSize";
+            this.FileSize.ReadOnly = true;
+            this.FileSize.Visible = false;
+            // 
+            // url
+            // 
+            this.url.HeaderText = "URL";
+            this.url.Name = "url";
+            this.url.ReadOnly = true;
+            this.url.Visible = false;
+            // 
+            // UserName
+            // 
+            this.UserName.HeaderText = "UserName";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            this.UserName.Visible = false;
+            // 
+            // Password
+            // 
+            this.Password.HeaderText = "Password";
+            this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
+            this.Password.Visible = false;
+            // 
+            // RowNum
+            // 
+            this.RowNum.HeaderText = "RowNum";
+            this.RowNum.Name = "RowNum";
+            this.RowNum.ReadOnly = true;
+            this.RowNum.Visible = false;
+            // 
             // button6
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -394,68 +456,6 @@
             this.textBox8.TabIndex = 22;
             this.textBox8.Text = "\\\\192.168.8.208\\Files\\";
             // 
-            // FileName
-            // 
-            this.FileName.HeaderText = "File";
-            this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
-            this.FileName.Width = 150;
-            // 
-            // Progress
-            // 
-            this.Progress.FillWeight = 150F;
-            this.Progress.HeaderText = "Download Progress";
-            this.Progress.Name = "Progress";
-            this.Progress.ReadOnly = true;
-            this.Progress.Width = 150;
-            // 
-            // Compression_Progress
-            // 
-            this.Compression_Progress.HeaderText = "Compression Progress";
-            this.Compression_Progress.Name = "Compression_Progress";
-            this.Compression_Progress.ReadOnly = true;
-            // 
-            // Upload_Progress
-            // 
-            this.Upload_Progress.HeaderText = "Upload Progress";
-            this.Upload_Progress.Name = "Upload_Progress";
-            this.Upload_Progress.ReadOnly = true;
-            // 
-            // FileSize
-            // 
-            this.FileSize.HeaderText = "File Size(Bytes)";
-            this.FileSize.Name = "FileSize";
-            this.FileSize.ReadOnly = true;
-            this.FileSize.Visible = false;
-            // 
-            // url
-            // 
-            this.url.HeaderText = "URL";
-            this.url.Name = "url";
-            this.url.ReadOnly = true;
-            this.url.Visible = false;
-            // 
-            // UserName
-            // 
-            this.UserName.HeaderText = "UserName";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            this.UserName.Visible = false;
-            // 
-            // Password
-            // 
-            this.Password.HeaderText = "Password";
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
-            this.Password.Visible = false;
-            // 
-            // RowNum
-            // 
-            this.RowNum.HeaderText = "RowNum";
-            this.RowNum.Name = "RowNum";
-            this.RowNum.ReadOnly = true;
-            this.RowNum.Visible = false;
-            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(171, 555);
@@ -474,6 +474,7 @@
             this.button7.TabIndex = 14;
             this.button7.Text = "Print Report";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form1
             // 

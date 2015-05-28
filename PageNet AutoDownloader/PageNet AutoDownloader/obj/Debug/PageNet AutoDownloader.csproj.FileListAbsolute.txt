@@ -12,3 +12,6 @@ C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\PageNet AutoDownloa
 C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\Ionic.Zip.pdb
 C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\Ionic.Zip.xml
 C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.csprojResolveAssemblyReference.cache
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.exe.config
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.exe
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.pdb

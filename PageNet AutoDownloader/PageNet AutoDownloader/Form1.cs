@@ -21,7 +21,7 @@ namespace PageNet_AutoDownloader
 {
     public partial class Form1 : Form
     {
-
+        bool CancelProg = false;
         List<FTPFiles> ftpfiles = new List<FTPFiles>(); // for storing of file list coming from the site
         int DownCounter = 0; //download counter for downloadfile if file failed to download
         int Triggered = 0; // trigger for starting of checking of site and downloading of files for the site. 
@@ -83,6 +83,7 @@ namespace PageNet_AutoDownloader
             // starts the timer/scheduler
             DTPTimeSched.Enabled = false;
             timer2.Enabled = true;
+            CancelProg = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -90,7 +91,9 @@ namespace PageNet_AutoDownloader
             // stops the timer/scheduler
             DTPTimeSched.Enabled = true;
             timer2.Enabled = false;
-
+            //WorkLoad.Start();
+            CancelProg = true;
+            UpdateStatusBar("[" + DateTime.Now + "] " + "Cancelling Process. Please wait.");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -192,6 +195,13 @@ namespace PageNet_AutoDownloader
                 try
                 {
                     //download code
+                    if (CancelProg == true)
+                    {
+                        this.timer2.Enabled = false;
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        return;
+
+                    }
                     FtpWebRequest requestFileDownload = (FtpWebRequest)WebRequest.Create(URL + FileName);
                     requestFileDownload.Credentials = new NetworkCredential(UserName, Password);
                     //requestFileDownload.Credentials = new NetworkCredential();
@@ -213,6 +223,14 @@ namespace PageNet_AutoDownloader
                         UpdateGrid2("0%", Grid2RowNumber, 1);
 
                         // streams/downloads file from site to temp folder.
+                        if (CancelProg == true)
+                        {
+                            this.timer2.Enabled = false;
+                            UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                            return;
+
+                        }
+
                         while (bytesRead > 0)
                         {
                             if (FileSize != 0)
@@ -237,16 +255,40 @@ namespace PageNet_AutoDownloader
                     requestFileDownload = null;
                     // end of download code
 
+                    if (CancelProg == true)
+                    {
+                        this.timer2.Enabled = false;
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        return;
 
+                    }
                     //compresses the download raw file
                     CompressFile(LocalDirectory + FileName, Grid2RowNumber);
+                    if (CancelProg == true)
+                    {
+                        this.timer2.Enabled = false;
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        return;
 
+                    }
                     //deletes the raw file in the temp folder
                     DeleteFile(LocalDirectory + FileName);
+                    if (CancelProg == true)
+                    {
+                        this.timer2.Enabled = false;
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        return;
 
+                    }
                     //uploads the compress file into the ftp server
                     UploadFileStream(FileName + ".zip", int.Parse(RowNumber), Grid2RowNumber);
+                    if (CancelProg == true)
+                    {
+                        this.timer2.Enabled = false;
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        return;
 
+                    }
                     //deletes the zip file in the temp folder
                     DeleteFile(LocalDirectory + FileName + ".zip");
 
@@ -257,7 +299,13 @@ namespace PageNet_AutoDownloader
                     {
                         //if there is no connection to the site
                         UpdateStatusBar("[" + DateTime.Now + "] " + ex.Message.ToString() + "\r\n");
+                        if (CancelProg == true)
+                        {
+                            this.timer2.Enabled = false;
+                            UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                            return;
 
+                        }
                     }
                     if (ex.Status == WebExceptionStatus.Timeout)
                     {
@@ -270,6 +318,13 @@ namespace PageNet_AutoDownloader
                             Update("[" + DateTime.Now + "] Retrying Download.\r\n");
                             Downloadfile(URL, FileName, user, pass, RowNumber, Grid2RowNumber, File_Size);
                             DownCounter++;
+                            if (CancelProg == true)
+                            {
+                                this.timer2.Enabled = false;
+                                UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                                return;
+
+                            }
                         }
                     }
 
@@ -486,6 +541,13 @@ namespace PageNet_AutoDownloader
             //file delete code
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + "Logs.txt", true))
             {
+                if (CancelProg == true)
+                {
+                    this.timer2.Enabled = false;
+                    UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                    return;
+
+                }
                 //logs activity
                 file.WriteLine("[" + DateTime.Now + "] " + "Deleting File from Temp Folder");
                 //logs activity
@@ -531,6 +593,13 @@ namespace PageNet_AutoDownloader
             //file compress code
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + "Logs.txt", true))
             {
+                if (CancelProg == true)
+                {
+                    this.timer2.Enabled = false;
+                    UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                    return;
+
+                }
                 //logs activity
                 file.WriteLine("[" + DateTime.Now + "] " + "Compressing File");
                 //logs activity
@@ -543,6 +612,13 @@ namespace PageNet_AutoDownloader
 
                 using (ZipFile zip = new ZipFile())
                 {
+                    if (CancelProg == true)
+                    {
+                        this.timer2.Enabled = false;
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        return;
+
+                    }
                     zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Default;
                     zip.SaveProgress += (object sender, SaveProgressEventArgs e) => SaveProgress(sender, e, Grid2RowNumber);                    
                     zip.StatusMessageTextWriter = System.Console.Out;
@@ -575,8 +651,10 @@ namespace PageNet_AutoDownloader
             //tester code for threading
             TSSFile.Text = "Start Automatic File Comparison";
             Thread WorkLoad = new Thread(new ThreadStart(DoWork));
+            WorkLoad.Name = "Test";
             WorkLoad.Start();
             //this.DoWork.RunWorkerAsync();
+            CancelProg = false;
 
         }
 
@@ -708,13 +786,27 @@ namespace PageNet_AutoDownloader
             //MessageBox.Show("Ginawa ako!");
             for (int Counter = 0; Counter < Grid.RowCount; Counter++)
             {
+
                 //MessageBox.Show(Counter.ToString());
                 UpdateStatusBar("[" + DateTime.Now + "] " + " Connecting to Station: " + Grid.Rows[Counter].Cells[0].Value.ToString() + "");
                 
                 //Update("[" + DateTime.Now + "] " + " Connecting to Station: " + Grid.Rows[Counter].Cells[0].Value.ToString() + "\r\n");
+                if (CancelProg == true)
+                {
+                    this.timer2.Enabled = false;
+                    UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                    return;
+
+                }
                 GetDataFromSite(Counter);
 
                 //checks if folder in the destination server exists. if not exist it will create folders required before continuing.
+                if (CancelProg == true)
+                {
+                    this.timer2.Enabled = false;
+                    UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                    return;
+                }
                 FolderChecker(Counter);
 
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + "Logs.txt", true))
@@ -754,6 +846,13 @@ namespace PageNet_AutoDownloader
                     //logs activity
                     UpdateStatusBar("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[counter].Cells[0].Value.ToString() + "");
                 }
+                if (CancelProg == true)
+                {
+                    this.timer2.Enabled = false;
+                    UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                    return;
+
+                }
                 Downloadfile(
                 Grid2.Rows[counter].Cells[5].Value.ToString(),//url
                 Grid2.Rows[counter].Cells[0].Value.ToString(),//filename
@@ -768,6 +867,8 @@ namespace PageNet_AutoDownloader
                 //UpdateGrid2("", counter, 1);
             }
             UpdateStatusBar("File Comparison Finished");
+
+            UpdateStatusBar("Program will automatically compare files at " + DTPTimeSched.Value + " on " + DateTime.Now.AddDays(1).ToShortDateString());
             //UpdateGrid2Clear();
         }
 
@@ -853,6 +954,12 @@ namespace PageNet_AutoDownloader
         private void button5_Click(object sender, EventArgs e)
         {
             Grid2.Rows.Clear();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Thread {0} started", Thread.CurrentThread.Name);
+            //Console.WriteLine("Thread {0} started", Thread.CurrentThread.Name);
         }
 
 
