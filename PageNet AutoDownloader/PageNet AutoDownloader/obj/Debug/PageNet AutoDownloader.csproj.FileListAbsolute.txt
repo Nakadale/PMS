@@ -19,6 +19,12 @@ C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownload
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.pdb
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\System.Data.SQLite.dll
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\System.Data.SQLite.pdb
-C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Form1.resources
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Properties.Resources.resources
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.csproj.GenerateResource.Cache
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Main.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.FrmAddStn.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Destination.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.FrmEditStn.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.StationList.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.ManualDownload.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.csprojResolveAssemblyReference.cache

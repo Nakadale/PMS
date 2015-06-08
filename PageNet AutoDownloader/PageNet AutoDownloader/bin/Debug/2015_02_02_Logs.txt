@@ -1,0 +1,426 @@
+[2/2/2015 4:00:21 PM] Connection to station PGEN could not be established.
+[2/2/2015 4:00:21 PM] PBAY032a.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1685872
+[2/2/2015 4:00:21 PM] PBAY032b.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1545207
+[2/2/2015 4:00:21 PM] PBAY032c.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1432443
+[2/2/2015 4:00:21 PM] PBAY032d.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1449892
+[2/2/2015 4:00:21 PM] PBAY032e.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1473173
+[2/2/2015 4:00:21 PM] PBAY032g.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1498751
+[2/2/2015 4:00:21 PM] PBAY032h.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1579302
+[2/2/2015 4:00:21 PM] PBAY032i.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1489809
+[2/2/2015 4:00:21 PM] PBAY032j.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1387490
+[2/2/2015 4:00:21 PM] PBAY032k.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1442659
+[2/2/2015 4:00:21 PM] PBAY032m.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1584165
+[2/2/2015 4:00:21 PM] PBAY032n.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1628288
+[2/2/2015 4:00:21 PM] PBAY032o.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1685035
+[2/2/2015 4:00:21 PM] PBAY032p.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:21 PM] File Size:1788846
+[2/2/2015 4:00:22 PM] PBAY032q.m00 File Does not exist in the destination server!
+[2/2/2015 4:00:22 PM] File Size:1914142
+[2/2/2015 4:00:43 PM] Connection to station PILC could not be established.
+[2/2/2015 4:01:04 PM] Connection to station PPPC could not be established.
+[2/2/2015 4:01:25 PM] Connection to station PSRF could not be established.
+[2/2/2015 4:01:25 PM] PSTC032a.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:25 PM] File Size:3116427
+[2/2/2015 4:01:25 PM] PSTC032b.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:25 PM] File Size:3148906
+[2/2/2015 4:01:25 PM] PSTC032c.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:25 PM] File Size:3040792
+[2/2/2015 4:01:25 PM] PSTC032d.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:25 PM] File Size:3111108
+[2/2/2015 4:01:25 PM] PSTC032e.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:25 PM] File Size:3185950
+[2/2/2015 4:01:25 PM] PSTC032f.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:25 PM] File Size:3293602
+[2/2/2015 4:01:25 PM] PSTC032g.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:25 PM] File Size:2870159
+[2/2/2015 4:01:25 PM] PSTC032h.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:25 PM] File Size:2836632
+[2/2/2015 4:01:26 PM] PSTC032i.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:2833901
+[2/2/2015 4:01:26 PM] PSTC032j.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:2801085
+[2/2/2015 4:01:26 PM] PSTC032k.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3086628
+[2/2/2015 4:01:26 PM] PSTC032l.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3290755
+[2/2/2015 4:01:26 PM] PSTC032m.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3235883
+[2/2/2015 4:01:26 PM] PSTC032n.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3353718
+[2/2/2015 4:01:26 PM] PSTC032o.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3208322
+[2/2/2015 4:01:26 PM] PSTC032p.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3309949
+[2/2/2015 4:01:26 PM] PSTC032r.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3393818
+[2/2/2015 4:01:26 PM] PSTC032s.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3395388
+[2/2/2015 4:01:26 PM] PSTC032t.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3393384
+[2/2/2015 4:01:26 PM] PSTC032u.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3330632
+[2/2/2015 4:01:26 PM] PSTC032v.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3183384
+[2/2/2015 4:01:26 PM] PSTC032w.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:2984359
+[2/2/2015 4:01:26 PM] PSTC032x.m00 File Does not exist in the destination server!
+[2/2/2015 4:01:26 PM] File Size:3166354
+[2/2/2015 4:01:47 PM] Connection to station PTAG could not be established.
+[2/2/2015 4:02:08 PM] Connection to station PSOL could not be established.
+[2/2/2015 4:02:08 PM] Creating Station Folder
+[2/2/2015 4:02:08 PM] Downloading File: PBAY032a.m00
+[2/2/2015 4:02:08 PM] Downloading File from site to temp folder: PBAY032a.m00 with a File Size of 1685872
+[2/2/2015 4:02:08 PM] Downloading File: PBAY032b.m00
+[2/2/2015 4:02:08 PM] Downloading File from site to temp folder: PBAY032b.m00 with a File Size of 1545207
+[2/2/2015 4:02:08 PM] PBAY032a.m00 Size Downloaded: 1685872
+[2/2/2015 4:02:08 PM] Compressing File
+[2/2/2015 4:02:08 PM] PBAY032b.m00 Size Downloaded: 1545207
+[2/2/2015 4:02:08 PM] Compressing File
+[2/2/2015 4:02:09 PM] File Compression Finished
+[2/2/2015 4:02:09 PM] Deleting File from Temp Folder
+[2/2/2015 4:02:09 PM] File Deletion Completed
+[2/2/2015 4:02:09 PM] File Compression Finished
+[2/2/2015 4:02:09 PM] Deleting File from Temp Folder
+[2/2/2015 4:02:09 PM] File Deletion Completed
+[2/2/2015 4:02:43 PM] Deleting File from Temp Folder
+[2/2/2015 4:02:43 PM] File Deletion Completed
+[2/2/2015 4:02:43 PM] Deleting File from Temp Folder
+[2/2/2015 4:02:43 PM] File Deletion Completed
+[2/2/2015 4:02:43 PM] Downloading File: PBAY032c.m00
+[2/2/2015 4:02:43 PM] Downloading File: PBAY032c.m00
+[2/2/2015 4:02:43 PM] Downloading File from site to temp folder: PBAY032c.m00 with a File Size of 1432443
+[2/2/2015 4:02:44 PM] PBAY032c.m00 Size Downloaded: 1432443
+[2/2/2015 4:02:44 PM] Compressing File
+[2/2/2015 4:02:44 PM] File Compression Finished
+[2/2/2015 4:02:44 PM] Deleting File from Temp Folder
+[2/2/2015 4:02:44 PM] File Deletion Completed
+[2/2/2015 4:03:19 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:19 PM] File Deletion Completed
+[2/2/2015 4:03:19 PM] Downloading File: PBAY032d.m00
+[2/2/2015 4:03:19 PM] Downloading File from site to temp folder: PBAY032d.m00 with a File Size of 1449892
+[2/2/2015 4:03:20 PM] PBAY032d.m00 Size Downloaded: 1449892
+[2/2/2015 4:03:20 PM] Compressing File
+[2/2/2015 4:03:20 PM] File Compression Finished
+[2/2/2015 4:03:20 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:20 PM] File Deletion Completed
+[2/2/2015 4:03:20 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:20 PM] File Deletion Completed
+[2/2/2015 4:03:20 PM] Downloading File: PBAY032e.m00
+[2/2/2015 4:03:20 PM] Downloading File from site to temp folder: PBAY032e.m00 with a File Size of 1473173
+[2/2/2015 4:03:20 PM] PBAY032e.m00 Size Downloaded: 1473173
+[2/2/2015 4:03:20 PM] Compressing File
+[2/2/2015 4:03:20 PM] File Compression Finished
+[2/2/2015 4:03:20 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:21 PM] File Deletion Completed
+[2/2/2015 4:03:21 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:21 PM] File Deletion Completed
+[2/2/2015 4:03:21 PM] Downloading File: PBAY032g.m00
+[2/2/2015 4:03:21 PM] Downloading File from site to temp folder: PBAY032g.m00 with a File Size of 1498751
+[2/2/2015 4:03:21 PM] PBAY032g.m00 Size Downloaded: 1498751
+[2/2/2015 4:03:21 PM] Compressing File
+[2/2/2015 4:03:21 PM] File Compression Finished
+[2/2/2015 4:03:21 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:21 PM] File Deletion Completed
+[2/2/2015 4:03:21 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:21 PM] File Deletion Completed
+[2/2/2015 4:03:21 PM] Downloading File: PBAY032h.m00
+[2/2/2015 4:03:21 PM] Downloading File from site to temp folder: PBAY032h.m00 with a File Size of 1579302
+[2/2/2015 4:03:22 PM] PBAY032h.m00 Size Downloaded: 1579302
+[2/2/2015 4:03:22 PM] Compressing File
+[2/2/2015 4:03:22 PM] File Compression Finished
+[2/2/2015 4:03:22 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:22 PM] File Deletion Completed
+[2/2/2015 4:03:22 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:22 PM] File Deletion Completed
+[2/2/2015 4:03:22 PM] Downloading File: PBAY032i.m00
+[2/2/2015 4:03:22 PM] Downloading File from site to temp folder: PBAY032i.m00 with a File Size of 1489809
+[2/2/2015 4:03:23 PM] PBAY032i.m00 Size Downloaded: 1489809
+[2/2/2015 4:03:23 PM] Compressing File
+[2/2/2015 4:03:23 PM] File Compression Finished
+[2/2/2015 4:03:23 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:23 PM] File Deletion Completed
+[2/2/2015 4:03:23 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:23 PM] File Deletion Completed
+[2/2/2015 4:03:23 PM] Downloading File: PBAY032j.m00
+[2/2/2015 4:03:23 PM] Downloading File from site to temp folder: PBAY032j.m00 with a File Size of 1387490
+[2/2/2015 4:03:24 PM] PBAY032j.m00 Size Downloaded: 1387490
+[2/2/2015 4:03:24 PM] Compressing File
+[2/2/2015 4:03:24 PM] File Compression Finished
+[2/2/2015 4:03:24 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:24 PM] File Deletion Completed
+[2/2/2015 4:03:24 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:24 PM] File Deletion Completed
+[2/2/2015 4:03:24 PM] Downloading File: PBAY032k.m00
+[2/2/2015 4:03:24 PM] Downloading File from site to temp folder: PBAY032k.m00 with a File Size of 1442659
+[2/2/2015 4:03:26 PM] PBAY032k.m00 Size Downloaded: 1442659
+[2/2/2015 4:03:26 PM] Compressing File
+[2/2/2015 4:03:26 PM] File Compression Finished
+[2/2/2015 4:03:26 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:26 PM] File Deletion Completed
+[2/2/2015 4:03:26 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:26 PM] File Deletion Completed
+[2/2/2015 4:03:26 PM] Downloading File: PBAY032m.m00
+[2/2/2015 4:03:26 PM] Downloading File from site to temp folder: PBAY032m.m00 with a File Size of 1584165
+[2/2/2015 4:03:26 PM] PBAY032m.m00 Size Downloaded: 1584165
+[2/2/2015 4:03:26 PM] Compressing File
+[2/2/2015 4:03:27 PM] File Compression Finished
+[2/2/2015 4:03:27 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:27 PM] File Deletion Completed
+[2/2/2015 4:03:27 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:27 PM] File Deletion Completed
+[2/2/2015 4:03:27 PM] Downloading File: PBAY032n.m00
+[2/2/2015 4:03:27 PM] Downloading File from site to temp folder: PBAY032n.m00 with a File Size of 1628288
+[2/2/2015 4:03:27 PM] PBAY032n.m00 Size Downloaded: 1628288
+[2/2/2015 4:03:27 PM] Compressing File
+[2/2/2015 4:03:27 PM] File Compression Finished
+[2/2/2015 4:03:27 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:27 PM] File Deletion Completed
+[2/2/2015 4:03:27 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:27 PM] File Deletion Completed
+[2/2/2015 4:03:27 PM] Downloading File: PBAY032o.m00
+[2/2/2015 4:03:27 PM] Downloading File from site to temp folder: PBAY032o.m00 with a File Size of 1685035
+[2/2/2015 4:03:28 PM] PBAY032o.m00 Size Downloaded: 1685035
+[2/2/2015 4:03:28 PM] Compressing File
+[2/2/2015 4:03:28 PM] File Compression Finished
+[2/2/2015 4:03:28 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:28 PM] File Deletion Completed
+[2/2/2015 4:03:28 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:28 PM] File Deletion Completed
+[2/2/2015 4:03:28 PM] Downloading File: PBAY032p.m00
+[2/2/2015 4:03:28 PM] Downloading File from site to temp folder: PBAY032p.m00 with a File Size of 1788846
+[2/2/2015 4:03:31 PM] PBAY032p.m00 Size Downloaded: 1788846
+[2/2/2015 4:03:31 PM] Compressing File
+[2/2/2015 4:03:31 PM] File Compression Finished
+[2/2/2015 4:03:31 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:31 PM] File Deletion Completed
+[2/2/2015 4:03:31 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:31 PM] File Deletion Completed
+[2/2/2015 4:03:31 PM] Downloading File: PBAY032q.m00
+[2/2/2015 4:03:31 PM] Downloading File from site to temp folder: PBAY032q.m00 with a File Size of 1914142
+[2/2/2015 4:03:35 PM] PBAY032q.m00 Size Downloaded: 1914142
+[2/2/2015 4:03:35 PM] Compressing File
+[2/2/2015 4:03:35 PM] File Compression Finished
+[2/2/2015 4:03:35 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:35 PM] File Deletion Completed
+[2/2/2015 4:03:35 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:35 PM] File Deletion Completed
+[2/2/2015 4:03:35 PM] Downloading File: PSTC032a.m00
+[2/2/2015 4:03:35 PM] Downloading File from site to temp folder: PSTC032a.m00 with a File Size of 3116427
+[2/2/2015 4:03:36 PM] PSTC032a.m00 Size Downloaded: 3116427
+[2/2/2015 4:03:36 PM] Compressing File
+[2/2/2015 4:03:36 PM] File Compression Finished
+[2/2/2015 4:03:36 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:36 PM] File Deletion Completed
+[2/2/2015 4:03:36 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:36 PM] File Deletion Completed
+[2/2/2015 4:03:36 PM] Downloading File: PSTC032b.m00
+[2/2/2015 4:03:36 PM] Downloading File from site to temp folder: PSTC032b.m00 with a File Size of 3148906
+[2/2/2015 4:03:38 PM] PSTC032b.m00 Size Downloaded: 3148906
+[2/2/2015 4:03:38 PM] Compressing File
+[2/2/2015 4:03:38 PM] File Compression Finished
+[2/2/2015 4:03:38 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:38 PM] File Deletion Completed
+[2/2/2015 4:03:38 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:38 PM] File Deletion Completed
+[2/2/2015 4:03:38 PM] Downloading File: PSTC032c.m00
+[2/2/2015 4:03:38 PM] Downloading File from site to temp folder: PSTC032c.m00 with a File Size of 3040792
+[2/2/2015 4:03:39 PM] PSTC032c.m00 Size Downloaded: 3040792
+[2/2/2015 4:03:39 PM] Compressing File
+[2/2/2015 4:03:39 PM] File Compression Finished
+[2/2/2015 4:03:39 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:39 PM] File Deletion Completed
+[2/2/2015 4:03:39 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:39 PM] File Deletion Completed
+[2/2/2015 4:03:39 PM] Downloading File: PSTC032d.m00
+[2/2/2015 4:03:39 PM] Downloading File from site to temp folder: PSTC032d.m00 with a File Size of 3111108
+[2/2/2015 4:03:41 PM] PSTC032d.m00 Size Downloaded: 3111108
+[2/2/2015 4:03:41 PM] Compressing File
+[2/2/2015 4:03:41 PM] File Compression Finished
+[2/2/2015 4:03:41 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:41 PM] File Deletion Completed
+[2/2/2015 4:03:41 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:41 PM] File Deletion Completed
+[2/2/2015 4:03:41 PM] Downloading File: PSTC032e.m00
+[2/2/2015 4:03:41 PM] Downloading File from site to temp folder: PSTC032e.m00 with a File Size of 3185950
+[2/2/2015 4:03:42 PM] PSTC032e.m00 Size Downloaded: 3185950
+[2/2/2015 4:03:42 PM] Compressing File
+[2/2/2015 4:03:42 PM] File Compression Finished
+[2/2/2015 4:03:42 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:42 PM] File Deletion Completed
+[2/2/2015 4:03:42 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:42 PM] File Deletion Completed
+[2/2/2015 4:03:42 PM] Downloading File: PSTC032f.m00
+[2/2/2015 4:03:42 PM] Downloading File from site to temp folder: PSTC032f.m00 with a File Size of 3293602
+[2/2/2015 4:03:44 PM] PSTC032f.m00 Size Downloaded: 3293602
+[2/2/2015 4:03:44 PM] Compressing File
+[2/2/2015 4:03:44 PM] File Compression Finished
+[2/2/2015 4:03:44 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:44 PM] File Deletion Completed
+[2/2/2015 4:03:44 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:44 PM] File Deletion Completed
+[2/2/2015 4:03:44 PM] Downloading File: PSTC032g.m00
+[2/2/2015 4:03:44 PM] Downloading File from site to temp folder: PSTC032g.m00 with a File Size of 2870159
+[2/2/2015 4:03:45 PM] PSTC032g.m00 Size Downloaded: 2870159
+[2/2/2015 4:03:45 PM] Compressing File
+[2/2/2015 4:03:45 PM] File Compression Finished
+[2/2/2015 4:03:45 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:45 PM] File Deletion Completed
+[2/2/2015 4:03:45 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:45 PM] File Deletion Completed
+[2/2/2015 4:03:45 PM] Downloading File: PSTC032h.m00
+[2/2/2015 4:03:45 PM] Downloading File from site to temp folder: PSTC032h.m00 with a File Size of 2836632
+[2/2/2015 4:03:47 PM] PSTC032h.m00 Size Downloaded: 2836632
+[2/2/2015 4:03:47 PM] Compressing File
+[2/2/2015 4:03:47 PM] File Compression Finished
+[2/2/2015 4:03:47 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:47 PM] File Deletion Completed
+[2/2/2015 4:03:47 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:47 PM] File Deletion Completed
+[2/2/2015 4:03:47 PM] Downloading File: PSTC032i.m00
+[2/2/2015 4:03:47 PM] Downloading File from site to temp folder: PSTC032i.m00 with a File Size of 2833901
+[2/2/2015 4:03:48 PM] PSTC032i.m00 Size Downloaded: 2833901
+[2/2/2015 4:03:48 PM] Compressing File
+[2/2/2015 4:03:48 PM] File Compression Finished
+[2/2/2015 4:03:48 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:48 PM] File Deletion Completed
+[2/2/2015 4:03:48 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:48 PM] File Deletion Completed
+[2/2/2015 4:03:48 PM] Downloading File: PSTC032j.m00
+[2/2/2015 4:03:48 PM] Downloading File from site to temp folder: PSTC032j.m00 with a File Size of 2801085
+[2/2/2015 4:03:49 PM] PSTC032j.m00 Size Downloaded: 2801085
+[2/2/2015 4:03:49 PM] Compressing File
+[2/2/2015 4:03:49 PM] File Compression Finished
+[2/2/2015 4:03:49 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:49 PM] File Deletion Completed
+[2/2/2015 4:03:49 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:49 PM] File Deletion Completed
+[2/2/2015 4:03:49 PM] Downloading File: PSTC032k.m00
+[2/2/2015 4:03:49 PM] Downloading File from site to temp folder: PSTC032k.m00 with a File Size of 3086628
+[2/2/2015 4:03:51 PM] PSTC032k.m00 Size Downloaded: 3086628
+[2/2/2015 4:03:51 PM] Compressing File
+[2/2/2015 4:03:51 PM] File Compression Finished
+[2/2/2015 4:03:51 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:51 PM] File Deletion Completed
+[2/2/2015 4:03:51 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:51 PM] File Deletion Completed
+[2/2/2015 4:03:51 PM] Downloading File: PSTC032l.m00
+[2/2/2015 4:03:51 PM] Downloading File from site to temp folder: PSTC032l.m00 with a File Size of 3290755
+[2/2/2015 4:03:52 PM] PSTC032l.m00 Size Downloaded: 3290755
+[2/2/2015 4:03:52 PM] Compressing File
+[2/2/2015 4:03:52 PM] File Compression Finished
+[2/2/2015 4:03:52 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:52 PM] File Deletion Completed
+[2/2/2015 4:03:52 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:52 PM] File Deletion Completed
+[2/2/2015 4:03:52 PM] Downloading File: PSTC032m.m00
+[2/2/2015 4:03:52 PM] Downloading File from site to temp folder: PSTC032m.m00 with a File Size of 3235883
+[2/2/2015 4:03:53 PM] PSTC032m.m00 Size Downloaded: 3235883
+[2/2/2015 4:03:53 PM] Compressing File
+[2/2/2015 4:03:54 PM] File Compression Finished
+[2/2/2015 4:03:54 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:54 PM] File Deletion Completed
+[2/2/2015 4:03:54 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:54 PM] File Deletion Completed
+[2/2/2015 4:03:54 PM] Downloading File: PSTC032n.m00
+[2/2/2015 4:03:54 PM] Downloading File from site to temp folder: PSTC032n.m00 with a File Size of 3353718
+[2/2/2015 4:03:55 PM] PSTC032n.m00 Size Downloaded: 3353718
+[2/2/2015 4:03:55 PM] Compressing File
+[2/2/2015 4:03:55 PM] File Compression Finished
+[2/2/2015 4:03:55 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:55 PM] File Deletion Completed
+[2/2/2015 4:03:55 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:55 PM] File Deletion Completed
+[2/2/2015 4:03:55 PM] Downloading File: PSTC032o.m00
+[2/2/2015 4:03:55 PM] Downloading File from site to temp folder: PSTC032o.m00 with a File Size of 3208322
+[2/2/2015 4:03:56 PM] PSTC032o.m00 Size Downloaded: 3208322
+[2/2/2015 4:03:56 PM] Compressing File
+[2/2/2015 4:03:56 PM] File Compression Finished
+[2/2/2015 4:03:56 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:56 PM] File Deletion Completed
+[2/2/2015 4:03:56 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:56 PM] File Deletion Completed
+[2/2/2015 4:03:56 PM] Downloading File: PSTC032p.m00
+[2/2/2015 4:03:56 PM] Downloading File from site to temp folder: PSTC032p.m00 with a File Size of 3309949
+[2/2/2015 4:03:58 PM] PSTC032p.m00 Size Downloaded: 3309949
+[2/2/2015 4:03:58 PM] Compressing File
+[2/2/2015 4:03:58 PM] File Compression Finished
+[2/2/2015 4:03:58 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:58 PM] File Deletion Completed
+[2/2/2015 4:03:58 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:58 PM] File Deletion Completed
+[2/2/2015 4:03:58 PM] Downloading File: PSTC032r.m00
+[2/2/2015 4:03:58 PM] Downloading File from site to temp folder: PSTC032r.m00 with a File Size of 3393818
+[2/2/2015 4:03:59 PM] PSTC032r.m00 Size Downloaded: 3393818
+[2/2/2015 4:03:59 PM] Compressing File
+[2/2/2015 4:03:59 PM] File Compression Finished
+[2/2/2015 4:03:59 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:59 PM] File Deletion Completed
+[2/2/2015 4:03:59 PM] Deleting File from Temp Folder
+[2/2/2015 4:03:59 PM] File Deletion Completed
+[2/2/2015 4:03:59 PM] Downloading File: PSTC032s.m00
+[2/2/2015 4:03:59 PM] Downloading File from site to temp folder: PSTC032s.m00 with a File Size of 3395388
+[2/2/2015 4:04:00 PM] PSTC032s.m00 Size Downloaded: 3395388
+[2/2/2015 4:04:00 PM] Compressing File
+[2/2/2015 4:04:01 PM] File Compression Finished
+[2/2/2015 4:04:01 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:01 PM] File Deletion Completed
+[2/2/2015 4:04:01 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:01 PM] File Deletion Completed
+[2/2/2015 4:04:01 PM] Downloading File: PSTC032t.m00
+[2/2/2015 4:04:01 PM] Downloading File from site to temp folder: PSTC032t.m00 with a File Size of 3393384
+[2/2/2015 4:04:02 PM] PSTC032t.m00 Size Downloaded: 3393384
+[2/2/2015 4:04:02 PM] Compressing File
+[2/2/2015 4:04:02 PM] File Compression Finished
+[2/2/2015 4:04:02 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:02 PM] File Deletion Completed
+[2/2/2015 4:04:02 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:02 PM] File Deletion Completed
+[2/2/2015 4:04:02 PM] Downloading File: PSTC032u.m00
+[2/2/2015 4:04:02 PM] Downloading File from site to temp folder: PSTC032u.m00 with a File Size of 3330632
+[2/2/2015 4:04:04 PM] PSTC032u.m00 Size Downloaded: 3330632
+[2/2/2015 4:04:04 PM] Compressing File
+[2/2/2015 4:04:04 PM] File Compression Finished
+[2/2/2015 4:04:04 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:04 PM] File Deletion Completed
+[2/2/2015 4:04:04 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:04 PM] File Deletion Completed
+[2/2/2015 4:04:04 PM] Downloading File: PSTC032v.m00
+[2/2/2015 4:04:04 PM] Downloading File from site to temp folder: PSTC032v.m00 with a File Size of 3183384
+[2/2/2015 4:04:05 PM] PSTC032v.m00 Size Downloaded: 3183384
+[2/2/2015 4:04:05 PM] Compressing File
+[2/2/2015 4:04:05 PM] File Compression Finished
+[2/2/2015 4:04:05 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:05 PM] File Deletion Completed
+[2/2/2015 4:04:05 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:05 PM] File Deletion Completed
+[2/2/2015 4:04:05 PM] Downloading File: PSTC032w.m00
+[2/2/2015 4:04:05 PM] Downloading File from site to temp folder: PSTC032w.m00 with a File Size of 2984359
+[2/2/2015 4:04:06 PM] PSTC032w.m00 Size Downloaded: 2984359
+[2/2/2015 4:04:06 PM] Compressing File
+[2/2/2015 4:04:07 PM] File Compression Finished
+[2/2/2015 4:04:07 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:07 PM] File Deletion Completed
+[2/2/2015 4:04:07 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:07 PM] File Deletion Completed
+[2/2/2015 4:04:07 PM] Downloading File: PSTC032x.m00
+[2/2/2015 4:04:07 PM] Downloading File from site to temp folder: PSTC032x.m00 with a File Size of 3166354
+[2/2/2015 4:04:08 PM] PSTC032x.m00 Size Downloaded: 3166354
+[2/2/2015 4:04:08 PM] Compressing File
+[2/2/2015 4:04:08 PM] File Compression Finished
+[2/2/2015 4:04:08 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:08 PM] File Deletion Completed
+[2/2/2015 4:04:08 PM] Deleting File from Temp Folder
+[2/2/2015 4:04:08 PM] File Deletion Completed

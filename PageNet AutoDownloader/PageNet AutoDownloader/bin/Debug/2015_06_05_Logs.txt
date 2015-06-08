@@ -1,0 +1,51 @@
+[6/5/2015 3:18:22 PM] Connection to station PGEN could not be established.
+[6/5/2015 3:24:30 PM] Downloading File: PBAY032d.m00
+[6/5/2015 3:24:30 PM] Downloading File: PBAY032d.m00
+[6/5/2015 3:24:30 PM] Downloading File from site to temp folder: PBAY032d.m00 with a File Size of 1449892
+[6/5/2015 3:24:30 PM] PBAY032d.m00 Size Downloaded: 1449892
+[6/5/2015 3:24:30 PM] Compressing File
+[6/5/2015 3:24:31 PM] File Compression Finished
+[6/5/2015 3:24:31 PM] Deleting File from Temp Folder
+[6/5/2015 3:24:31 PM] File Deletion Completed
+[6/5/2015 3:24:45 PM] Downloading File: PBAY032h.m00
+[6/5/2015 3:24:45 PM] Downloading File: PBAY032h.m00
+[6/5/2015 3:24:45 PM] Downloading File from site to temp folder: PBAY032h.m00 with a File Size of 1579302
+[6/5/2015 3:24:47 PM] PBAY032h.m00 Size Downloaded: 1579302
+[6/5/2015 3:24:47 PM] Compressing File
+[6/5/2015 3:24:48 PM] File Compression Finished
+[6/5/2015 3:24:48 PM] Deleting File from Temp Folder
+[6/5/2015 3:24:48 PM] File Deletion Completed
+[6/5/2015 3:25:05 PM] Deleting File from Temp Folder
+[6/5/2015 3:25:05 PM] File Deletion Completed
+[6/5/2015 3:25:22 PM] Deleting File from Temp Folder
+[6/5/2015 3:25:22 PM] File Deletion Completed
+[6/5/2015 3:52:43 PM] Connection to station PILC could not be established.
+[6/5/2015 3:53:09 PM] Connection to station PSTC could not be established.
+[6/5/2015 3:57:43 PM] Downloading File: PBAY032f.m00
+[6/5/2015 3:57:43 PM] Downloading File: PBAY032f.m00
+[6/5/2015 3:57:43 PM] Downloading File from site to temp folder: PBAY032f.m00 with a File Size of 1554854
+[6/5/2015 3:57:44 PM] PBAY032f.m00 Size Downloaded: 1554854
+[6/5/2015 3:57:44 PM] Compressing File
+[6/5/2015 3:57:44 PM] File Compression Finished
+[6/5/2015 3:57:44 PM] Deleting File from Temp Folder
+[6/5/2015 3:57:44 PM] File Deletion Completed
+[6/5/2015 3:57:46 PM] Downloading File: PBAY032l.m00
+[6/5/2015 3:57:46 PM] Downloading File: PBAY032l.m00
+[6/5/2015 3:57:46 PM] Downloading File from site to temp folder: PBAY032l.m00 with a File Size of 1563005
+[6/5/2015 3:57:49 PM] PBAY032l.m00 Size Downloaded: 1563005
+[6/5/2015 3:57:49 PM] Compressing File
+[6/5/2015 3:57:50 PM] File Compression Finished
+[6/5/2015 3:57:50 PM] Deleting File from Temp Folder
+[6/5/2015 3:57:50 PM] File Deletion Completed
+[6/5/2015 3:58:18 PM] Deleting File from Temp Folder
+[6/5/2015 3:58:18 PM] File Deletion Completed
+[6/5/2015 3:58:22 PM] Deleting File from Temp Folder
+[6/5/2015 3:58:22 PM] File Deletion Completed
+[6/5/2015 3:58:36 PM] Downloading File: PSTC032g.m00
+[6/5/2015 3:58:36 PM] Downloading File: PSTC032g.m00
+[6/5/2015 3:58:37 PM] Downloading File from site to temp folder: PSTC032g.m00 with a File Size of 2870159
+[6/5/2015 3:58:38 PM] PSTC032g.m00 Size Downloaded: 2870159
+[6/5/2015 3:58:38 PM] Compressing File
+[6/5/2015 3:58:38 PM] File Compression Finished
+[6/5/2015 3:58:38 PM] Deleting File from Temp Folder
+[6/5/2015 3:58:38 PM] File Deletion Completed

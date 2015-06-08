@@ -67,4 +67,9 @@ namespace PageNet_AutoDownloader
             public event ProgressChangeDelegate OnProgressChanged;
             public event Completedelegate OnComplete;
         }
+
+        class Recno
+        {
+            public static string RecNumber;
+        }
 }
