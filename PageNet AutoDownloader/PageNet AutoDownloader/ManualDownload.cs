@@ -98,7 +98,12 @@ namespace PageNet_AutoDownloader
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Grid2.Rows.Clear(); 
+            Grid2.Rows.Clear();
+            if (currRow == -1)
+            {
+                currRow = 0;
+            }
+
             GetDataFromSite(currRow);
             DateTime DT = DTPCheck.Value;
 
@@ -133,6 +138,7 @@ namespace PageNet_AutoDownloader
         public void GetDataFromSite(int CurrRow)
         {
             DateTime DT = DTPCheck.Value;
+           
             lock (_object)
             {
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
@@ -181,6 +187,12 @@ namespace PageNet_AutoDownloader
                     catch (WebException ex)
                     {
                         //MessageBox.Show(ex.Message.ToString());
+                        if (ex.Status == WebExceptionStatus.ProtocolError)
+                        {
+                            file.WriteLine("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established. Invalid Username or Password");
+                            //Update("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established." + "\r\n");
+                            MessageBox.Show("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established. Invalid Username or Password");
+                        }
                         if (ex.Status == WebExceptionStatus.ConnectFailure)
                         {
                             file.WriteLine("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established.");
@@ -333,7 +345,7 @@ namespace PageNet_AutoDownloader
                     return;
 
                 }
-                FtpWebRequest requestFileDownload = (FtpWebRequest)WebRequest.Create(URL + FileName);
+                FtpWebRequest requestFileDownload = (FtpWebRequest)WebRequest.Create(new Uri(URL + FileName));
                 requestFileDownload.Credentials = new NetworkCredential(UserName, Password);
                 //requestFileDownload.Credentials = new NetworkCredential();
                 requestFileDownload.Method = WebRequestMethods.Ftp.DownloadFile;
@@ -637,6 +649,11 @@ namespace PageNet_AutoDownloader
         private void Grid2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             Grid2currRow = e.RowIndex;
+        }
+
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
 

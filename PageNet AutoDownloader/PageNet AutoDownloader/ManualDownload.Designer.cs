@@ -33,15 +33,6 @@
             this.Grid = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Grid2 = new System.Windows.Forms.DataGridView();
-            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Compression_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Upload_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.url = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RowNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -62,6 +53,16 @@
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.DTPCheck = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Compression_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Upload_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.url = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RowNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Convert = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.groupBox5.SuspendLayout();
@@ -124,7 +125,8 @@
             this.url,
             this.UserName,
             this.Password,
-            this.RowNum});
+            this.RowNum,
+            this.Convert});
             this.Grid2.Location = new System.Drawing.Point(5, 18);
             this.Grid2.Name = "Grid2";
             this.Grid2.ReadOnly = true;
@@ -137,68 +139,6 @@
             this.Grid2.TabIndex = 0;
             this.Grid2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Grid2_CellClick);
             this.Grid2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Grid2_MouseClick);
-            // 
-            // FileName
-            // 
-            this.FileName.HeaderText = "File";
-            this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
-            this.FileName.Width = 150;
-            // 
-            // Progress
-            // 
-            this.Progress.FillWeight = 150F;
-            this.Progress.HeaderText = "Download Progress";
-            this.Progress.Name = "Progress";
-            this.Progress.ReadOnly = true;
-            this.Progress.Width = 150;
-            // 
-            // Compression_Progress
-            // 
-            this.Compression_Progress.HeaderText = "Compression Progress";
-            this.Compression_Progress.Name = "Compression_Progress";
-            this.Compression_Progress.ReadOnly = true;
-            // 
-            // Upload_Progress
-            // 
-            this.Upload_Progress.HeaderText = "Upload Progress";
-            this.Upload_Progress.Name = "Upload_Progress";
-            this.Upload_Progress.ReadOnly = true;
-            // 
-            // FileSize
-            // 
-            this.FileSize.HeaderText = "File Size(Bytes)";
-            this.FileSize.Name = "FileSize";
-            this.FileSize.ReadOnly = true;
-            this.FileSize.Visible = false;
-            // 
-            // url
-            // 
-            this.url.HeaderText = "URL";
-            this.url.Name = "url";
-            this.url.ReadOnly = true;
-            this.url.Visible = false;
-            // 
-            // UserName
-            // 
-            this.UserName.HeaderText = "UserName";
-            this.UserName.Name = "UserName";
-            this.UserName.ReadOnly = true;
-            this.UserName.Visible = false;
-            // 
-            // Password
-            // 
-            this.Password.HeaderText = "Password";
-            this.Password.Name = "Password";
-            this.Password.ReadOnly = true;
-            this.Password.Visible = false;
-            // 
-            // RowNum
-            // 
-            this.RowNum.HeaderText = "RowNum";
-            this.RowNum.Name = "RowNum";
-            this.RowNum.ReadOnly = true;
-            this.RowNum.Visible = false;
             // 
             // button1
             // 
@@ -216,7 +156,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(155, 23);
             this.button2.TabIndex = 12;
-            this.button2.Text = "Download/Compress/Upload File";
+            this.button2.Text = "Process";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -252,18 +192,22 @@
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.stopToolStripMenuItem.Text = "Stop";
+            this.stopToolStripMenuItem.Visible = false;
             // 
             // restartToolStripMenuItem
             // 
             this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
             this.restartToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.restartToolStripMenuItem.Text = "Restart";
+            this.restartToolStripMenuItem.Visible = false;
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Visible = false;
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -372,6 +316,74 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Choose Date to Check:";
             // 
+            // FileName
+            // 
+            this.FileName.HeaderText = "File";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            this.FileName.Width = 150;
+            // 
+            // Progress
+            // 
+            this.Progress.FillWeight = 150F;
+            this.Progress.HeaderText = "Download Progress";
+            this.Progress.Name = "Progress";
+            this.Progress.ReadOnly = true;
+            this.Progress.Width = 150;
+            // 
+            // Compression_Progress
+            // 
+            this.Compression_Progress.HeaderText = "Compression Progress";
+            this.Compression_Progress.Name = "Compression_Progress";
+            this.Compression_Progress.ReadOnly = true;
+            // 
+            // Upload_Progress
+            // 
+            this.Upload_Progress.HeaderText = "Upload Progress";
+            this.Upload_Progress.Name = "Upload_Progress";
+            this.Upload_Progress.ReadOnly = true;
+            // 
+            // FileSize
+            // 
+            this.FileSize.HeaderText = "File Size(Bytes)";
+            this.FileSize.Name = "FileSize";
+            this.FileSize.ReadOnly = true;
+            this.FileSize.Visible = false;
+            // 
+            // url
+            // 
+            this.url.HeaderText = "URL";
+            this.url.Name = "url";
+            this.url.ReadOnly = true;
+            this.url.Visible = false;
+            // 
+            // UserName
+            // 
+            this.UserName.HeaderText = "UserName";
+            this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
+            this.UserName.Visible = false;
+            // 
+            // Password
+            // 
+            this.Password.HeaderText = "Password";
+            this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
+            this.Password.Visible = false;
+            // 
+            // RowNum
+            // 
+            this.RowNum.HeaderText = "RowNum";
+            this.RowNum.Name = "RowNum";
+            this.RowNum.ReadOnly = true;
+            this.RowNum.Visible = false;
+            // 
+            // Convert
+            // 
+            this.Convert.HeaderText = "Conversion Progress";
+            this.Convert.Name = "Convert";
+            this.Convert.ReadOnly = true;
+            // 
             // ManualDownload
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,15 +424,6 @@
         private System.Windows.Forms.DataGridView Grid;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView Grid2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Progress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Compression_Progress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Upload_Progress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn url;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RowNum;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -441,6 +444,16 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.DateTimePicker DTPCheck;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Progress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Compression_Progress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Upload_Progress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn url;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RowNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Convert;
     }
 }
 

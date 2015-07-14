@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Grid = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -43,6 +42,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.DTPTimeSched = new System.Windows.Forms.DateTimePicker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.TSSFile = new System.Windows.Forms.ToolStripStatusLabel();
@@ -60,7 +61,7 @@
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RowNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button6 = new System.Windows.Forms.Button();
+            this.Convert = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -68,20 +69,26 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startBotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.stopBotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.manualDownloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.clearFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hideProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.leicaToRNXConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stationListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeDestinationFileServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeDestinationForConvertedFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startBotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopBotToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hideProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clearFileListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.manualDownloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.lbldate1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -92,53 +99,35 @@
             ((System.ComponentModel.ISupportInitialize)(this.Grid2)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(11, 531);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(10, 622);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 44);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Start Bot";
+            this.button1.Text = "        Start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(92, 531);
+            this.button2.Enabled = false;
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(91, 622);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 44);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Stop Bot";
+            this.button2.Text = "            Stop";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button3
-            // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.Location = new System.Drawing.Point(11, 581);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 44);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Hide Mode";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button4.Location = new System.Drawing.Point(92, 581);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 44);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Close Bot";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Visible = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // groupBox1
             // 
@@ -173,7 +162,7 @@
             this.groupBox2.Size = new System.Drawing.Size(402, 318);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Error Log";
+            this.groupBox2.Text = "Transaction Log";
             // 
             // TxtLogs
             // 
@@ -197,7 +186,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(12, 27);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(278, 222);
+            this.groupBox3.Size = new System.Drawing.Size(278, 206);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Date and Time";
@@ -244,19 +233,39 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.DTPTimeSched);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(12, 258);
+            this.groupBox4.Location = new System.Drawing.Point(12, 309);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(278, 87);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Download Schedule";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(127, 16);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Data Completeness";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(182, 16);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Set Schedule for Checking of ";
+            // 
             // DTPTimeSched
             // 
             this.DTPTimeSched.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.DTPTimeSched.Location = new System.Drawing.Point(7, 33);
+            this.DTPTimeSched.Location = new System.Drawing.Point(6, 59);
             this.DTPTimeSched.Name = "DTPTimeSched";
             this.DTPTimeSched.ShowUpDown = true;
             this.DTPTimeSched.Size = new System.Drawing.Size(200, 22);
@@ -322,7 +331,8 @@
             this.url,
             this.UserName,
             this.Password,
-            this.RowNum});
+            this.RowNum,
+            this.Convert});
             this.Grid2.Location = new System.Drawing.Point(5, 18);
             this.Grid2.Name = "Grid2";
             this.Grid2.ReadOnly = true;
@@ -395,17 +405,11 @@
             this.RowNum.ReadOnly = true;
             this.RowNum.Visible = false;
             // 
-            // button6
+            // Convert
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button6.Location = new System.Drawing.Point(173, 582);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 44);
-            this.button6.TabIndex = 11;
-            this.button6.Text = "Last";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Visible = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.Convert.HeaderText = "Conversion Progress";
+            this.Convert.Name = "Convert";
+            this.Convert.ReadOnly = true;
             // 
             // groupBox6
             // 
@@ -415,7 +419,7 @@
             this.groupBox6.Controls.Add(this.textBox6);
             this.groupBox6.Controls.Add(this.textBox7);
             this.groupBox6.Controls.Add(this.textBox8);
-            this.groupBox6.Location = new System.Drawing.Point(11, 351);
+            this.groupBox6.Location = new System.Drawing.Point(10, 453);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(279, 163);
             this.groupBox6.TabIndex = 12;
@@ -471,44 +475,111 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(260, 20);
             this.textBox8.TabIndex = 22;
-            this.textBox8.TextChanged += new System.EventHandler(this.textBox8_TextChanged);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(173, 532);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 44);
-            this.button5.TabIndex = 13;
-            this.button5.Text = "Clear List";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Visible = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.settingsToolStripMenuItem});
+            this.toolsToolStripMenuItem,
+            this.settingsToolStripMenuItem,
+            this.exitToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1309, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startBotToolStripMenuItem,
-            this.stopBotToolStripMenuItem,
-            this.manualDownloadToolStripMenuItem,
-            this.hideProgramToolStripMenuItem,
-            this.clearFileListToolStripMenuItem,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
+            this.fileToolStripMenuItem.Visible = false;
+            this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(89, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // toolsToolStripMenuItem
+            // 
+            this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startBotToolStripMenuItem,
+            this.stopBotToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.manualDownloadToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.clearFileListToolStripMenuItem,
+            this.hideProgramToolStripMenuItem,
+            this.leicaToRNXConverterToolStripMenuItem});
+            this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+            this.toolsToolStripMenuItem.Text = "Tools";
+            // 
+            // startBotToolStripMenuItem
+            // 
+            this.startBotToolStripMenuItem.Name = "startBotToolStripMenuItem";
+            this.startBotToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.startBotToolStripMenuItem.Text = "Start";
+            this.startBotToolStripMenuItem.Click += new System.EventHandler(this.startBotToolStripMenuItem_Click_1);
+            // 
+            // stopBotToolStripMenuItem
+            // 
+            this.stopBotToolStripMenuItem.Enabled = false;
+            this.stopBotToolStripMenuItem.Name = "stopBotToolStripMenuItem";
+            this.stopBotToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.stopBotToolStripMenuItem.Text = "Stop";
+            this.stopBotToolStripMenuItem.Click += new System.EventHandler(this.stopBotToolStripMenuItem_Click_1);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(193, 6);
+            // 
+            // manualDownloadToolStripMenuItem
+            // 
+            this.manualDownloadToolStripMenuItem.Name = "manualDownloadToolStripMenuItem";
+            this.manualDownloadToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.manualDownloadToolStripMenuItem.Text = "Manual Download";
+            this.manualDownloadToolStripMenuItem.Click += new System.EventHandler(this.manualDownloadToolStripMenuItem_Click_1);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(193, 6);
+            // 
+            // clearFileListToolStripMenuItem
+            // 
+            this.clearFileListToolStripMenuItem.Name = "clearFileListToolStripMenuItem";
+            this.clearFileListToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.clearFileListToolStripMenuItem.Text = "Clear File List";
+            this.clearFileListToolStripMenuItem.Click += new System.EventHandler(this.clearFileListToolStripMenuItem_Click_1);
+            // 
+            // hideProgramToolStripMenuItem
+            // 
+            this.hideProgramToolStripMenuItem.Name = "hideProgramToolStripMenuItem";
+            this.hideProgramToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.hideProgramToolStripMenuItem.Text = "Hide Program";
+            this.hideProgramToolStripMenuItem.Visible = false;
+            // 
+            // leicaToRNXConverterToolStripMenuItem
+            // 
+            this.leicaToRNXConverterToolStripMenuItem.Name = "leicaToRNXConverterToolStripMenuItem";
+            this.leicaToRNXConverterToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
+            this.leicaToRNXConverterToolStripMenuItem.Text = "Leica to RNX Converter";
+            this.leicaToRNXConverterToolStripMenuItem.Visible = false;
+            this.leicaToRNXConverterToolStripMenuItem.Click += new System.EventHandler(this.leicaToRNXConverterToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -530,71 +601,50 @@
             // changeDestinationFileServerToolStripMenuItem
             // 
             this.changeDestinationFileServerToolStripMenuItem.Name = "changeDestinationFileServerToolStripMenuItem";
-            this.changeDestinationFileServerToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.changeDestinationFileServerToolStripMenuItem.Text = "Change Destination File Server";
+            this.changeDestinationFileServerToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.changeDestinationFileServerToolStripMenuItem.Text = "Destination File Server";
             this.changeDestinationFileServerToolStripMenuItem.Click += new System.EventHandler(this.changeDestinationFileServerToolStripMenuItem_Click);
             // 
             // changeDestinationForConvertedFilesToolStripMenuItem
             // 
             this.changeDestinationForConvertedFilesToolStripMenuItem.Name = "changeDestinationForConvertedFilesToolStripMenuItem";
-            this.changeDestinationForConvertedFilesToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
-            this.changeDestinationForConvertedFilesToolStripMenuItem.Text = "Change Destination for Converted Files";
+            this.changeDestinationForConvertedFilesToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.changeDestinationForConvertedFilesToolStripMenuItem.Text = "Destination for Converted Files";
             // 
-            // startBotToolStripMenuItem
+            // exitToolStripMenuItem1
             // 
-            this.startBotToolStripMenuItem.Name = "startBotToolStripMenuItem";
-            this.startBotToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.startBotToolStripMenuItem.Text = "Start Bot";
-            this.startBotToolStripMenuItem.Click += new System.EventHandler(this.startBotToolStripMenuItem_Click);
+            this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
+            this.exitToolStripMenuItem1.Text = "E&xit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
-            // stopBotToolStripMenuItem
+            // groupBox7
             // 
-            this.stopBotToolStripMenuItem.Name = "stopBotToolStripMenuItem";
-            this.stopBotToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.stopBotToolStripMenuItem.Text = "Stop Bot";
-            this.stopBotToolStripMenuItem.Click += new System.EventHandler(this.stopBotToolStripMenuItem_Click);
+            this.groupBox7.Controls.Add(this.lbldate1);
+            this.groupBox7.Location = new System.Drawing.Point(12, 238);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(277, 65);
+            this.groupBox7.TabIndex = 17;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Date to Check";
             // 
-            // hideProgramToolStripMenuItem
+            // lbldate1
             // 
-            this.hideProgramToolStripMenuItem.Name = "hideProgramToolStripMenuItem";
-            this.hideProgramToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.hideProgramToolStripMenuItem.Text = "Hide Program";
-            this.hideProgramToolStripMenuItem.Click += new System.EventHandler(this.hideProgramToolStripMenuItem_Click);
-            // 
-            // clearFileListToolStripMenuItem
-            // 
-            this.clearFileListToolStripMenuItem.Name = "clearFileListToolStripMenuItem";
-            this.clearFileListToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.clearFileListToolStripMenuItem.Text = "Clear File List";
-            this.clearFileListToolStripMenuItem.Click += new System.EventHandler(this.clearFileListToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(168, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // manualDownloadToolStripMenuItem
-            // 
-            this.manualDownloadToolStripMenuItem.Name = "manualDownloadToolStripMenuItem";
-            this.manualDownloadToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
-            this.manualDownloadToolStripMenuItem.Text = "Manual Download";
-            this.manualDownloadToolStripMenuItem.Click += new System.EventHandler(this.manualDownloadToolStripMenuItem_Click);
+            this.lbldate1.AutoSize = true;
+            this.lbldate1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbldate1.Location = new System.Drawing.Point(12, 25);
+            this.lbldate1.Name = "lbldate1";
+            this.lbldate1.Size = new System.Drawing.Size(63, 25);
+            this.lbldate1.TabIndex = 4;
+            this.lbldate1.Text = "Time";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1309, 695);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.button6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -602,8 +652,6 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -620,6 +668,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -628,6 +677,8 @@
             this.groupBox6.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -637,8 +688,6 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView Grid;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -656,28 +705,13 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView Grid2;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripStatusLabel TSStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Progress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Compression_Progress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Upload_Progress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn url;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RowNum;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem startBotToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem stopBotToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem hideProgramToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem clearFileListToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
@@ -687,7 +721,30 @@
         public System.Windows.Forms.TextBox textBox6;
         public System.Windows.Forms.TextBox textBox7;
         public System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label lbldate1;
+        private System.Windows.Forms.ToolStripMenuItem toolsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem leicaToRNXConverterToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem startBotToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopBotToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem manualDownloadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem clearFileListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hideProgramToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Progress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Compression_Progress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Upload_Progress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn url;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RowNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Convert;
     }
 }
 

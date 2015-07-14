@@ -1,0 +1,21 @@
+[7/10/2015 3:15:09 PM] Connection to station PGEN could not be established.
+[7/10/2015 3:19:59 PM] Downloading File: PBAY032i.m00
+[7/10/2015 3:20:00 PM] Downloading File: PBAY032i.m00
+[7/10/2015 3:21:04 PM] Downloading File from site to temp folder: PBAY032i.m00 with a File Size of 1489809
+[7/10/2015 3:21:21 PM] PBAY032i.m00 Size Downloaded: 1489809
+[7/10/2015 3:21:21 PM] Compressing File
+[7/10/2015 3:21:22 PM] File Compression Finished
+[7/10/2015 3:21:22 PM] Deleting File from Temp Folder
+[7/10/2015 3:21:22 PM] File Deletion Completed
+[7/10/2015 3:28:37 PM] Downloading File: PBAY032l.m00
+[7/10/2015 3:28:37 PM] Downloading File: PBAY032l.m00
+[7/10/2015 3:32:55 PM] Downloading File: PBAY032g.m00
+[7/10/2015 3:32:55 PM] Downloading File: PBAY032g.m00
+[7/10/2015 3:33:54 PM] Downloading File: PBAY032b.m00
+[7/10/2015 3:33:54 PM] Downloading File: PBAY032b.m00
+[7/10/2015 3:34:14 PM] Downloading File from site to temp folder: PBAY032b.m00 with a File Size of 1545207
+[7/10/2015 3:34:25 PM] PBAY032b.m00 Size Downloaded: 1545207
+[7/10/2015 3:34:25 PM] Compressing File
+[7/10/2015 3:34:25 PM] File Compression Finished
+[7/10/2015 3:34:25 PM] Deleting File from Temp Folder
+[7/10/2015 3:34:25 PM] File Deletion Completed

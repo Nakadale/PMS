@@ -16,6 +16,7 @@ using System.Threading; // this is for threading. for multi processor use.
 using Shared_Folder_Login;
 using Ionic.Zip;
 using Ionic.Zlib;
+using System.Diagnostics;
 
 namespace PageNet_AutoDownloader
 {
@@ -31,6 +32,7 @@ namespace PageNet_AutoDownloader
         int Triggered = 0; // trigger for starting of checking of site and downloading of files for the site. 
 
         // SQLite Connection Parameters
+
         private SQLiteConnection sql_con = new SQLiteConnection(ConfigurationManager.ConnectionStrings["PageNet_AutoDownloader.Properties.Settings.sql_con"].ConnectionString);
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter DBMain;
@@ -41,7 +43,14 @@ namespace PageNet_AutoDownloader
         public void LoadData()
         {
             // loads all station information from DB.
-            sql_con.Open();
+            try
+            {
+                sql_con.Open();
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
             sql_cmd = sql_con.CreateCommand();
             string CommandText = "Select * from Main";
@@ -79,7 +88,8 @@ namespace PageNet_AutoDownloader
         {
             // displays the date and time. gets computer time.
             DateTime saveNow = DateTime.Now;
-            lblDate.Text = saveNow.Subtract(TimeSpan.FromDays(1)).ToShortDateString();
+            lblDate.Text = saveNow.ToShortDateString();
+            lbldate1.Text = saveNow.Subtract(TimeSpan.FromDays(1)).ToShortDateString();
             //lblDate.Text = saveNow.ToShortDateString();
             lblTime.Text = saveNow.ToShortTimeString();
         }
@@ -90,6 +100,13 @@ namespace PageNet_AutoDownloader
             DTPTimeSched.Enabled = false;
             timer2.Enabled = true;
             CancelProg = false;
+            stopBotToolStripMenuItem.Enabled = true;
+            startBotToolStripMenuItem.Enabled = false;
+            button1.Enabled = false; // Start Button
+            button2.Enabled = true; // Stop Button
+            manualDownloadToolStripMenuItem.Enabled = false; 
+
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -99,6 +116,12 @@ namespace PageNet_AutoDownloader
             timer2.Enabled = false;
             //WorkLoad.Start();
             CancelProg = true;
+            stopBotToolStripMenuItem.Enabled = false;
+            startBotToolStripMenuItem.Enabled = true;
+            button1.Enabled = true; // Start Button
+            button2.Enabled = false; // Stop Button
+            manualDownloadToolStripMenuItem.Enabled = true; 
+
             UpdateStatusBar("[" + DateTime.Now + "] " + "Cancelling Process. Please wait.");
         }
 
@@ -177,11 +200,14 @@ namespace PageNet_AutoDownloader
                         Stream responseStream = response.GetResponseStream();
                         StreamReader reader = new StreamReader(responseStream);
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Connected to Station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + "");
+                        Update("[" + DateTime.Now + "] " + "Connected to Station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + "\r\n");
 
                         string JulianDate = DateTime.Now.Subtract(TimeSpan.FromDays(1)).DayOfYear.ToString("000");
 
                         //string JulianDate = DateTime.Now.DayOfYear.ToString("000");
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Getting File(s) Information");
+                        Update("[" + DateTime.Now + "] " + "Getting File(s) Information\r\n");
+                        
                         while (!reader.EndOfStream)
                         {
                             string line = reader.ReadLine();
@@ -196,11 +222,19 @@ namespace PageNet_AutoDownloader
                             }
                         }
                         UpdateStatusBar("[" + DateTime.Now + "] " + FileCounter + " File(s) Information collected.");
+                        Update("[" + DateTime.Now + "] " + FileCounter + " File(s) Information collected.\r\n");
 
                     }
                     catch (WebException ex)
                     {
                         //MessageBox.Show(ex.Message.ToString());
+                        if (ex.Status == WebExceptionStatus.ProtocolError)
+                        {
+                            file.WriteLine("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established. Invalid User Name or Password.");
+                            Update("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established. Invalid User Name or Password." + "\r\n");
+                            return;
+                        }
+
                         if (ex.Status == WebExceptionStatus.ConnectFailure)
                         {
                             file.WriteLine("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established.");
@@ -231,6 +265,7 @@ namespace PageNet_AutoDownloader
                     {
                         this.timer2.Enabled = false;
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
                         return; 
 
                     }
@@ -253,6 +288,7 @@ namespace PageNet_AutoDownloader
                             //logs activity into Textbox
                             UpdateStatusBar("[" + DateTime.Now + "] " + "Downloading File from site to temp folder: " + FileName + " with a File Size of " + File_Size + "");
                             //updates file activity into File List Grid
+                            Update("[" + DateTime.Now + "] " + "Downloading File from site to temp folder: " + FileName + " with a File Size of " + File_Size + "\r\n");
                             UpdateGrid2("0%", Grid2RowNumber, 1);
                         }
                     }
@@ -261,7 +297,9 @@ namespace PageNet_AutoDownloader
                             {
                                 this.timer2.Enabled = false;
                                 UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                                Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
                                 return;
+
 
                             }
 
@@ -289,6 +327,7 @@ namespace PageNet_AutoDownloader
 
                             //logs activity into Textbox
                             UpdateStatusBar("[" + DateTime.Now + "] " + FileName + " Size Downloaded: " + (FileSize + Length) + "");
+                            Update("[" + DateTime.Now + "] " + FileName + " Size Downloaded: " + (FileSize + Length) + "\r\n");
                         
                         responseStream.Close();
                         writeStream.Close();
@@ -300,6 +339,8 @@ namespace PageNet_AutoDownloader
                     {
                         this.timer2.Enabled = false;
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
                         return;
 
                     }
@@ -308,6 +349,8 @@ namespace PageNet_AutoDownloader
                     {
                         this.timer2.Enabled = false;
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
                         return;
 
                     }
@@ -317,10 +360,13 @@ namespace PageNet_AutoDownloader
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
                         {
                             file.WriteLine("[" + DateTime.Now + "] " + "Compressing File");
+                            Update("[" + DateTime.Now + "] " + "Compressing File\r\n");
+
                         }
                     }
                     //logs activity
                     UpdateStatusBar("[" + DateTime.Now + "] " + "Compressing File" + "\r\n");
+                    Update("[" + DateTime.Now + "] " + "Compressing File\r\n");
                     //logs activity
                     //UpdateGrid2("Compressing File", Grid2RowNumber, 2);
                     //compression code
@@ -333,6 +379,7 @@ namespace PageNet_AutoDownloader
                         {
                             this.timer2.Enabled = false;
                             UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                            Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
                             return;
 
                         }
@@ -352,12 +399,15 @@ namespace PageNet_AutoDownloader
                     }
                     //logs activity
                     UpdateStatusBar("[" + DateTime.Now + "] " + "File Compression Finished" + "");
+                    Update("[" + DateTime.Now + "] " + "File Compression Finished" + "\r\n");
 
                     // end of compression code
                     if (CancelProg == true)
                     {
                         this.timer2.Enabled = false;
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
                         return;
 
                     }
@@ -371,6 +421,7 @@ namespace PageNet_AutoDownloader
                             {
                                 this.timer2.Enabled = false;
                                 UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                                Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
                                 return;
 
                             }
@@ -379,9 +430,13 @@ namespace PageNet_AutoDownloader
                             //logs activity
                             UpdateStatusBar("[" + DateTime.Now + "] " + "Deleting File from Temp Folder" + "");
                             //delete code/command 
+                            Update("[" + DateTime.Now + "] " + "Deleting File from Temp Folder" + "\r\n");
+
                             File.Delete(LocalDirectory + FileName);
                             //logs activity
                             UpdateStatusBar("[" + DateTime.Now + "] " + "File Deletion Completed" + "\r\n");
+                            Update("[" + DateTime.Now + "] " + "File Deletion Completed" + "\r\n");
+
                             //logs activity
                             file.WriteLine("[" + DateTime.Now + "] " + "File Deletion Completed");
                         }
@@ -391,6 +446,8 @@ namespace PageNet_AutoDownloader
                     {
                         this.timer2.Enabled = false;
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
                         return;
 
                     }
@@ -417,6 +474,8 @@ namespace PageNet_AutoDownloader
                     {
                         this.timer2.Enabled = false;
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
                         return;
 
                     }
@@ -430,6 +489,7 @@ namespace PageNet_AutoDownloader
                             {
                                 this.timer2.Enabled = false;
                                 UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                                Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
                                 return;
 
                             }
@@ -437,10 +497,13 @@ namespace PageNet_AutoDownloader
                             file.WriteLine("[" + DateTime.Now + "] " + "Deleting File from Temp Folder");
                             //logs activity
                             UpdateStatusBar("[" + DateTime.Now + "] " + "Deleting File from Temp Folder" + "");
+                            Update("[" + DateTime.Now + "] " + "Deleting File from Temp Folder" + "\r\n");
+
                             //delete code/command 
                             File.Delete(LocalDirectory + FileName + ".zip");
                             //logs activity
                             UpdateStatusBar("[" + DateTime.Now + "] " + "File Deletion Completed");
+                            Update("[" + DateTime.Now + "] " + "File Deletion Completed\r\n");
                             //logs activity
                             file.WriteLine("[" + DateTime.Now + "] " + "File Deletion Completed");
                         }
@@ -450,6 +513,21 @@ namespace PageNet_AutoDownloader
                 }
                 catch (WebException ex)
                 {
+                    if (ex.Status == WebExceptionStatus.ProtocolError)
+                    {
+                        //if the supplied password or username is wrong
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "User Name or Password is invalid for site " +  Grid.Rows[int.Parse(RowNumber)].Cells[0].Value.ToString());
+                        Update("[" + DateTime.Now + "] " + "User Name or Password is invalid for site " + Grid.Rows[int.Parse(RowNumber)].Cells[0].Value.ToString() + "\r\n");
+
+                        if (CancelProg == true)
+                        {
+                            this.timer2.Enabled = false;
+                            UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                            Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+                            return;
+
+                        }
+                    }
                     if (ex.Status == WebExceptionStatus.ConnectFailure)
                     {
                         //if there is no connection to the site
@@ -457,7 +535,10 @@ namespace PageNet_AutoDownloader
                         if (CancelProg == true)
                         {
                             this.timer2.Enabled = false;
+
                             UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                            Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
                             return;
 
                         }
@@ -469,6 +550,7 @@ namespace PageNet_AutoDownloader
                             //if the connection has a timeout
                             UpdateStatusBar("[" + DateTime.Now + "] " + ex.Message.ToString() + "");
                             UpdateStatusBar("[" + DateTime.Now + "] Retrying Download of file " + FileName);
+
                             Update("[" + DateTime.Now + "] " + ex.Message.ToString() + "\r\n");
                             Update("[" + DateTime.Now + "] Retrying Download of file " + FileName + "\r\n");
                             Downloadfile(URL, FileName, user, pass, RowNumber, Grid2RowNumber, File_Size);
@@ -477,6 +559,8 @@ namespace PageNet_AutoDownloader
                             {
                                 this.timer2.Enabled = false;
                                 UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                                Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
                                 return;
 
                             }
@@ -540,6 +624,7 @@ namespace PageNet_AutoDownloader
                     {
                         this.timer2.Enabled = false;
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
                         return;
 
                     }
@@ -547,10 +632,14 @@ namespace PageNet_AutoDownloader
                     file.WriteLine("[" + DateTime.Now + "] " + "Deleting File from Temp Folder");
                     //logs activity
                     UpdateStatusBar("[" + DateTime.Now + "] " + "Deleting File from Temp Folder" + "");
+                    Update("[" + DateTime.Now + "] " + "Deleting File from Temp Folder" + "\r\n");
+
                     //delete code/command 
                     File.Delete(path);
                     //logs activity
                     UpdateStatusBar("[" + DateTime.Now + "] " + "File Deletion Completed");
+                    Update("[" + DateTime.Now + "] " + "File Deletion Completed\r\n");
+
                     //logs activity
                     file.WriteLine("[" + DateTime.Now + "] " + "File Deletion Completed");
                 }
@@ -565,6 +654,8 @@ namespace PageNet_AutoDownloader
                 {
                     this.timer2.Enabled = false;
                     UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                    Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
                     return;
 
                 }
@@ -652,6 +743,8 @@ namespace PageNet_AutoDownloader
                     {
                         //creates the folder if non-existent
                         file.WriteLine("[" + DateTime.Now + "] " + "Creating Top Level Folder");
+                        Update("[" + DateTime.Now + "] " + "Creating Top Level Folder\r\n");
+
                         TopCreateFolder(this.textBox8.Text.ToString());
                     }
 
@@ -664,6 +757,8 @@ namespace PageNet_AutoDownloader
                     {
                         //creates the folder if non-existent
                         file.WriteLine("[" + DateTime.Now + "] " + "Creating Year Folder");
+                        Update("[" + DateTime.Now + "] " + "Creating Year Folder\r\n");
+
                         CreateFolder(this.textBox8.Text, DateTime.Now.Year.ToString());
                     }
 
@@ -675,6 +770,8 @@ namespace PageNet_AutoDownloader
                     else
                     {
                         //creates the folder if non-existent
+                        Update("[" + DateTime.Now + "] " + "Creating Month Folder\r\n");
+
                         file.WriteLine("[" + DateTime.Now + "] " + "Creating Month Folder");
                         CreateFolder((this.textBox8.Text + DateTime.Now.Year.ToString()), DateTime.Now.Month.ToString("00"));
                     }
@@ -688,6 +785,7 @@ namespace PageNet_AutoDownloader
                     {
                         //creates the folder if non-existent
                         file.WriteLine("[" + DateTime.Now + "] " + "Creating Day Folder");
+                        Update("[" + DateTime.Now + "] " + "Creating Day Folder\r\n");
                         CreateFolder((this.textBox8.Text + DateTime.Now.Year.ToString()) + @"\" + DateTime.Now.Month.ToString("00"), DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00"));
                     }
 
@@ -700,6 +798,7 @@ namespace PageNet_AutoDownloader
                     {
                         //creates the folder if non-existent
                         file.WriteLine("[" + DateTime.Now + "] " + "Creating Station Folder");
+                        Update("[" + DateTime.Now + "] " + "Creating Station Folder\r\n");
                         CreateFolder((this.textBox8.Text + DateTime.Now.Year.ToString()) + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00"), Grid.Rows[SelectedRow].Cells[0].Value.ToString());
                     }
                 }
@@ -768,11 +867,13 @@ namespace PageNet_AutoDownloader
             {
 
                 UpdateStatusBar("[" + DateTime.Now + "] " + " Connecting to Station: " + Grid.Rows[Counter].Cells[0].Value.ToString() + "");
+                Update("[" + DateTime.Now + "] " + " Connecting to Station: " + Grid.Rows[Counter].Cells[0].Value.ToString() + "\r\n");
                 
                 if (CancelProg == true)
                 {
                     this.timer2.Enabled = false;
                     UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                    Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
                     return;
 
                 }
@@ -783,6 +884,8 @@ namespace PageNet_AutoDownloader
                 {
                     this.timer2.Enabled = false;
                     UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                    Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
                     return;
                 }
                 FolderChecker(Counter);
@@ -804,6 +907,8 @@ namespace PageNet_AutoDownloader
                                 file.WriteLine("[" + DateTime.Now + "] " + i.FileName.Substring(0, 12).ToString() + " File Does not exist in the destination server!");
                                 //logs activity
                                 UpdateStatusBar("[" + DateTime.Now + "] " + i.FileName.Substring(0, 12).ToString() + " File Does not exist in the destination server!" + "");
+                                Update("[" + DateTime.Now + "] " + i.FileName.Substring(0, 12).ToString() + " File Does not exist in the destination server!" + "\r\n");
+
                                 //logs activity
                                 file.WriteLine("[" + DateTime.Now + "] " + "File Size:" + i.FileBytes);
                                 //logs activity
@@ -845,51 +950,61 @@ namespace PageNet_AutoDownloader
             //        T2.Start(counter + 1);
             //}
 
-            DoCheckOfAvailableFile(0);
-            Thread.Sleep(100);
-            DoCheckOfAvailableFile(1);
-
+            if (Grid2.RowCount != 0)
+            {
+                DoCheckOfAvailableFile(0);
+                Thread.Sleep(100);
+                DoCheckOfAvailableFile(1);
+            }
             UpdateStatusBar("File Comparison Finished");
+            Update("File Comparison Finished\r\n");
 
-            UpdateStatusBar("Program will automatically compare files at " + DTPTimeSched.Value.ToShortTimeString() + " on " + DateTime.Now.AddDays(1).ToShortDateString());
+            UpdateStatusBar("Program will automatically compare files on " + DateTime.Now.AddDays(1).ToShortDateString());
+            Update("Program will automatically compare files on " + DateTime.Now.AddDays(1).ToShortDateString() + "\r\n");
+
             //UpdateGrid2Clear();
         }
 
         public void DoCheckOfAvailableFile(object num)
         {
-            int row = 0;
+            int row = -1;
             int.TryParse(num.ToString(), out row);
             for (int y = 0; y < Grid2.RowCount; y++)
             {
-                if ((Grid2.Rows[y].Cells[1].Value.ToString() != "") && (Grid2.Rows[y].Cells[2].Value.ToString() != "") && (Grid2.Rows[y].Cells[3].Value.ToString() != ""))
+                if ((Grid2.Rows[y].Cells[1].Value.ToString() == "") && (Grid2.Rows[y].Cells[2].Value.ToString() == "") && (Grid2.Rows[y].Cells[3].Value.ToString() == ""))
                 {
                     row = y;
                     break;
                 }
-
-            }
-                lock (_object)
+                if (y == Grid2.RowCount)
                 {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + "Logs.txt", true))
+                    break;
+                }
+            }
+            lock (_object)
+            {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + "Logs.txt", true))
+                {
+                    //logs activity
+                    file.WriteLine("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[row].Cells[0].Value.ToString());
+                    //logs activity
+                    UpdateStatusBar("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[row].Cells[0].Value.ToString() + "");
+                    Update("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[row].Cells[0].Value.ToString() + "\r\n");
+
+                    if (CancelProg == true)
                     {
-                        //logs activity
-                        file.WriteLine("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[row].Cells[0].Value.ToString());
-                        //logs activity
-                        UpdateStatusBar("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[row].Cells[0].Value.ToString() + "");
-                        if (CancelProg == true)
-                        {
-                            this.timer2.Enabled = false;
-                            UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-                            return;
-                        }
+                        this.timer2.Enabled = false;
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
+                        return;
                     }
                 }
+            }
 
-                ParameterizedThreadStart NPT = new ParameterizedThreadStart(DoDownloadFile);
-                Thread T1 = new Thread(NPT);
-                T1.Start(row);
-
-                
+            ParameterizedThreadStart NPT = new ParameterizedThreadStart(DoDownloadFile);
+            Thread T1 = new Thread(NPT);
+            T1.Start(row);
             
         }
 
@@ -908,10 +1023,13 @@ namespace PageNet_AutoDownloader
                         file.WriteLine("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[counter].Cells[0].Value.ToString());
                         //logs activity
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[counter].Cells[0].Value.ToString() + "");
+                        Update("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[counter].Cells[0].Value.ToString() + "\r\n");
                         if (CancelProg == true)
                         {
                             this.timer2.Enabled = false;
                             UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                            Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+
                             return;
                         }
                     }
@@ -934,8 +1052,11 @@ namespace PageNet_AutoDownloader
                 else
                 {
                     UpdateStatusBar("File Comparison Finished");
+                    Update("File Comparison Finished\r\n");
 
                     UpdateStatusBar("Program will automatically compare files at " + DTPTimeSched.Value + " on " + DateTime.Now.AddDays(1).ToShortDateString());
+                    Update("Program will automatically compare files at " + DTPTimeSched.Value + " on " + DateTime.Now.AddDays(1).ToShortDateString() + "\r\n");
+
                 }
             }
             catch(Exception e)
@@ -1061,6 +1182,12 @@ namespace PageNet_AutoDownloader
             DTPTimeSched.Enabled = false;
             timer2.Enabled = true;
             CancelProg = false;
+            stopBotToolStripMenuItem.Enabled = true;
+            startBotToolStripMenuItem.Enabled = false;
+            button1.Enabled = false; // Start Button
+            button2.Enabled = true; // Stop Button
+            manualDownloadToolStripMenuItem.Enabled = false; 
+
         }
 
         private void stopBotToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1070,6 +1197,12 @@ namespace PageNet_AutoDownloader
             timer2.Enabled = false;
             //WorkLoad.Start();
             CancelProg = true;
+            stopBotToolStripMenuItem.Enabled = false;
+            startBotToolStripMenuItem.Enabled = true;
+            button1.Enabled = true; // Start Button
+            button2.Enabled = false; // Stop Button
+            manualDownloadToolStripMenuItem.Enabled = true; 
+
             UpdateStatusBar("[" + DateTime.Now + "] " + "Cancelling Process. Please wait.");
         }
 
@@ -1102,18 +1235,64 @@ namespace PageNet_AutoDownloader
             Desti.ShowDialog();
         }
 
-        private void textBox8_TextChanged(object sender, EventArgs e)
+        private void leicaToRNXConverterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            //System.Diagnostics.Process.Start(@"C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\MDB2RNX Converter\MDB2RNX.exe");
+            //Process p = new Process();
+            //p.StartInfo.FileName = @"C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\MDB2RNX Converter\MDB2RNX.exe";
+            //p.StartInfo.UseShellExecute = true;
+            ////p.StartInfo.FileName = @"MDB2RNX.exe";
+            //p.Start();
+            MDB2RNX.MainForm M = new MDB2RNX.MainForm();
+            M.ShowDialog();
         }
 
-        private void manualDownloadToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            CancelProg = true;
+            Close();
+        }
+
+        private void manualDownloadToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             ManualDownload M = new ManualDownload();
             M.ShowDialog();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void clearFileListToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Grid2.Rows.Clear();
+        }
+
+        private void startBotToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            DTPTimeSched.Enabled = false;
+            timer2.Enabled = true;
+            CancelProg = false;
+            stopBotToolStripMenuItem.Enabled = true;
+            startBotToolStripMenuItem.Enabled = false;
+            button1.Enabled = false; // Start Button
+            button2.Enabled = true; // Stop Button
+            manualDownloadToolStripMenuItem.Enabled = false; 
+        }
+
+        private void stopBotToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            // stops the timer/scheduler
+            DTPTimeSched.Enabled = true;
+            timer2.Enabled = false;
+            //WorkLoad.Start();
+            CancelProg = true;
+            stopBotToolStripMenuItem.Enabled = false;
+            startBotToolStripMenuItem.Enabled = true;
+            button1.Enabled = true; // Start Button
+            button2.Enabled = false; // Stop Button
+            manualDownloadToolStripMenuItem.Enabled = true;
+
+            UpdateStatusBar("[" + DateTime.Now + "] " + "Cancelling Process. Please wait.");
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
