@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManualDownload));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Grid = new System.Windows.Forms.DataGridView();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -44,17 +45,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.TSSFile = new System.Windows.Forms.ToolStripStatusLabel();
             this.TSStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.DTPCheck = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Convert = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Compression_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Upload_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,14 +55,17 @@
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RowNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Convert = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.DTPCheck = new System.Windows.Forms.DateTimePicker();
+            this.button4 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid2)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -119,14 +115,14 @@
             this.Grid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
             this.Progress,
+            this.Convert,
             this.Compression_Progress,
             this.Upload_Progress,
             this.FileSize,
             this.url,
             this.UserName,
             this.Password,
-            this.RowNum,
-            this.Convert});
+            this.RowNum});
             this.Grid2.Location = new System.Drawing.Point(5, 18);
             this.Grid2.Name = "Grid2";
             this.Grid2.ReadOnly = true;
@@ -142,19 +138,26 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 395);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(12, 438);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 23);
+            this.button1.Size = new System.Drawing.Size(209, 42);
             this.button1.TabIndex = 11;
             this.button1.Text = "Check Data Completeness";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 425);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(12, 486);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 23);
+            this.button2.Size = new System.Drawing.Size(209, 42);
             this.button2.TabIndex = 12;
             this.button2.Text = "Process";
             this.button2.UseVisualStyleBackColor = true;
@@ -162,9 +165,12 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 454);
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(12, 582);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(155, 23);
+            this.button3.Size = new System.Drawing.Size(209, 42);
             this.button3.TabIndex = 13;
             this.button3.Text = "&Close";
             this.button3.UseVisualStyleBackColor = true;
@@ -178,7 +184,7 @@
             this.restartToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 114);
             // 
             // startToolStripMenuItem
             // 
@@ -190,9 +196,9 @@
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.stopToolStripMenuItem.Text = "Stop";
-            this.stopToolStripMenuItem.Visible = false;
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // restartToolStripMenuItem
             // 
@@ -207,7 +213,6 @@
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Visible = false;
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -232,90 +237,6 @@
             this.TSStatus.Size = new System.Drawing.Size(127, 17);
             this.TSStatus.Text = "                                        ";
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Controls.Add(this.label7);
-            this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.textBox6);
-            this.groupBox6.Controls.Add(this.textBox7);
-            this.groupBox6.Controls.Add(this.textBox8);
-            this.groupBox6.Location = new System.Drawing.Point(15, 488);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(279, 163);
-            this.groupBox6.TabIndex = 16;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Data Server";
-            this.groupBox6.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 106);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "Password";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 60);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 13);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "Username";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 13);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "FTP Address";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(13, 123);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.PasswordChar = '*';
-            this.textBox6.Size = new System.Drawing.Size(260, 20);
-            this.textBox6.TabIndex = 24;
-            this.textBox6.Text = "@dm!n!$+r@+0r";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(13, 79);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(260, 20);
-            this.textBox7.TabIndex = 23;
-            this.textBox7.Text = "Administrator";
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(13, 35);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(260, 20);
-            this.textBox8.TabIndex = 22;
-            this.textBox8.Text = "\\\\192.168.8.208\\Files\\";
-            // 
-            // DTPCheck
-            // 
-            this.DTPCheck.Location = new System.Drawing.Point(131, 350);
-            this.DTPCheck.Name = "DTPCheck";
-            this.DTPCheck.Size = new System.Drawing.Size(200, 20);
-            this.DTPCheck.TabIndex = 17;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 354);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(118, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Choose Date to Check:";
-            // 
             // FileName
             // 
             this.FileName.HeaderText = "File";
@@ -330,6 +251,12 @@
             this.Progress.Name = "Progress";
             this.Progress.ReadOnly = true;
             this.Progress.Width = 150;
+            // 
+            // Convert
+            // 
+            this.Convert.HeaderText = "Conversion Progress";
+            this.Convert.Name = "Convert";
+            this.Convert.ReadOnly = true;
             // 
             // Compression_Progress
             // 
@@ -378,11 +305,45 @@
             this.RowNum.ReadOnly = true;
             this.RowNum.Visible = false;
             // 
-            // Convert
+            // groupBox2
             // 
-            this.Convert.HeaderText = "Conversion Progress";
-            this.Convert.Name = "Convert";
-            this.Convert.ReadOnly = true;
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.DTPCheck);
+            this.groupBox2.Location = new System.Drawing.Point(12, 334);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(402, 89);
+            this.groupBox2.TabIndex = 19;
+            this.groupBox2.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(16, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(145, 16);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Choose Date to Check:";
+            // 
+            // DTPCheck
+            // 
+            this.DTPCheck.Location = new System.Drawing.Point(167, 35);
+            this.DTPCheck.Name = "DTPCheck";
+            this.DTPCheck.Size = new System.Drawing.Size(200, 20);
+            this.DTPCheck.TabIndex = 19;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(12, 534);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(209, 42);
+            this.button4.TabIndex = 20;
+            this.button4.Text = "&Stop Processes";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // ManualDownload
             // 
@@ -390,9 +351,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1178, 687);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.DTPCheck);
-            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -411,8 +371,8 @@
             this.contextMenuStrip1.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,17 +395,9 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel TSSFile;
         private System.Windows.Forms.ToolStripStatusLabel TSStatus;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.DateTimePicker DTPCheck;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Progress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Convert;
         private System.Windows.Forms.DataGridViewTextBoxColumn Compression_Progress;
         private System.Windows.Forms.DataGridViewTextBoxColumn Upload_Progress;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
@@ -453,7 +405,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn RowNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Convert;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker DTPCheck;
+        private System.Windows.Forms.Button button4;
     }
 }
 

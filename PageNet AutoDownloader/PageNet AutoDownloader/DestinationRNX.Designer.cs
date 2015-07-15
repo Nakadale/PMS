@@ -1,6 +1,6 @@
 ﻿namespace PageNet_AutoDownloader
 {
-    partial class Destination
+    partial class DestinationRNX
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -35,10 +37,28 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(215, 179);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 40);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "&Close";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(133, 179);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 40);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "&Save";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox6
             // 
@@ -48,13 +68,12 @@
             this.groupBox6.Controls.Add(this.textBox6);
             this.groupBox6.Controls.Add(this.textBox7);
             this.groupBox6.Controls.Add(this.textBox8);
-            this.groupBox6.Location = new System.Drawing.Point(12, 12);
+            this.groupBox6.Location = new System.Drawing.Point(11, 10);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(279, 163);
-            this.groupBox6.TabIndex = 17;
+            this.groupBox6.TabIndex = 20;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Data Server";
-            this.groupBox6.Enter += new System.EventHandler(this.groupBox6_Enter);
             // 
             // label6
             // 
@@ -105,27 +124,7 @@
             this.textBox8.Size = new System.Drawing.Size(260, 20);
             this.textBox8.TabIndex = 22;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(134, 181);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 40);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "&Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(216, 181);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 40);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "&Close";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // Destination
+            // DestinationRNX
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,12 +132,10 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox6);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "Destination";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Destination/File Server Settings";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "DestinationRNX";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "RNX Destination Server";
+            this.Load += new System.EventHandler(this.DestinationRNX_Load);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
@@ -147,6 +144,8 @@
 
         #endregion
 
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -154,8 +153,5 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }
-

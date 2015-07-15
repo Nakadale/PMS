@@ -54,6 +54,7 @@
             this.Grid2 = new System.Windows.Forms.DataGridView();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Convert = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Compression_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Upload_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +62,6 @@
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RowNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Convert = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -89,6 +89,7 @@
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lbldate1 = new System.Windows.Forms.Label();
+            this.setTeqCArgumentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -325,14 +326,14 @@
             this.Grid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
             this.Progress,
+            this.Convert,
             this.Compression_Progress,
             this.Upload_Progress,
             this.FileSize,
             this.url,
             this.UserName,
             this.Password,
-            this.RowNum,
-            this.Convert});
+            this.RowNum});
             this.Grid2.Location = new System.Drawing.Point(5, 18);
             this.Grid2.Name = "Grid2";
             this.Grid2.ReadOnly = true;
@@ -357,6 +358,12 @@
             this.Progress.Name = "Progress";
             this.Progress.ReadOnly = true;
             this.Progress.Width = 150;
+            // 
+            // Convert
+            // 
+            this.Convert.HeaderText = "Conversion Progress";
+            this.Convert.Name = "Convert";
+            this.Convert.ReadOnly = true;
             // 
             // Compression_Progress
             // 
@@ -404,12 +411,6 @@
             this.RowNum.Name = "RowNum";
             this.RowNum.ReadOnly = true;
             this.RowNum.Visible = false;
-            // 
-            // Convert
-            // 
-            this.Convert.HeaderText = "Conversion Progress";
-            this.Convert.Name = "Convert";
-            this.Convert.ReadOnly = true;
             // 
             // groupBox6
             // 
@@ -579,14 +580,14 @@
             this.leicaToRNXConverterToolStripMenuItem.Size = new System.Drawing.Size(196, 22);
             this.leicaToRNXConverterToolStripMenuItem.Text = "Leica to RNX Converter";
             this.leicaToRNXConverterToolStripMenuItem.Visible = false;
-            this.leicaToRNXConverterToolStripMenuItem.Click += new System.EventHandler(this.leicaToRNXConverterToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.stationListToolStripMenuItem,
             this.changeDestinationFileServerToolStripMenuItem,
-            this.changeDestinationForConvertedFilesToolStripMenuItem});
+            this.changeDestinationForConvertedFilesToolStripMenuItem,
+            this.setTeqCArgumentsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "&Settings";
@@ -594,22 +595,23 @@
             // stationListToolStripMenuItem
             // 
             this.stationListToolStripMenuItem.Name = "stationListToolStripMenuItem";
-            this.stationListToolStripMenuItem.Size = new System.Drawing.Size(280, 22);
+            this.stationListToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.stationListToolStripMenuItem.Text = "Station &List";
             this.stationListToolStripMenuItem.Click += new System.EventHandler(this.stationListToolStripMenuItem_Click);
             // 
             // changeDestinationFileServerToolStripMenuItem
             // 
             this.changeDestinationFileServerToolStripMenuItem.Name = "changeDestinationFileServerToolStripMenuItem";
-            this.changeDestinationFileServerToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
+            this.changeDestinationFileServerToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.changeDestinationFileServerToolStripMenuItem.Text = "Destination File Server";
             this.changeDestinationFileServerToolStripMenuItem.Click += new System.EventHandler(this.changeDestinationFileServerToolStripMenuItem_Click);
             // 
             // changeDestinationForConvertedFilesToolStripMenuItem
             // 
             this.changeDestinationForConvertedFilesToolStripMenuItem.Name = "changeDestinationForConvertedFilesToolStripMenuItem";
-            this.changeDestinationForConvertedFilesToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
-            this.changeDestinationForConvertedFilesToolStripMenuItem.Text = "Destination for Converted Files";
+            this.changeDestinationForConvertedFilesToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.changeDestinationForConvertedFilesToolStripMenuItem.Text = "Destination for RNX Files";
+            this.changeDestinationForConvertedFilesToolStripMenuItem.Click += new System.EventHandler(this.changeDestinationForConvertedFilesToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
@@ -621,6 +623,7 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.lbldate1);
+            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(12, 238);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(277, 65);
@@ -637,6 +640,13 @@
             this.lbldate1.Size = new System.Drawing.Size(63, 25);
             this.lbldate1.TabIndex = 4;
             this.lbldate1.Text = "Time";
+            // 
+            // setTeqCArgumentsToolStripMenuItem
+            // 
+            this.setTeqCArgumentsToolStripMenuItem.Name = "setTeqCArgumentsToolStripMenuItem";
+            this.setTeqCArgumentsToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.setTeqCArgumentsToolStripMenuItem.Text = "Set TeqC Arguments";
+            this.setTeqCArgumentsToolStripMenuItem.Click += new System.EventHandler(this.setTeqCArgumentsToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -737,6 +747,7 @@
         private System.Windows.Forms.ToolStripMenuItem hideProgramToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Progress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Convert;
         private System.Windows.Forms.DataGridViewTextBoxColumn Compression_Progress;
         private System.Windows.Forms.DataGridViewTextBoxColumn Upload_Progress;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
@@ -744,7 +755,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn RowNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Convert;
+        private System.Windows.Forms.ToolStripMenuItem setTeqCArgumentsToolStripMenuItem;
     }
 }
 

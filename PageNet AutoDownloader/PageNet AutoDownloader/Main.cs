@@ -17,6 +17,9 @@ using Shared_Folder_Login;
 using Ionic.Zip;
 using Ionic.Zlib;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
+using ICSharpCode.SharpZipLib.Zip;
+using ICSharpCode.SharpZipLib.Core;
 
 namespace PageNet_AutoDownloader
 {
@@ -30,6 +33,10 @@ namespace PageNet_AutoDownloader
         List<FTPFiles> ftpfiles = new List<FTPFiles>(); // for storing of file list coming from the site
         int DownCounter = 0; //download counter for downloadfile if file failed to download
         int Triggered = 0; // trigger for starting of checking of site and downloading of files for the site. 
+        private string _SourceDirectory = "";
+        private string _DestinationDirectory = "";
+        String File_Location, User_ID, Password_File, File_LocationRNX, User_IDRNX, PasswordRNX;
+        String Teqc_Argument;
 
         // SQLite Connection Parameters
 
@@ -104,13 +111,19 @@ namespace PageNet_AutoDownloader
             startBotToolStripMenuItem.Enabled = false;
             button1.Enabled = false; // Start Button
             button2.Enabled = true; // Stop Button
-            manualDownloadToolStripMenuItem.Enabled = false; 
-
+            manualDownloadToolStripMenuItem.Enabled = false;
+            settingsToolStripMenuItem.Enabled = false;
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to stop the scheduler?", "Stop Scheduler", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+            {
+                return;
+            }
+
             // stops the timer/scheduler
             DTPTimeSched.Enabled = true;
             timer2.Enabled = false;
@@ -120,7 +133,8 @@ namespace PageNet_AutoDownloader
             startBotToolStripMenuItem.Enabled = true;
             button1.Enabled = true; // Start Button
             button2.Enabled = false; // Stop Button
-            manualDownloadToolStripMenuItem.Enabled = true; 
+            manualDownloadToolStripMenuItem.Enabled = true;
+            settingsToolStripMenuItem.Enabled = true;
 
             UpdateStatusBar("[" + DateTime.Now + "] " + "Cancelling Process. Please wait.");
         }
@@ -134,10 +148,33 @@ namespace PageNet_AutoDownloader
 
             while (reader.Read())
             {
-                this.textBox8.Text = reader["File_Location"].ToString();
-                this.textBox7.Text = reader["User_ID"].ToString();
-                this.textBox6.Text = reader["Password"].ToString();
+                File_Location = reader["File_Location"].ToString();
+                User_ID = reader["User_ID"].ToString();
+                Password_File = reader["Password"].ToString();
+
             }
+
+            CommandText = "Select * from DestinationServerRNX";
+            command = new SQLiteCommand(CommandText, sql_con);
+            reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                File_LocationRNX = reader["File_Location"].ToString();
+                User_IDRNX = reader["User_ID"].ToString();
+                PasswordRNX = reader["Password"].ToString();
+
+            }
+
+            CommandText = "Select * from TeqC";
+            command = new SQLiteCommand(CommandText, sql_con);
+            reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Teqc_Argument = reader["TeqC_Argument"].ToString();
+            }
+
             sql_con.Close();
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -159,10 +196,12 @@ namespace PageNet_AutoDownloader
                 TSSFile.Text = "Start Automatic File Comparison";
                 Thread WorkLoad = new Thread(new ThreadStart(DoWork));
                 WorkLoad.Name = "Test";
+                WorkLoad.IsBackground = true;
                 WorkLoad.Start();
                 //this.DoWork.RunWorkerAsync();
                 CancelProg = false;
                 Triggered = 1;
+
             }
 
             //Resets Triggered to 0 when time is equivalent to 12:00 AM
@@ -213,7 +252,7 @@ namespace PageNet_AutoDownloader
                             string line = reader.ReadLine();
                             var varsam = line.Split(new Char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                             FTPFiles ftptemp = new FTPFiles();
-                            if (JulianDate == varsam[8].Substring(4, 3))
+                            if ((JulianDate == varsam[8].Substring(4, 3)) && (varsam[8].Substring(9,1) == "m"))
                             {
                                 ftptemp.FileName = varsam[8].ToString();
                                 ftptemp.FileBytes = long.Parse(varsam[4].ToString());
@@ -335,15 +374,45 @@ namespace PageNet_AutoDownloader
                     requestFileDownload = null;
                     // end of download code
 
-                    if (CancelProg == true)
+
+                    //********************************************************************************************
+                    //start conversion protocol
+                    //********************************************************************************************
+                    UpdateGrid2("0%", Grid2RowNumber, 2);
+
+                    String targetPath = @"C:\Temp\" + FileName.Substring(0, 8) + ".RNX";
+                    string sourceFile = System.IO.Path.Combine(@"C:\Temp\", FileName);
+                    string destFile = System.IO.Path.Combine(targetPath, FileName);
+
+                    Directory.CreateDirectory(@"C:\Temp\" + FileName.Substring(0, 8) + ".RNX");
+                    File.Copy(sourceFile, destFile);
+
+                    RunTEQC(destFile, DateTime.Now.Year.ToString());
+
+                    File.Delete(destFile);
+
+                    using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
                     {
-                        this.timer2.Enabled = false;
-                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+                        if (CancelProg == true)
+                        {
+                            UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                            return;
 
-                        return;
-
+                        }
+                        String Target = targetPath + @"\" + FileName.Substring(0, 8) + "." + DateTime.Now.Year.ToString();
+                        zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Default;
+                        zip.SaveProgress += (object sender, SaveProgressEventArgs e) => SaveProgress(sender, e, Grid2RowNumber);
+                        zip.StatusMessageTextWriter = System.Console.Out;
+                        zip.AddFile(Target + "g", "");
+                        zip.AddFile(Target + "n", "");
+                        zip.AddFile(Target + "o", "");
+                        zip.Save(LocalDirectory + FileName.Substring(0, 8) + ".RNX.zip");
                     }
+                    UpdateGrid2("100%", Grid2RowNumber, 2);
+                    //********************************************************************************************
+                    // calls the conversion protocol
+                    //********************************************************************************************
+
                     //compresses the download raw file
                     if (CancelProg == true)
                     {
@@ -373,7 +442,7 @@ namespace PageNet_AutoDownloader
                     String DirectoryToZip = LocalDirectory + FileName;
                     String ZipFileToCreate = LocalDirectory + FileName + ".zip";
 
-                    using (ZipFile zip = new ZipFile())
+                    using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
                     {
                         if (CancelProg == true)
                         {
@@ -389,6 +458,9 @@ namespace PageNet_AutoDownloader
                         zip.AddFile(DirectoryToZip, ""); // recurses subdirectories
                         zip.Save(ZipFileToCreate);
                     }
+
+
+
                     //logs activity
                     lock (_object)
                     {
@@ -417,14 +489,6 @@ namespace PageNet_AutoDownloader
                         //file delete code
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
                         {
-                            if (CancelProg == true)
-                            {
-                                this.timer2.Enabled = false;
-                                UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-                                Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
-                                return;
-
-                            }
                             //logs activity
                             file.WriteLine("[" + DateTime.Now + "] " + "Deleting File from Temp Folder");
                             //logs activity
@@ -433,6 +497,7 @@ namespace PageNet_AutoDownloader
                             Update("[" + DateTime.Now + "] " + "Deleting File from Temp Folder" + "\r\n");
 
                             File.Delete(LocalDirectory + FileName);
+                            Directory.Delete(LocalDirectory + FileName.Substring(0, 8) + ".RNX", true);
                             //logs activity
                             UpdateStatusBar("[" + DateTime.Now + "] " + "File Deletion Completed" + "\r\n");
                             Update("[" + DateTime.Now + "] " + "File Deletion Completed" + "\r\n");
@@ -440,6 +505,14 @@ namespace PageNet_AutoDownloader
                             //logs activity
                             file.WriteLine("[" + DateTime.Now + "] " + "File Deletion Completed");
                         }
+                    }
+                    if (CancelProg == true)
+                    {
+                        this.timer2.Enabled = false;
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+                        return;
+
                     }
                     //end of deletion code
                     if (CancelProg == true)
@@ -453,22 +526,27 @@ namespace PageNet_AutoDownloader
                     }
                     //uploads the compress file into the ftp server
                     string LocalDirectory1 = @"C:\Temp\" + FileName + ".zip";
-                    string User = this.textBox7.Text;
-                    string Pass = this.textBox6.Text;
-                    string BaseDirectory = this.textBox8.Text;
-
-
-                    string DestinationDirectory = (this.textBox8.Text + DateTime.Now.Year.ToString()) + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00") + @"\" + Grid.Rows[int.Parse(RowNumber)].Cells[0].Value.ToString() + @"\";  //Local directory where the files will be uploaded/copied.
-                    NetworkCredential readCredentials = new NetworkCredential(@User, Pass);
-                    using (new NetworkConnection(BaseDirectory, readCredentials))
+                    string LocalDirectory2 = @"C:\Temp\" + FileName.Substring(0, 8) + ".RNX.zip";
+ 
+                    string DestinationDirectory = (File_Location + DateTime.Now.Year.ToString()) + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00") + @"\" + Grid.Rows[int.Parse(RowNumber)].Cells[0].Value.ToString() + @"\";  //Local directory where the files will be uploaded/copied.
+                    string DestinationDirectory2 = (File_LocationRNX + DateTime.Now.Year.ToString()) + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00") + @"\" + Grid.Rows[int.Parse(RowNumber)].Cells[0].Value.ToString() + @"\";  //Local directory where the files will be uploaded/copied.
+                    NetworkCredential readCredentials = new NetworkCredential(@User_ID, Password_File);
+                    using (new NetworkConnection(File_Location, readCredentials))
                     {
                         PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory1, DestinationDirectory + FileName + ".zip");
-                        //fc.OnProgressChanged += filecopyprogress;
-                        //fc.OnProgressChanged += filecopyprogress(Grid2RowNumber, Grid2RowNumber);
-                        fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 3);
+                        fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 4);
                         fc.OnComplete += filecopycomplete;
                         fc.Copy();
                     }
+
+                    using (new NetworkConnection(File_Location, readCredentials))
+                    {
+                        PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory2, DestinationDirectory2 + FileName.Substring(0,8) + ".RNX.zip");
+                        fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 4);
+                        fc.OnComplete += filecopycomplete;
+                        fc.Copy();
+                    }
+                    
                     //end of upload code
                     if (CancelProg == true)
                     {
@@ -485,14 +563,7 @@ namespace PageNet_AutoDownloader
                         //file delete code
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
                         {
-                            if (CancelProg == true)
-                            {
-                                this.timer2.Enabled = false;
-                                UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-                                Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
-                                return;
 
-                            }
                             //logs activity
                             file.WriteLine("[" + DateTime.Now + "] " + "Deleting File from Temp Folder");
                             //logs activity
@@ -501,12 +572,23 @@ namespace PageNet_AutoDownloader
 
                             //delete code/command 
                             File.Delete(LocalDirectory + FileName + ".zip");
+                            File.Delete(LocalDirectory + FileName.Substring(0,8) + ".RNX.zip");
+
                             //logs activity
                             UpdateStatusBar("[" + DateTime.Now + "] " + "File Deletion Completed");
                             Update("[" + DateTime.Now + "] " + "File Deletion Completed\r\n");
                             //logs activity
                             file.WriteLine("[" + DateTime.Now + "] " + "File Deletion Completed");
                         }
+                    }
+
+                    if (CancelProg == true)
+                    {
+                        this.timer2.Enabled = false;
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
+                        return;
+
                     }
                     // end of deletion code
                     return;
@@ -667,7 +749,7 @@ namespace PageNet_AutoDownloader
                         file.WriteLine("[" + DateTime.Now + "] " + "Compressing File");
                     }
                 }
-                        //logs activity
+                //logs activity
                 UpdateStatusBar("[" + DateTime.Now + "] " + "Compressing File");
                 //logs activity
                 //UpdateGrid2("Compressing File", Grid2RowNumber, 2);
@@ -675,7 +757,7 @@ namespace PageNet_AutoDownloader
                 String DirectoryToZip = path;
                 String ZipFileToCreate = path + ".zip";
 
-                using (ZipFile zip = new ZipFile())
+                using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
                 {
                     if (CancelProg == true)
                     {
@@ -698,7 +780,7 @@ namespace PageNet_AutoDownloader
                         file.WriteLine("[" + DateTime.Now + "] " + "File Compression Finished");
                     }
                 }
-                        //logs activity
+                //logs activity
                 UpdateStatusBar("[" + DateTime.Now + "] " + "File Compression Finished" + "");
         }
 
@@ -710,7 +792,7 @@ namespace PageNet_AutoDownloader
             else if (e.EventType == ZipProgressEventType.Saving_EntryBytesRead)
             {
                 //UpdateLabelCProg(((e.BytesTransferred * 100) / e.TotalBytesToTransfer).ToString());
-                UpdateGrid2(((e.BytesTransferred * 100) / e.TotalBytesToTransfer).ToString() + "%", Grid2RowNumber, 2);
+                UpdateGrid2(((e.BytesTransferred * 100) / e.TotalBytesToTransfer).ToString() + "%", Grid2RowNumber, 3);
                 //labelCProg.Text = ((e.BytesTransferred * 100) / e.TotalBytesToTransfer).ToString("0.00%");
             }
         }
@@ -728,14 +810,14 @@ namespace PageNet_AutoDownloader
         }
 
         //checks for folder existence in the destination/file server
-        public void FolderChecker(int SelectedRow)
+        public void FolderChecker(int SelectedRow, String BaseDir)
         {
             lock (_object)
             {
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
                 {
                     //checks top level folder
-                    if (CheckFolder(this.textBox8.Text) == true)
+                    if (CheckFolder(BaseDir) == true)
                     {
                         //does nothing since every folder is created.
                     }
@@ -745,11 +827,11 @@ namespace PageNet_AutoDownloader
                         file.WriteLine("[" + DateTime.Now + "] " + "Creating Top Level Folder");
                         Update("[" + DateTime.Now + "] " + "Creating Top Level Folder\r\n");
 
-                        TopCreateFolder(this.textBox8.Text.ToString());
+                        TopCreateFolder(BaseDir);
                     }
 
                     //checks year level folder
-                    if (CheckFolder(this.textBox8.Text + DateTime.Now.Year) == true)
+                    if (CheckFolder(BaseDir + DateTime.Now.Year) == true)
                     {
                         //does nothing since every folder is created.
                     }
@@ -759,11 +841,11 @@ namespace PageNet_AutoDownloader
                         file.WriteLine("[" + DateTime.Now + "] " + "Creating Year Folder");
                         Update("[" + DateTime.Now + "] " + "Creating Year Folder\r\n");
 
-                        CreateFolder(this.textBox8.Text, DateTime.Now.Year.ToString());
+                        CreateFolder(BaseDir, DateTime.Now.Year.ToString());
                     }
 
                     //checks month level folder
-                    if (CheckFolder(this.textBox8.Text + DateTime.Now.Year + @"\" + DateTime.Now.Month.ToString("00")) == true)
+                    if (CheckFolder(BaseDir + DateTime.Now.Year + @"\" + DateTime.Now.Month.ToString("00")) == true)
                     {
                         //does nothing since every folder is created.
                     }
@@ -773,11 +855,11 @@ namespace PageNet_AutoDownloader
                         Update("[" + DateTime.Now + "] " + "Creating Month Folder\r\n");
 
                         file.WriteLine("[" + DateTime.Now + "] " + "Creating Month Folder");
-                        CreateFolder((this.textBox8.Text + DateTime.Now.Year.ToString()), DateTime.Now.Month.ToString("00"));
+                        CreateFolder((BaseDir + DateTime.Now.Year.ToString()), DateTime.Now.Month.ToString("00"));
                     }
 
                     //checks day level folder
-                    if (CheckFolder((this.textBox8.Text + DateTime.Now.Year + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00"))) == true)
+                    if (CheckFolder((BaseDir + DateTime.Now.Year + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00"))) == true)
                     {
                         //does nothing since every folder is created.
                     }
@@ -786,11 +868,11 @@ namespace PageNet_AutoDownloader
                         //creates the folder if non-existent
                         file.WriteLine("[" + DateTime.Now + "] " + "Creating Day Folder");
                         Update("[" + DateTime.Now + "] " + "Creating Day Folder\r\n");
-                        CreateFolder((this.textBox8.Text + DateTime.Now.Year.ToString()) + @"\" + DateTime.Now.Month.ToString("00"), DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00"));
+                        CreateFolder((BaseDir + DateTime.Now.Year.ToString()) + @"\" + DateTime.Now.Month.ToString("00"), DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00"));
                     }
 
                     //checks station level folder
-                    if (CheckFolder(this.textBox8.Text + DateTime.Now.Year + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00") + @"\" + Grid.Rows[SelectedRow].Cells[0].Value.ToString()) == true)
+                    if (CheckFolder(BaseDir + DateTime.Now.Year + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00") + @"\" + Grid.Rows[SelectedRow].Cells[0].Value.ToString()) == true)
                     {
                         //does nothing since every folder is created.
                     }
@@ -799,7 +881,7 @@ namespace PageNet_AutoDownloader
                         //creates the folder if non-existent
                         file.WriteLine("[" + DateTime.Now + "] " + "Creating Station Folder");
                         Update("[" + DateTime.Now + "] " + "Creating Station Folder\r\n");
-                        CreateFolder((this.textBox8.Text + DateTime.Now.Year.ToString()) + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00"), Grid.Rows[SelectedRow].Cells[0].Value.ToString());
+                        CreateFolder((BaseDir + DateTime.Now.Year.ToString()) + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00"), Grid.Rows[SelectedRow].Cells[0].Value.ToString());
                     }
                 }
             }
@@ -888,7 +970,11 @@ namespace PageNet_AutoDownloader
 
                     return;
                 }
-                FolderChecker(Counter);
+
+
+                FolderChecker(Counter, File_Location);
+
+                FolderChecker(Counter,File_LocationRNX);
 
                 lock (_object)
                 {
@@ -922,34 +1008,6 @@ namespace PageNet_AutoDownloader
                 ftpfiles.Clear();
             }
 
-            //will initiate downloading of files
-            //for (int counter = 0; counter < Grid2.RowCount; counter+=2)
-            //{
-            //    lock (_object)
-            //    {
-            //        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + "Logs.txt", true))
-            //        {
-            //            //logs activity
-            //            file.WriteLine("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[counter].Cells[0].Value.ToString());
-            //            //logs activity
-            //            UpdateStatusBar("[" + DateTime.Now + "] " + "Downloading File: " + Grid2.Rows[counter].Cells[0].Value.ToString() + "");
-            //            if (CancelProg == true)
-            //            {
-            //                this.timer2.Enabled = false;
-            //                UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-            //                return;
-            //            }
-            //        }
-            //    }
-
-            //        ParameterizedThreadStart NPT = new ParameterizedThreadStart(DoDownloadFile);
-            //        Thread T1 = new Thread(NPT);
-            //        T1.Start(counter);
-
-            //        Thread T2 = new Thread(NPT);
-            //        T2.Start(counter + 1);
-            //}
-
             if (Grid2.RowCount != 0)
             {
                 DoCheckOfAvailableFile(0);
@@ -962,7 +1020,6 @@ namespace PageNet_AutoDownloader
             UpdateStatusBar("Program will automatically compare files on " + DateTime.Now.AddDays(1).ToShortDateString());
             Update("Program will automatically compare files on " + DateTime.Now.AddDays(1).ToShortDateString() + "\r\n");
 
-            //UpdateGrid2Clear();
         }
 
         public void DoCheckOfAvailableFile(object num)
@@ -1036,13 +1093,13 @@ namespace PageNet_AutoDownloader
                 }
 
                 Downloadfile(
-                        Grid2.Rows[counter].Cells[5].Value.ToString(),//url
+                        Grid2.Rows[counter].Cells[6].Value.ToString(),//url
                         Grid2.Rows[counter].Cells[0].Value.ToString(),//filename
-                        Grid2.Rows[counter].Cells[6].Value.ToString(),//user
-                        Grid2.Rows[counter].Cells[7].Value.ToString(),//pass
-                        Grid2.Rows[counter].Cells[8].Value.ToString(),//rownumbergrid1
+                        Grid2.Rows[counter].Cells[7].Value.ToString(),//user
+                        Grid2.Rows[counter].Cells[8].Value.ToString(),//pass
+                        Grid2.Rows[counter].Cells[9].Value.ToString(),//rownumbergrid1
                         counter, //rownumbergrid2
-                        Grid2.Rows[counter].Cells[4].Value.ToString());//file size;
+                        Grid2.Rows[counter].Cells[5].Value.ToString());//file size;
 
                 counter = GetNextRow(counter);
                 if (counter != -1)
@@ -1110,7 +1167,7 @@ namespace PageNet_AutoDownloader
 
         public void UpdateGridAdd(string FileName, long FileSize, string URL, string User, string Pass, int RowNumber)
         {
-            Grid2.Rows.Add(FileName, "", "", "",FileSize,URL,User,Pass,RowNumber);
+            Grid2.Rows.Add(FileName, "", "", "","",FileSize,URL,User,Pass,RowNumber);
             Grid2.Update();
         }
 
@@ -1163,18 +1220,6 @@ namespace PageNet_AutoDownloader
         private void button5_Click(object sender, EventArgs e)
         {
             Grid2.Rows.Clear();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Thread {0} started", Thread.CurrentThread.Name);
-            //Console.WriteLine("Thread {0} started", Thread.CurrentThread.Name);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            //System.Diagnostics.Process.Start(@AppDomain.CurrentDomain.BaseDirectory + "ManualDownload.exe");
-            //System.Diagnostics.Process.Start("mspaint.exe");
         }
 
         private void startBotToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1235,22 +1280,15 @@ namespace PageNet_AutoDownloader
             Desti.ShowDialog();
         }
 
-        private void leicaToRNXConverterToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //System.Diagnostics.Process.Start(@"C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\MDB2RNX Converter\MDB2RNX.exe");
-            //Process p = new Process();
-            //p.StartInfo.FileName = @"C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\MDB2RNX Converter\MDB2RNX.exe";
-            //p.StartInfo.UseShellExecute = true;
-            ////p.StartInfo.FileName = @"MDB2RNX.exe";
-            //p.Start();
-            MDB2RNX.MainForm M = new MDB2RNX.MainForm();
-            M.ShowDialog();
-        }
-
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            CancelProg = true;
-            Close();
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit the program?", "Exit Program", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                CancelProg = true;
+                //Close();
+                Application.Exit();
+            }
         }
 
         private void manualDownloadToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -1297,6 +1335,94 @@ namespace PageNet_AutoDownloader
 
         }
 
+        private void changeDestinationForConvertedFilesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DestinationRNX RNX = new DestinationRNX();
+            RNX.ShowDialog();
 
+        }
+
+        private void RunTEQC(string fileName, string year)
+        {
+            //teqc -leica mdb +nav XXX.13n,XXX.13g XXX.m00 > XXX.13o
+            //teqc -leica mdb +nav PFLO001a.13n,PFLO001a.13g PFLO001a.m00 > PFLO001a.13o
+            // -leica mdb +nav {FILENAME}.{YEAR}n,{FILENAME}.{YEAR}g +obs {FILENAME}.{YEAR}o {FILENAME}.m00
+
+
+            // causing error on PFLO001m.m00
+            //fileName = fileName.TrimEnd(".m00".ToCharArray());
+            fileName = fileName.Substring(0, fileName.Length - 4);
+
+            //string executable = System.Configuration.ConfigurationManager.AppSettings["OGR2OGR_EXE"].ToString();
+
+            string executable = AppDomain.CurrentDomain.BaseDirectory + "teqc.exe";
+
+            string args = Teqc_Argument;
+
+
+            args = EvaluateSubstring(args, fileName);
+            args = args.Replace("{FILENAME}", fileName);
+            args = args.Replace("{YEAR}", year);
+
+
+            //string args = String.Format("-leica mdb +nav {0}.{1}n,{0}.{1}g +obs  {0}.{1}o {0}.m00 ", fileName, year);
+            //string args = String.Format("-leica mdb +nav {0}.13n,{0}.13g +obs  {0}.13o {0}.m00 ", fileName, year);
+
+
+
+            // Use ProcessStartInfo class
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.CreateNoWindow = true;
+            startInfo.UseShellExecute = false;
+            startInfo.FileName = @executable;
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.Arguments = @args;
+
+
+            startInfo.RedirectStandardError = true;
+
+
+
+            string standardErrorMessage = "";
+
+            // Start the process with the info we specified.
+            // Call WaitForExit and then the using statement will close.
+            using (Process exeProcess = Process.Start(startInfo))
+            {
+                standardErrorMessage = exeProcess.StandardError.ReadToEnd();
+                exeProcess.WaitForExit();
+            }
+            if (standardErrorMessage != "")
+            {
+                //throw new Exception(standardErrorMessage);
+            }
+
+
+        }
+
+        private string EvaluateSubstring(string s, string filename)
+        {
+            string pattern = @"\{FILENAME}\.substring\(\d*,\d*\)";
+            Regex regEx = new Regex(pattern);
+            Match match = regEx.Match(s);
+            foreach (Group group in match.Groups)
+            {
+                if (group.Value != String.Empty)
+                {
+                    string[] param = group.Value.Split(',');
+                    int start = System.Convert.ToInt32(param[0].Replace("{FILENAME}.substring(", ""));
+                    int len = System.Convert.ToInt32(param[1].Replace(")", ""));
+                    s = s.Replace(group.Value, filename.Substring(start, len));
+                }
+            }
+
+            return s;
+        }
+
+        private void setTeqCArgumentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TeqcSet RNX = new TeqcSet();
+            RNX.ShowDialog();
+        }
     }
 }
