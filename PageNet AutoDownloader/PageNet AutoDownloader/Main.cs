@@ -651,26 +651,6 @@ namespace PageNet_AutoDownloader
                 }
             
         }
-        public void UploadFileStream(string filename, int RowNumber, int Grid2RowNumber)
-        {
-            string LocalDirectory = @"C:\Temp\" + filename;
-            string User = this.textBox7.Text;
-            string Pass = this.textBox6.Text;
-            string BaseDirectory = this.textBox8.Text;
-
-
-            string DestinationDirectory = (this.textBox8.Text + DateTime.Now.Year.ToString()) + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00") + @"\" + Grid.Rows[RowNumber].Cells[0].Value.ToString() + @"\";  //Local directory where the files will be uploaded/copied.
-            NetworkCredential readCredentials = new NetworkCredential(@User, Pass);
-            using (new NetworkConnection(BaseDirectory, readCredentials))
-            {
-                PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory, DestinationDirectory + filename);
-                //fc.OnProgressChanged += filecopyprogress;
-                //fc.OnProgressChanged += filecopyprogress(Grid2RowNumber, Grid2RowNumber);
-                fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 3);
-                fc.OnComplete += filecopycomplete;
-                fc.Copy();
-            }
-        }
 
         public void filecopyprogress(double Persentage, int RowNum, int CellNum)
         {
@@ -726,62 +706,6 @@ namespace PageNet_AutoDownloader
                     file.WriteLine("[" + DateTime.Now + "] " + "File Deletion Completed");
                 }
             }
-        }
-
-        public void CompressFile(string path, int Grid2RowNumber)
-        {
-            //file compress code
-            
-                if (CancelProg == true)
-                {
-                    this.timer2.Enabled = false;
-                    UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-                    Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
-
-                    return;
-
-                }
-                //logs activity
-                lock (_object)
-                {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
-                    {    
-                        file.WriteLine("[" + DateTime.Now + "] " + "Compressing File");
-                    }
-                }
-                //logs activity
-                UpdateStatusBar("[" + DateTime.Now + "] " + "Compressing File");
-                //logs activity
-                //UpdateGrid2("Compressing File", Grid2RowNumber, 2);
-                //compression code
-                String DirectoryToZip = path;
-                String ZipFileToCreate = path + ".zip";
-
-                using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
-                {
-                    if (CancelProg == true)
-                    {
-                        this.timer2.Enabled = false;
-                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-                        return;
-
-                    }
-                    zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Default;
-                    zip.SaveProgress += (object sender, SaveProgressEventArgs e) => SaveProgress(sender, e, Grid2RowNumber);                    
-                    zip.StatusMessageTextWriter = System.Console.Out;
-                    zip.AddFile(DirectoryToZip, ""); // recurses subdirectories
-                    zip.Save(ZipFileToCreate);
-                }
-                //logs activity
-                lock (_object)
-                {
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
-                    {
-                        file.WriteLine("[" + DateTime.Now + "] " + "File Compression Finished");
-                    }
-                }
-                //logs activity
-                UpdateStatusBar("[" + DateTime.Now + "] " + "File Compression Finished" + "");
         }
 
         public void SaveProgress(object sender, SaveProgressEventArgs e, int Grid2RowNumber)
