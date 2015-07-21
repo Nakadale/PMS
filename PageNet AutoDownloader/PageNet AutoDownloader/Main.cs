@@ -20,7 +20,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.Core;
-
+using Sample;
 namespace PageNet_AutoDownloader
 {
     public partial class Main : Form
@@ -185,6 +185,26 @@ namespace PageNet_AutoDownloader
             //loads file server information
             LoadDesti();
 
+            DataGridViewProgressColumn column = new DataGridViewProgressColumn(); //download
+            DataGridViewProgressColumn column1 = new DataGridViewProgressColumn(); //convert
+            DataGridViewProgressColumn column2 = new DataGridViewProgressColumn(); //compress
+            DataGridViewProgressColumn column3 = new DataGridViewProgressColumn(); //upload
+
+            column.HeaderText = "Download Progress (%)";
+
+            Grid2.Columns.Add(column);
+
+            column1.HeaderText = "Conversion Progress (%)";
+
+            Grid2.Columns.Add(column1);
+
+            column2.HeaderText = "Compress Progress (%)";
+
+            Grid2.Columns.Add(column2);
+
+            column3.HeaderText = "Upload Progress (%)";
+
+            Grid2.Columns.Add(column3);
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -328,7 +348,7 @@ namespace PageNet_AutoDownloader
                             UpdateStatusBar("[" + DateTime.Now + "] " + "Downloading File from site to temp folder: " + FileName + " with a File Size of " + File_Size + "");
                             //updates file activity into File List Grid
                             Update("[" + DateTime.Now + "] " + "Downloading File from site to temp folder: " + FileName + " with a File Size of " + File_Size + "\r\n");
-                            UpdateGrid2("0%", Grid2RowNumber, 1);
+                            UpdateGrid2(0, Grid2RowNumber, 6);
                         }
                     }
                             // streams/downloads file from site to temp folder.
@@ -346,7 +366,7 @@ namespace PageNet_AutoDownloader
                             {
                                 if (FileSize != 0)
                                 {
-                                    UpdateGrid2((FileSize / double.Parse(File_Size) * 100).ToString("00") + "%", Grid2RowNumber, 1);
+                                    UpdateGrid2(Convert.ToInt32((FileSize / double.Parse(File_Size) * 100)), Grid2RowNumber, 6);
                                     UpdateStatusBar("[" + DateTime.Now + "] " + FileName + " Downloaded: " + String.Format((FileSize / double.Parse(File_Size) * 100).ToString(), "0.00") + "%");
                                     //Thread.Sleep(1000);
                                 }
@@ -378,7 +398,7 @@ namespace PageNet_AutoDownloader
                     //********************************************************************************************
                     //start conversion protocol
                     //********************************************************************************************
-                    UpdateGrid2("0%", Grid2RowNumber, 2);
+                    UpdateGrid2(Convert.ToInt32(0), Grid2RowNumber, 7);
 
                     String targetPath = @"C:\Temp\" + FileName.Substring(0, 8) + ".RNX";
                     string sourceFile = System.IO.Path.Combine(@"C:\Temp\", FileName);
@@ -401,14 +421,14 @@ namespace PageNet_AutoDownloader
                         }
                         String Target = targetPath + @"\" + FileName.Substring(0, 8) + "." + DateTime.Now.Year.ToString();
                         zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Default;
-                        zip.SaveProgress += (object sender, SaveProgressEventArgs e) => SaveProgress(sender, e, Grid2RowNumber);
+                        //zip.SaveProgress += (object sender, SaveProgressEventArgs e) => SaveProgress(sender, e, Grid2RowNumber);
                         zip.StatusMessageTextWriter = System.Console.Out;
                         zip.AddFile(Target + "g", "");
                         zip.AddFile(Target + "n", "");
                         zip.AddFile(Target + "o", "");
                         zip.Save(LocalDirectory + FileName.Substring(0, 8) + ".RNX.zip");
                     }
-                    UpdateGrid2("100%", Grid2RowNumber, 2);
+                    UpdateGrid2(Convert.ToInt32(100), Grid2RowNumber, 7);
                     //********************************************************************************************
                     // calls the conversion protocol
                     //********************************************************************************************
@@ -423,6 +443,8 @@ namespace PageNet_AutoDownloader
                         return;
 
                     }
+                    UpdateGrid2(0, Grid2RowNumber, 8);
+
                     //logs activity
                     lock (_object)
                     {
@@ -439,6 +461,8 @@ namespace PageNet_AutoDownloader
                     //logs activity
                     //UpdateGrid2("Compressing File", Grid2RowNumber, 2);
                     //compression code
+                    UpdateGrid2(0, Grid2RowNumber, 8);
+
                     String DirectoryToZip = LocalDirectory + FileName;
                     String ZipFileToCreate = LocalDirectory + FileName + ".zip";
 
@@ -460,6 +484,7 @@ namespace PageNet_AutoDownloader
                     }
 
 
+                    UpdateGrid2(100, Grid2RowNumber, 8);
 
                     //logs activity
                     lock (_object)
@@ -534,7 +559,7 @@ namespace PageNet_AutoDownloader
                     using (new NetworkConnection(File_Location, readCredentials))
                     {
                         PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory1, DestinationDirectory + FileName + ".zip");
-                        fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 4);
+                        fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 9);
                         fc.OnComplete += filecopycomplete;
                         fc.Copy();
                     }
@@ -542,7 +567,7 @@ namespace PageNet_AutoDownloader
                     using (new NetworkConnection(File_Location, readCredentials))
                     {
                         PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory2, DestinationDirectory2 + FileName.Substring(0,8) + ".RNX.zip");
-                        fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 4);
+                        fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 9);
                         fc.OnComplete += filecopycomplete;
                         fc.Copy();
                     }
@@ -591,6 +616,11 @@ namespace PageNet_AutoDownloader
 
                     }
                     // end of deletion code
+                    
+                    //if (Grid2RowNumber != Grid2.RowCount)
+                    //{
+                    //    DoCheckOfAvailableFile((Grid2RowNumber+1));
+                    //}
                     return;
                 }
                 catch (WebException ex)
@@ -671,7 +701,7 @@ namespace PageNet_AutoDownloader
 
         private void UpdateProgressbar(double percent,int RowNum, int CellNum)
         {
-            Grid2.Rows[RowNum].Cells[CellNum].Value = ((int)percent) + "%" ;
+            Grid2.Rows[RowNum].Cells[CellNum].Value = ((int)percent);
             Grid2.Update();
         }
 
@@ -716,7 +746,7 @@ namespace PageNet_AutoDownloader
             else if (e.EventType == ZipProgressEventType.Saving_EntryBytesRead)
             {
                 //UpdateLabelCProg(((e.BytesTransferred * 100) / e.TotalBytesToTransfer).ToString());
-                UpdateGrid2(((e.BytesTransferred * 100) / e.TotalBytesToTransfer).ToString() + "%", Grid2RowNumber, 3);
+                UpdateGrid2(Convert.ToInt32(((e.BytesTransferred * 100) / e.TotalBytesToTransfer)), Grid2RowNumber, 8);
                 //labelCProg.Text = ((e.BytesTransferred * 100) / e.TotalBytesToTransfer).ToString("0.00%");
             }
         }
@@ -907,7 +937,7 @@ namespace PageNet_AutoDownloader
 
                         foreach (FTPFiles i in ftpfiles)
                         {
-                            string FileLoc = this.textBox8.Text + DateTime.Now.Year.ToString() + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00") + @"\" + Grid.Rows[Counter].Cells[0].Value.ToString() + @"\" + i.FileName.Substring(0, 12).ToString() + ".zip";
+                            string FileLoc = File_Location + DateTime.Now.Year.ToString() + @"\" + DateTime.Now.Month.ToString("00") + @"\" + DateTime.Now.Subtract(TimeSpan.FromDays(1)).Day.ToString("00") + @"\" + Grid.Rows[Counter].Cells[0].Value.ToString() + @"\" + i.FileName.Substring(0, 12).ToString() + ".zip";
                             //File exist code is in the if statement
                             if (File.Exists(@FileLoc) == false)
                             {
@@ -935,7 +965,7 @@ namespace PageNet_AutoDownloader
             if (Grid2.RowCount != 0)
             {
                 DoCheckOfAvailableFile(0);
-                Thread.Sleep(100);
+                Thread.Sleep(1000);
                 DoCheckOfAvailableFile(1);
             }
             UpdateStatusBar("File Comparison Finished");
@@ -952,7 +982,7 @@ namespace PageNet_AutoDownloader
             int.TryParse(num.ToString(), out row);
             for (int y = 0; y < Grid2.RowCount; y++)
             {
-                if ((Grid2.Rows[y].Cells[1].Value.ToString() == "") && (Grid2.Rows[y].Cells[2].Value.ToString() == "") && (Grid2.Rows[y].Cells[3].Value.ToString() == ""))
+                if ((Grid2.Rows[y].Cells[6].Value.ToString() == "0") && (Grid2.Rows[y].Cells[7].Value.ToString() == "0") && (Grid2.Rows[y].Cells[8].Value.ToString() == "0") && (Grid2.Rows[y].Cells[9].Value.ToString() == "0"))
                 {
                     row = y;
                     break;
@@ -1017,26 +1047,28 @@ namespace PageNet_AutoDownloader
                 }
 
                 Downloadfile(
-                        Grid2.Rows[counter].Cells[6].Value.ToString(),//url
+                        Grid2.Rows[counter].Cells[2].Value.ToString(),//url
                         Grid2.Rows[counter].Cells[0].Value.ToString(),//filename
-                        Grid2.Rows[counter].Cells[7].Value.ToString(),//user
-                        Grid2.Rows[counter].Cells[8].Value.ToString(),//pass
-                        Grid2.Rows[counter].Cells[9].Value.ToString(),//rownumbergrid1
+                        Grid2.Rows[counter].Cells[3].Value.ToString(),//user
+                        Grid2.Rows[counter].Cells[4].Value.ToString(),//pass
+                        Grid2.Rows[counter].Cells[5].Value.ToString(),//rownumbergrid1
                         counter, //rownumbergrid2
-                        Grid2.Rows[counter].Cells[5].Value.ToString());//file size;
+                        Grid2.Rows[counter].Cells[1].Value.ToString());//file size;
 
                 counter = GetNextRow(counter);
+                Debug.WriteLine(counter);
                 if (counter != -1)
                 {
                     DoDownloadFile(counter);
                 }
                 else
                 {
+                    Debug.WriteLine(counter);
                     UpdateStatusBar("File Comparison Finished");
                     Update("File Comparison Finished\r\n");
 
-                    UpdateStatusBar("Program will automatically compare files at " + DTPTimeSched.Value + " on " + DateTime.Now.AddDays(1).ToShortDateString());
-                    Update("Program will automatically compare files at " + DTPTimeSched.Value + " on " + DateTime.Now.AddDays(1).ToShortDateString() + "\r\n");
+                    UpdateStatusBar("Program will automatically compare files on " + DateTime.Now.AddDays(1).ToShortDateString());
+                    Update("Program will automatically compare files on " + DateTime.Now.AddDays(1).ToShortDateString() + "\r\n");
 
                 }
             }
@@ -1052,7 +1084,7 @@ namespace PageNet_AutoDownloader
             int row = -1;
             for (int y = currrow; y < Grid2.RowCount; y++)
             {
-                if ((Grid2.Rows[y].Cells[1].Value.ToString() == "") && (Grid2.Rows[y].Cells[2].Value.ToString() == "") && (Grid2.Rows[y].Cells[3].Value.ToString() == ""))
+                if ((Grid2.Rows[y].Cells[6].Value.ToString() == "0") && (Grid2.Rows[y].Cells[7].Value.ToString() == "0") && (Grid2.Rows[y].Cells[8].Value.ToString() == "0") && (Grid2.Rows[y].Cells[9].Value.ToString() == "0"))
                 {
                     row = y;
                     break;
@@ -1091,11 +1123,11 @@ namespace PageNet_AutoDownloader
 
         public void UpdateGridAdd(string FileName, long FileSize, string URL, string User, string Pass, int RowNumber)
         {
-            Grid2.Rows.Add(FileName, "", "", "","",FileSize,URL,User,Pass,RowNumber);
+            Grid2.Rows.Add(FileName,FileSize,URL,User,Pass,RowNumber,0,0,0,0);
             Grid2.Update();
         }
 
-        public void UpdateGrid2(string x, int RowNum, int CellNum)
+        public void UpdateGrid2(int x, int RowNum, int CellNum)
         {
             if (this.Grid2.InvokeRequired)
             {
@@ -1105,7 +1137,7 @@ namespace PageNet_AutoDownloader
             }
         }
 
-        public void UpdateGrid2Column2(string x, int RowNum,int CellNum)
+        public void UpdateGrid2Column2(int x, int RowNum,int CellNum)
         {
             Grid2.Rows[RowNum].Cells[CellNum].Value = x;
             Grid2.Update();

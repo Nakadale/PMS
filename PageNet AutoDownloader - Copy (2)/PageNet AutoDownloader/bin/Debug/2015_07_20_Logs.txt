@@ -1,0 +1,161 @@
+[7/20/2015 10:03:59 AM] Downloading File: PBAY032d.m00
+[7/20/2015 10:03:59 AM] Downloading File: PBAY032d.m00
+[7/20/2015 10:03:59 AM] Downloading File from site to temp folder: PBAY032d.m00 with a File Size of 1449892
+[7/20/2015 10:04:00 AM] PBAY032d.m00 Size Downloaded: 1449892
+[7/20/2015 10:04:00 AM] File Conversion Started.
+[7/20/2015 10:04:00 AM] File Conversion Finished.
+[7/20/2015 10:04:00 AM] Compressing File
+[7/20/2015 10:04:00 AM] File Compression Finished
+[7/20/2015 10:04:00 AM] Deleting Raw & RNX File from Temp Folder
+[7/20/2015 10:04:00 AM] File Raw & RNX File Deletion Completed
+[7/20/2015 10:04:00 AM] File Uploading Started.
+[7/20/2015 10:04:36 AM] File Uploading Finished
+[7/20/2015 10:04:36 AM] Deleting File from Temp Folder
+[7/20/2015 10:04:36 AM] File Deletion Completed
+[7/20/2015 10:05:16 AM] Downloading File: PBAY032g.m00
+[7/20/2015 10:05:16 AM] Downloading File: PBAY032g.m00
+[7/20/2015 10:05:16 AM] Downloading File from site to temp folder: PBAY032g.m00 with a File Size of 1498751
+[7/20/2015 10:05:16 AM] PBAY032g.m00 Size Downloaded: 1498751
+[7/20/2015 10:05:16 AM] File Conversion Started.
+[7/20/2015 10:05:17 AM] File Conversion Finished.
+[7/20/2015 10:05:17 AM] Compressing File
+[7/20/2015 10:05:17 AM] File Compression Finished
+[7/20/2015 10:05:17 AM] Deleting Raw & RNX File from Temp Folder
+[7/20/2015 10:05:17 AM] File Raw & RNX File Deletion Completed
+[7/20/2015 10:05:17 AM] File Uploading Started.
+[7/20/2015 10:05:54 AM] File Uploading Finished
+[7/20/2015 10:05:54 AM] Deleting File from Temp Folder
+[7/20/2015 10:05:54 AM] File Deletion Completed
+[7/20/2015 10:07:48 AM] Downloading File: PBAY032m.m00
+[7/20/2015 10:07:48 AM] Downloading File: PBAY032m.m00
+[7/20/2015 10:07:48 AM] Downloading File from site to temp folder: PBAY032m.m00 with a File Size of 300908544
+[7/20/2015 10:17:37 AM] PBAY032m.m00 Size Downloaded: 300908544
+[7/20/2015 10:17:37 AM] File Conversion Started.
+[7/20/2015 10:55:48 AM] Downloading File: PBAY032h.m00
+[7/20/2015 10:55:48 AM] Downloading File: PBAY032h.m00
+[7/20/2015 10:55:48 AM] Downloading File from site to temp folder: PBAY032h.m00 with a File Size of 1579302
+[7/20/2015 10:55:50 AM] PBAY032h.m00 Size Downloaded: 1579302
+[7/20/2015 10:55:50 AM] File Conversion Started.
+[7/20/2015 10:55:51 AM] File Conversion Finished.
+[7/20/2015 10:55:51 AM] Compressing File
+[7/20/2015 10:55:51 AM] File Compression Finished
+[7/20/2015 10:55:51 AM] Deleting Raw & RNX File from Temp Folder
+[7/20/2015 10:55:51 AM] File Raw & RNX File Deletion Completed
+[7/20/2015 10:55:51 AM] File Uploading Started.
+[7/20/2015 11:16:36 AM] Downloading File: PBAY032l.m00
+[7/20/2015 11:16:36 AM] Downloading File: PBAY032l.m00
+[7/20/2015 11:16:36 AM] Downloading File from site to temp folder: PBAY032l.m00 with a File Size of 1563005
+[7/20/2015 11:16:38 AM] PBAY032l.m00 Size Downloaded: 1563005
+[7/20/2015 11:16:38 AM] File Conversion Started.
+[7/20/2015 11:16:38 AM] File Conversion Finished.
+[7/20/2015 11:16:38 AM] Compressing File
+[7/20/2015 11:16:39 AM] File Compression Finished
+[7/20/2015 11:16:39 AM] Deleting Raw & RNX File from Temp Folder
+[7/20/2015 11:16:39 AM] File Raw & RNX File Deletion Completed
+[7/20/2015 11:16:39 AM] File Uploading Started.
+[7/20/2015 11:20:06 AM] Downloading File: PBAY032j.m00
+[7/20/2015 11:20:06 AM] Downloading File: PBAY032j.m00
+[7/20/2015 11:20:06 AM] Downloading File from site to temp folder: PBAY032j.m00 with a File Size of 1387490
+[7/20/2015 11:20:08 AM] PBAY032j.m00 Size Downloaded: 1387490
+[7/20/2015 11:20:08 AM] File Conversion Started.
+[7/20/2015 11:20:08 AM] File Conversion Finished.
+[7/20/2015 11:20:08 AM] Compressing File
+[7/20/2015 11:20:08 AM] File Compression Finished
+[7/20/2015 11:20:08 AM] Deleting Raw & RNX File from Temp Folder
+[7/20/2015 11:20:08 AM] File Raw & RNX File Deletion Completed
+[7/20/2015 11:20:08 AM] File Uploading Started.
+[7/20/2015 11:20:11 AM] Downloading File: PBAY032b.m00
+[7/20/2015 11:20:11 AM] Downloading File: PBAY032b.m00
+[7/20/2015 11:20:11 AM] Downloading File from site to temp folder: PBAY032b.m00 with a File Size of 1545207
+[7/20/2015 11:20:13 AM] PBAY032b.m00 Size Downloaded: 1545207
+[7/20/2015 11:20:13 AM] File Conversion Started.
+[7/20/2015 11:20:13 AM] File Conversion Finished.
+[7/20/2015 11:20:13 AM] Compressing File
+[7/20/2015 11:20:13 AM] File Compression Finished
+[7/20/2015 11:20:13 AM] Deleting Raw & RNX File from Temp Folder
+[7/20/2015 11:20:13 AM] File Raw & RNX File Deletion Completed
+[7/20/2015 11:20:13 AM] File Uploading Started.
+[7/20/2015 11:25:58 AM] Downloading File: PBAY032p.m00
+[7/20/2015 11:25:58 AM] Downloading File: PBAY032p.m00
+[7/20/2015 11:25:58 AM] Downloading File from site to temp folder: PBAY032p.m00 with a File Size of 1788846
+[7/20/2015 11:26:01 AM] PBAY032p.m00 Size Downloaded: 1788846
+[7/20/2015 11:26:01 AM] File Conversion Started.
+[7/20/2015 11:26:01 AM] File Conversion Finished.
+[7/20/2015 11:26:01 AM] Compressing File
+[7/20/2015 11:26:02 AM] File Compression Finished
+[7/20/2015 11:26:02 AM] Deleting Raw & RNX File from Temp Folder
+[7/20/2015 11:26:02 AM] File Raw & RNX File Deletion Completed
+[7/20/2015 11:26:02 AM] File Uploading Started.
+[7/20/2015 11:26:37 AM] File Uploading Finished
+[7/20/2015 11:26:37 AM] Deleting File from Temp Folder
+[7/20/2015 11:26:37 AM] File Deletion Completed
+[7/20/2015 11:27:21 AM] Connection to station PGEN could not be established.
+[7/20/2015 11:27:21 AM] Creating Day Folder
+[7/20/2015 11:27:21 AM] Creating Station Folder
+[7/20/2015 11:27:21 AM] Creating Month Folder
+[7/20/2015 11:27:21 AM] Creating Day Folder
+[7/20/2015 11:27:21 AM] Creating Station Folder
+[7/20/2015 11:27:21 AM] Creating Station Folder
+[7/20/2015 11:27:21 AM] Creating Station Folder
+[7/20/2015 11:27:42 AM] Connection to station PILC could not be established.
+[7/20/2015 11:27:42 AM] Creating Station Folder
+[7/20/2015 11:27:42 AM] Creating Station Folder
+[7/20/2015 1:23:35 PM] Downloading File: PBAY032j.m00
+[7/20/2015 1:23:35 PM] Downloading File: PBAY032j.m00
+[7/20/2015 1:23:35 PM] Downloading File from site to temp folder: PBAY032j.m00 with a File Size of 1387490
+[7/20/2015 1:23:35 PM] PBAY032j.m00 Size Downloaded: 1387490
+[7/20/2015 1:23:35 PM] File Conversion Started.
+[7/20/2015 1:23:35 PM] File Conversion Finished.
+[7/20/2015 1:23:35 PM] Compressing File
+[7/20/2015 1:23:35 PM] File Compression Finished
+[7/20/2015 1:23:35 PM] Deleting Raw & RNX File from Temp Folder
+[7/20/2015 1:23:35 PM] File Raw & RNX File Deletion Completed
+[7/20/2015 1:23:35 PM] File Uploading Started.
+[7/20/2015 1:23:41 PM] Downloading File: PBAY032l.m00
+[7/20/2015 1:23:41 PM] Downloading File: PBAY032l.m00
+[7/20/2015 1:23:41 PM] Downloading File from site to temp folder: PBAY032l.m00 with a File Size of 1563005
+[7/20/2015 1:23:41 PM] PBAY032l.m00 Size Downloaded: 1563005
+[7/20/2015 1:23:41 PM] File Conversion Started.
+[7/20/2015 1:23:41 PM] File Conversion Finished.
+[7/20/2015 1:23:41 PM] Compressing File
+[7/20/2015 1:23:41 PM] File Compression Finished
+[7/20/2015 1:23:41 PM] Deleting Raw & RNX File from Temp Folder
+[7/20/2015 1:23:41 PM] File Raw & RNX File Deletion Completed
+[7/20/2015 1:23:41 PM] File Uploading Started.
+[7/20/2015 1:24:11 PM] File Uploading Finished
+[7/20/2015 1:24:11 PM] Deleting File from Temp Folder
+[7/20/2015 1:24:11 PM] File Deletion Completed
+[7/20/2015 1:24:47 PM] File Uploading Finished
+[7/20/2015 1:24:47 PM] Deleting File from Temp Folder
+[7/20/2015 1:24:47 PM] File Deletion Completed
+[7/20/2015 1:26:10 PM] Downloading File: PBAY032q.m00
+[7/20/2015 1:26:10 PM] Downloading File: PBAY032q.m00
+[7/20/2015 1:26:10 PM] Downloading File from site to temp folder: PBAY032q.m00 with a File Size of 1914142
+[7/20/2015 1:26:12 PM] PBAY032q.m00 Size Downloaded: 1914142
+[7/20/2015 1:26:12 PM] File Conversion Started.
+[7/20/2015 1:26:13 PM] File Conversion Finished.
+[7/20/2015 1:26:13 PM] Compressing File
+[7/20/2015 1:26:13 PM] File Compression Finished
+[7/20/2015 1:26:13 PM] Deleting Raw & RNX File from Temp Folder
+[7/20/2015 1:26:13 PM] File Raw & RNX File Deletion Completed
+[7/20/2015 1:26:13 PM] File Uploading Started.
+[7/20/2015 1:26:48 PM] File Uploading Finished
+[7/20/2015 1:26:48 PM] Deleting File from Temp Folder
+[7/20/2015 1:26:48 PM] File Deletion Completed
+[7/20/2015 1:28:21 PM] Connection to station PGEN could not be established.
+[7/20/2015 1:28:42 PM] Connection to station PILC could not be established.
+[7/20/2015 1:29:03 PM] Connection to station PPPC could not be established.
+[7/20/2015 1:29:03 PM] Creating Station Folder
+[7/20/2015 1:29:03 PM] Creating Station Folder
+[7/20/2015 1:29:25 PM] Connection to station PSRF could not be established.
+[7/20/2015 1:29:25 PM] Creating Station Folder
+[7/20/2015 1:29:25 PM] Creating Station Folder
+[7/20/2015 1:29:46 PM] Connection to station PSTC could not be established.
+[7/20/2015 1:29:46 PM] Creating Station Folder
+[7/20/2015 1:29:46 PM] Creating Station Folder
+[7/20/2015 1:30:07 PM] Connection to station PTAG could not be established.
+[7/20/2015 1:30:07 PM] Creating Station Folder
+[7/20/2015 1:30:07 PM] Creating Station Folder
+[7/20/2015 1:30:08 PM] Connection to station PSOL could not be established.
+[7/20/2015 1:30:08 PM] Creating Station Folder
+[7/20/2015 1:30:08 PM] Creating Station Folder

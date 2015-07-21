@@ -20,6 +20,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using ICSharpCode.SharpZipLib.Zip;
 using ICSharpCode.SharpZipLib.Core;
+using Sample;
 
 namespace PageNet_AutoDownloader
 {
@@ -73,7 +74,7 @@ namespace PageNet_AutoDownloader
             if (e.Button == System.Windows.Forms.MouseButtons.Right) 
             {
                 this.ContextMenuStrip = contextMenuStrip1;
-                contextMenuStrip1.Show();
+                contextMenuStrip1.Show(Cursor.Position);
             }
         }
         public void LoadDesti()
@@ -88,7 +89,7 @@ namespace PageNet_AutoDownloader
                 //this.textBox8.Text = reader["File_Location"].ToString();
                 //this.textBox7.Text = reader["User_ID"].ToString();
                 //this.textBox6.Text = reader["Password"].ToString();
-                File_Location = reader["File_Location"].ToString();
+                File_Location = @reader["File_Location"].ToString();
                 User_ID = reader["User_ID"].ToString();
                 Password_File = reader["Password"].ToString();
 
@@ -103,7 +104,7 @@ namespace PageNet_AutoDownloader
                 //this.textBox8.Text = reader["File_Location"].ToString();
                 //this.textBox7.Text = reader["User_ID"].ToString();
                 //this.textBox6.Text = reader["Password"].ToString();
-                File_LocationRNX = reader["File_Location"].ToString();
+                File_LocationRNX = @reader["File_Location"].ToString();
                 User_IDRNX = reader["User_ID"].ToString();
                 PasswordRNX = reader["Password"].ToString();
 
@@ -126,6 +127,29 @@ namespace PageNet_AutoDownloader
         {
             LoadData();
             LoadDesti();
+
+            DataGridViewProgressColumn column = new DataGridViewProgressColumn(); //download
+            DataGridViewProgressColumn column1 = new DataGridViewProgressColumn(); //convert
+            DataGridViewProgressColumn column2 = new DataGridViewProgressColumn(); //compress
+            DataGridViewProgressColumn column3 = new DataGridViewProgressColumn(); //upload
+
+            column.HeaderText = "Download Progress (%)";
+
+            Grid2.Columns.Add(column);
+
+            column1.HeaderText = "Conversion Progress (%)";
+
+            Grid2.Columns.Add(column1);
+
+            column2.HeaderText = "Compress Progress (%)";
+
+            Grid2.Columns.Add(column2);
+            
+            column3.HeaderText = "Upload Progress (%)";
+
+            Grid2.Columns.Add(column3);
+
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -142,7 +166,6 @@ namespace PageNet_AutoDownloader
             }
 
             GetDataFromSite(currRow);
-            DateTime DT = DTPCheck.Value;
 
             lock (_object)
             {
@@ -151,14 +174,15 @@ namespace PageNet_AutoDownloader
 
                     foreach (FTPFiles i in ftpfiles)
                     {
-                        string FileLoc = File_Location + DT.Year.ToString() + @"\" + DT.Month.ToString("00") + @"\" +
-                        DT.Subtract(TimeSpan.FromDays(1)).Day.ToString("00") + @"\" + Grid.Rows[currRow].Cells[0].Value.ToString() 
+                        string FileLoc = File_Location + DTPCheck.Value.Year.ToString() + @"\" + DTPCheck.Value.Month.ToString("00") + @"\" +
+                        DTPCheck.Value.Day.ToString("00") + @"\" + Grid.Rows[currRow].Cells[0].Value.ToString() 
                         + @"\" + i.FileName.Substring(0, 12).ToString() + ".zip";
 
                         //File exist code is in the if statement
-                        if (File.Exists(@FileLoc) == false)
-                        {
-                            Grid2.Rows.Add(i.FileName.Substring(0, 12).ToString(),"","","","", i.FileBytes, Grid.Rows[currRow].Cells[1].Value.ToString(), Grid.Rows[currRow].Cells[2].Value.ToString(), Grid.Rows[currRow].Cells[3].Value.ToString(), currRow);
+                        if (File.Exists(FileLoc) == false)
+                        {                            
+                            Grid2.Rows.Add(i.FileName.Substring(0, 12).ToString(), i.FileBytes, Grid.Rows[currRow].Cells[1].Value.ToString(), Grid.Rows[currRow].Cells[2].Value.ToString(), Grid.Rows[currRow].Cells[3].Value.ToString(), currRow,0,0,0,0);
+                            
                             Grid2.Update();
                         }
                     }
@@ -217,7 +241,7 @@ namespace PageNet_AutoDownloader
                         }
                         if (FileCounter == 0)
                         {
-                             MessageBox.Show("Raw files from this date " + DateTime.Now.Subtract(TimeSpan.FromDays(1)).ToShortDateString() + " are all downloaded.");
+                             MessageBox.Show("Raw files from this date " + DTPCheck.Value.ToShortDateString() + " are either downloaded or no Raw Files is available.");
                         }
                         //UpdateStatusBar("[" + DateTime.Now + "] " + FileCounter + " File(s) Information collected.");
                     }
@@ -242,9 +266,16 @@ namespace PageNet_AutoDownloader
             }
         }
 
-        private void Grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void Grid_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             currRow = e.RowIndex;
+
+        }
+
+
+        private void Grid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //currRow = e.RowIndex;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -259,7 +290,7 @@ namespace PageNet_AutoDownloader
             int.TryParse(num.ToString(), out row);
             for (int y = 0; y == row; y++)
             {
-                if ((Grid2.Rows[y].Cells[1].Value.ToString() != "") && (Grid2.Rows[y].Cells[2].Value.ToString() != "") && (Grid2.Rows[y].Cells[3].Value.ToString() != ""))
+                if ((Grid2.Rows[y].Cells[6].Value.ToString() != "") && (Grid2.Rows[y].Cells[7].Value.ToString() != "") && (Grid2.Rows[y].Cells[8].Value.ToString() != "") && (Grid2.Rows[y].Cells[9].Value.ToString() != ""))
                 {
                     row = y;
                     break;
@@ -314,34 +345,19 @@ namespace PageNet_AutoDownloader
                     return;
                 }
                 Downloadfile(
-                        Grid2.Rows[counter].Cells[6].Value.ToString(),//url
+                        Grid2.Rows[counter].Cells[2].Value.ToString(),//url
                         Grid2.Rows[counter].Cells[0].Value.ToString(),//filename
-                        Grid2.Rows[counter].Cells[7].Value.ToString(),//user
-                        Grid2.Rows[counter].Cells[8].Value.ToString(),//pass
-                        Grid2.Rows[counter].Cells[9].Value.ToString(),//rownumbergrid1
+                        Grid2.Rows[counter].Cells[3].Value.ToString(),//user
+                        Grid2.Rows[counter].Cells[4].Value.ToString(),//pass
+                        Grid2.Rows[counter].Cells[5].Value.ToString(),//rownumbergrid1
                         counter, //rownumbergrid2
-                        Grid2.Rows[counter].Cells[5].Value.ToString());//file size;
+                        Grid2.Rows[counter].Cells[1].Value.ToString());//file size;
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.ToString());
 
             }
-        }
-
-        public int GetNextRow(int currrow)
-        {
-            int row = -1;
-            for (int y = currrow; y < Grid2.RowCount; y++)
-            {
-                if ((Grid2.Rows[y].Cells[1].Value.ToString() == "") && (Grid2.Rows[y].Cells[2].Value.ToString() == "") && (Grid2.Rows[y].Cells[3].Value.ToString() == ""))
-                {
-                    row = y;
-                    break;
-                }
-
-            }
-            return row;
         }
 
         public void UpdateStatusBar(string Status)
@@ -403,7 +419,7 @@ namespace PageNet_AutoDownloader
                         //logs activity into Textbox
                         UpdateStatusBar("[" + DateTime.Now + "] " + "Downloading File from site to temp folder: " + FileName + " with a File Size of " + File_Size + "");
                         //updates file activity into File List Grid
-                        UpdateGrid2("0%", Grid2RowNumber, 1);
+                        UpdateGrid2(0, Grid2RowNumber,6);
                     }
                 }
                 // streams/downloads file from site to temp folder.
@@ -418,8 +434,8 @@ namespace PageNet_AutoDownloader
                 {
                     if (FileSize != 0)
                     {
-                        UpdateGrid2((FileSize / double.Parse(File_Size) * 100).ToString("00") + "%", Grid2RowNumber, 1);
-                        UpdateStatusBar("[" + DateTime.Now + "] " + FileName + " Downloaded: " + String.Format((FileSize / double.Parse(File_Size) * 100).ToString(), "0.00") + "%");
+                        UpdateGrid2(Convert.ToInt32((FileSize / double.Parse(File_Size) * 100)), Grid2RowNumber, 6);
+                        //UpdateStatusBar("[" + DateTime.Now + "] " + FileName + " Downloaded: " + String.Format((FileSize / double.Parse(File_Size) * 100).ToString("00"), "0.00") + "");
                         //Thread.Sleep(1000);
                     }
                     writeStream.Write(buffer, 0, bytesRead);
@@ -444,13 +460,21 @@ namespace PageNet_AutoDownloader
 
 
                 requestFileDownload = null;
+                //********************************************************************************************
                 // end of download code
                 //********************************************************************************************
 
                 //********************************************************************************************
                 //start conversion protocol
                 //********************************************************************************************
-                UpdateGrid2("0%", Grid2RowNumber, 2);
+                lock (_object)
+                {
+                    UpdateGrid2(Convert.ToInt32(0), Grid2RowNumber, 7);
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
+                    {
+                        file.WriteLine("[" + DateTime.Now + "] File Conversion Started.");
+                    }
+                }
                 String targetPath = @"C:\Temp\" + FileName.Substring(0, 8) + ".RNX";
                 string sourceFile = System.IO.Path.Combine(@"C:\Temp\", FileName);
                 string destFile = System.IO.Path.Combine(targetPath, FileName);
@@ -458,10 +482,11 @@ namespace PageNet_AutoDownloader
                 Directory.CreateDirectory(@"C:\Temp\" + FileName.Substring(0,8) + ".RNX");
                 File.Copy(sourceFile, destFile);
 
-                RunTEQC(destFile, DateTime.Now.Year.ToString());
-
+                    //Debug.WriteLine("RunTeqC Started.");
+                    RunTEQC(destFile, DateTime.Now.Year.ToString());
+                    //Debug.WriteLine("RunTeqC Done.");
                 File.Delete(destFile);
-
+                    Debug.WriteLine("File Deleted.");
                 using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
                 {
                     if (CancelProg == true)
@@ -472,14 +497,21 @@ namespace PageNet_AutoDownloader
                     }
                     String Target = targetPath+ @"\" + FileName.Substring(0,8) + "." + DateTime.Now.Year.ToString();
                     zip.CompressionLevel = Ionic.Zlib.CompressionLevel.Default;
-                    zip.SaveProgress += (object sender, SaveProgressEventArgs e) => SaveProgress(sender, e, Grid2RowNumber);
+                    //zip.SaveProgress += (object sender, SaveProgressEventArgs e) => SaveProgress(sender, e, Grid2RowNumber);
                     zip.StatusMessageTextWriter = System.Console.Out;
                     zip.AddFile(Target+"g","");
                     zip.AddFile(Target + "n","");
                     zip.AddFile(Target + "o","");
                     zip.Save(LocalDirectory + FileName.Substring(0, 8) + ".RNX.zip");
                 }
-                UpdateGrid2("100%", Grid2RowNumber, 2);
+                lock (_object)
+                {
+                    UpdateGrid2(Convert.ToInt32(100), Grid2RowNumber, 7);
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
+                    {
+                        file.WriteLine("[" + DateTime.Now + "] File Conversion Finished.");
+                    }
+                }
                 //********************************************************************************************
                 // calls the conversion protocol
                 //********************************************************************************************
@@ -487,6 +519,11 @@ namespace PageNet_AutoDownloader
                 //********************************************************************************************
                 //compresses the download raw file.
                 //********************************************************************************************
+                lock (_object)
+                {
+                    UpdateGrid2(0, Grid2RowNumber, 8);
+                    Thread.Sleep(1000);
+                }
                 if (CancelProg == true)
                 {
                     UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
@@ -494,6 +531,7 @@ namespace PageNet_AutoDownloader
 
                 }
                 //logs activity
+                //MessageBox.Show(Grid2.Rows[0].Cells[7].Value.ToString());
                 lock (_object)
                 {
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
@@ -534,7 +572,10 @@ namespace PageNet_AutoDownloader
                 }
                 //logs activity
                 UpdateStatusBar("[" + DateTime.Now + "] " + "File Compression Finished" + "");
-
+                lock (_object)
+                {
+                    UpdateGrid2(100, Grid2RowNumber, 8);
+                }
                 //********************************************************************************************
                 // end of compression code
                 //********************************************************************************************
@@ -556,16 +597,16 @@ namespace PageNet_AutoDownloader
                     {
 
                         //logs activity
-                        file.WriteLine("[" + DateTime.Now + "] " + "Deleting File from Temp Folder");
+                        file.WriteLine("[" + DateTime.Now + "] " + "Deleting Raw & RNX File from Temp Folder");
                         //logs activity
-                        UpdateStatusBar("[" + DateTime.Now + "] " + "Deleting File from Temp Folder" + "");
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Deleting Raw & RNX File from Temp Folder" + "");
                         //delete code/command 
                         File.Delete(LocalDirectory + FileName);
                         Directory.Delete(LocalDirectory + FileName.Substring(0,8) + ".RNX",true);
                         //logs activity
-                        UpdateStatusBar("[" + DateTime.Now + "] " + "File Deletion Completed" + "");
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "File Raw & RNX File Deletion Completed" + "");
                         //logs activity
-                        file.WriteLine("[" + DateTime.Now + "] " + "File Deletion Completed");
+                        file.WriteLine("[" + DateTime.Now + "] " + "File Raw & RNX File Deletion Completed");
                     }
                 }
 
@@ -589,7 +630,13 @@ namespace PageNet_AutoDownloader
                 //********************************************************************************************
                 //uploads the compress file into the ftp server
                 //********************************************************************************************
-
+                lock (_object)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
+                    {
+                        file.WriteLine("[" + DateTime.Now + "] " + "File Uploading Started.");
+                    }
+                }
                 string LocalDirectory1 = @"C:\Temp\" + FileName + ".zip";
                 string LocalDirectory2 = @"C:\Temp\" + FileName.Substring(0,8) + ".RNX.zip";
                 //string User = this.textBox7.Text;
@@ -615,7 +662,7 @@ namespace PageNet_AutoDownloader
                     PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory1, DestinationDirectory + FileName + ".zip");
                     //fc.OnProgressChanged += filecopyprogress;
                     //fc.OnProgressChanged += filecopyprogress(Grid2RowNumber, Grid2RowNumber);
-                    fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 4);
+                    fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 9);
                     fc.OnComplete += filecopycomplete;
                     fc.Copy();
                 }
@@ -623,9 +670,7 @@ namespace PageNet_AutoDownloader
                 using (new NetworkConnection(File_LocationRNX, readCredentials))
                 {
                     PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory2, DestinationDirectory2 + FileName.Substring(0,8) + ".RNX.zip");
-                    //fc.OnProgressChanged += filecopyprogress;
-                    //fc.OnProgressChanged += filecopyprogress(Grid2RowNumber, Grid2RowNumber);
-                    fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 4);
+                    fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 9);
                     fc.OnComplete += filecopycomplete;
                     fc.Copy();
                 }
@@ -636,7 +681,13 @@ namespace PageNet_AutoDownloader
                     return;
 
                 }
-
+                lock (_object)
+                {
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
+                    {
+                        file.WriteLine("[" + DateTime.Now + "] " + "File Uploading Finished");
+                    }
+                }
                 //deletes the zip file in the temp folder
                 lock (_object)
                 {
@@ -713,12 +764,12 @@ namespace PageNet_AutoDownloader
             else if (e.EventType == ZipProgressEventType.Saving_EntryBytesRead)
             {
                 //UpdateLabelCProg(((e.BytesTransferred * 100) / e.TotalBytesToTransfer).ToString());
-                UpdateGrid2(((e.BytesTransferred * 100) / e.TotalBytesToTransfer).ToString() + "%", Grid2RowNumber, 3);
+                UpdateGrid2(Convert.ToInt32(((e.BytesTransferred * 100) / e.TotalBytesToTransfer)), Grid2RowNumber, 8);
                 //labelCProg.Text = ((e.BytesTransferred * 100) / e.TotalBytesToTransfer).ToString("0.00%");
             }
         }
 
-        public void UpdateGrid2(string x, int RowNum, int CellNum)
+        public void UpdateGrid2(int x, int RowNum, int CellNum)
         {
             if (this.Grid2.InvokeRequired)
             {
@@ -728,7 +779,39 @@ namespace PageNet_AutoDownloader
             }
         }
 
-        public void UpdateGrid2Column2(string x, int RowNum, int CellNum)
+        public void UpdateGrid2Column2(int x, int RowNum, int CellNum)
+        {
+            Grid2.Rows[RowNum].Cells[CellNum].Value = x;
+            Grid2.Update();
+            Grid2.Refresh();
+        }
+
+        public void UpdateGrid3(int x, int RowNum, int CellNum)
+        {
+            if (this.Grid2.InvokeRequired)
+            {
+                this.Grid2.Invoke(
+                    new MethodInvoker(
+                    delegate() { UpdateGrid3Column2(x, RowNum, CellNum); }));
+            }
+        }
+
+        public void UpdateGrid3Column2(int x, int RowNum, int CellNum)
+        {
+            Grid2.Rows[RowNum].Cells[CellNum].Value = x;
+            Grid2.Update();
+        }
+        public void UpdateGrid4(int x, int RowNum, int CellNum)
+        {
+            if (this.Grid2.InvokeRequired)
+            {
+                this.Grid2.Invoke(
+                    new MethodInvoker(
+                    delegate() { UpdateGrid4Column2(x, RowNum, CellNum); }));
+            }
+        }
+
+        public void UpdateGrid4Column2(int x, int RowNum, int CellNum)
         {
             Grid2.Rows[RowNum].Cells[CellNum].Value = x;
             Grid2.Update();
@@ -753,7 +836,7 @@ namespace PageNet_AutoDownloader
 
         private void UpdateProgressbar(double percent, int RowNum, int CellNum)
         {
-            Grid2.Rows[RowNum].Cells[CellNum].Value = ((int)percent) + "%";
+            Grid2.Rows[RowNum].Cells[CellNum].Value = ((int)percent);
             Grid2.Update();
         }
 
@@ -761,6 +844,7 @@ namespace PageNet_AutoDownloader
         {
             DoCheckOfAvailableFile(Grid2currRow);
         }
+
 
         private void Grid2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -784,6 +868,7 @@ namespace PageNet_AutoDownloader
 
             string args = TeqC_Argument;
 
+            Debug.WriteLine("Setting Up TeqC Argument");
 
             args = EvaluateSubstring(args, fileName);
             args = args.Replace("{FILENAME}", fileName);
@@ -812,11 +897,15 @@ namespace PageNet_AutoDownloader
 
             // Start the process with the info we specified.
             // Call WaitForExit and then the using statement will close.
+            Debug.WriteLine("Start RNX Conversion");
+
             using (Process exeProcess = Process.Start(startInfo))
             {
                 standardErrorMessage = exeProcess.StandardError.ReadToEnd();
                 exeProcess.WaitForExit();
             }
+            Debug.WriteLine("End RNX Conversion");
+
             if (standardErrorMessage != "")
             {
                 //throw new Exception(standardErrorMessage);
@@ -988,6 +1077,83 @@ namespace PageNet_AutoDownloader
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CancelProg = true;
+        }
+
+        private void Grid2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+    }
+}
+
+namespace Sample
+{
+    public class DataGridViewProgressColumn : DataGridViewImageColumn
+    {
+        public DataGridViewProgressColumn()
+        {
+            CellTemplate = new DataGridViewProgressCell();
+        }
+    }
+}
+namespace Sample
+{
+    class DataGridViewProgressCell : DataGridViewImageCell
+    {
+        // Used to make custom cell consistent with a DataGridViewImageCell
+        static Image emptyImage;
+        static DataGridViewProgressCell()
+        {
+            emptyImage = new Bitmap(1, 1, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+        }
+        public DataGridViewProgressCell()
+        {
+            this.ValueType = typeof(int);
+        }
+        // Method required to make the Progress Cell consistent with the default Image Cell. 
+        // The default Image Cell assumes an Image as a value, although the value of the Progress Cell is an int.
+        protected override object GetFormattedValue(object value,
+                            int rowIndex, ref DataGridViewCellStyle cellStyle,
+                            TypeConverter valueTypeConverter,
+                            TypeConverter formattedValueTypeConverter,
+                            DataGridViewDataErrorContexts context)
+        {
+            return emptyImage;
+        }
+        protected override void Paint(System.Drawing.Graphics g, System.Drawing.Rectangle clipBounds, System.Drawing.Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
+        {
+            try
+            {
+                int progressVal = (int)value;
+                float percentage = ((float)progressVal / 100.0f); // Need to convert to float before division; otherwise C# returns int which is 0 for anything but 100%.
+                Brush backColorBrush = new SolidBrush(cellStyle.BackColor);
+                Brush foreColorBrush = new SolidBrush(cellStyle.ForeColor);
+                // Draws the cell grid
+                base.Paint(g, clipBounds, cellBounds,
+                 rowIndex, cellState, value, formattedValue, errorText,
+                 cellStyle, advancedBorderStyle, (paintParts & ~DataGridViewPaintParts.ContentForeground));
+                if (percentage > 0.0)
+                {
+                    // Draw the progress bar and the text
+                    g.FillRectangle(new SolidBrush(Color.FromArgb(203, 235, 108)), cellBounds.X + 2, cellBounds.Y + 2, Convert.ToInt32((percentage * cellBounds.Width - 4)), cellBounds.Height - 4);
+                    g.DrawString(progressVal.ToString() + "%", cellStyle.Font, foreColorBrush, cellBounds.X + (cellBounds.Width / 2) - 5, cellBounds.Y + 2);
+
+                }
+                else
+                {
+                    // draw the text
+                    if (this.DataGridView.CurrentRow.Index == rowIndex)
+                        g.DrawString(progressVal.ToString() + "%", cellStyle.Font, new SolidBrush(cellStyle.SelectionForeColor), cellBounds.X + 6, cellBounds.Y + 2);
+                    else
+                        g.DrawString(progressVal.ToString() + "%", cellStyle.Font, foreColorBrush, cellBounds.X + 6, cellBounds.Y + 2);
+                }
+            }
+            catch (Exception e) {
+                //MessageBox.Show(e.ToString());
+            }
+
         }
     }
 }

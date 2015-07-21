@@ -13,8 +13,8 @@ C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\PageNet AutoDownloa
 C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\Ionic.Zip.xml
 C:\Users\SherwinAquino\Documents\Visual Studio 2013\Projects\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.csprojResolveAssemblyReference.cache
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.exe
-C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\ICSharpCode.SharpZipLib.dll
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.exe.config
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\ICSharpCode.SharpZipLib.dll
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\Microsoft.CSharp.dll
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\System.Configuration.dll
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\System.Data.DataSetExtensions.dll
@@ -32,6 +32,8 @@ C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownload
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.FrmAddStn.resources
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Destination.resources
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.FrmEditStn.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.DestinationRNX.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.TeqcSet.resources
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Main.resources
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.ManualDownload.resources
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.Properties.Resources.resources
@@ -40,4 +42,4 @@ C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownload
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.exe
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.pdb
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.pdb
-C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.DestinationRNX.resources
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.csprojResolveAssemblyReference.cache

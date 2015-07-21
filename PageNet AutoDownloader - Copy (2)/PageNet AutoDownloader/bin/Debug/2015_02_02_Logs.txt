@@ -1,0 +1,291 @@
+[2/2/2015 2:41:21 PM] Connection to station PGEN could not be established.
+[2/2/2015 2:41:21 PM] Creating Station Folder
+[2/2/2015 2:41:21 PM] PBAY032a.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1685872
+[2/2/2015 2:41:21 PM] PBAY032b.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1545207
+[2/2/2015 2:41:21 PM] PBAY032c.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1432443
+[2/2/2015 2:41:21 PM] PBAY032d.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1449892
+[2/2/2015 2:41:21 PM] PBAY032e.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1473173
+[2/2/2015 2:41:21 PM] PBAY032f.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1554854
+[2/2/2015 2:41:21 PM] PBAY032g.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1498751
+[2/2/2015 2:41:21 PM] PBAY032h.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1579302
+[2/2/2015 2:41:21 PM] PBAY032i.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1489809
+[2/2/2015 2:41:21 PM] PBAY032j.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1387490
+[2/2/2015 2:41:21 PM] PBAY032k.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1442659
+[2/2/2015 2:41:21 PM] PBAY032l.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1563005
+[2/2/2015 2:41:21 PM] PBAY032m.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:21 PM] File Size:1584165
+[2/2/2015 2:41:22 PM] PBAY032n.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:22 PM] File Size:1628288
+[2/2/2015 2:41:22 PM] PBAY032o.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:22 PM] File Size:1685035
+[2/2/2015 2:41:22 PM] PBAY032p.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:22 PM] File Size:1788846
+[2/2/2015 2:41:22 PM] PBAY032q.m00 File Does not exist in the destination server!
+[2/2/2015 2:41:22 PM] File Size:1914142
+[2/2/2015 2:41:43 PM] Connection to station PILC could not be established.
+[2/2/2015 2:41:43 PM] Creating Station Folder
+[2/2/2015 2:42:04 PM] Connection to station PPPC could not be established.
+[2/2/2015 2:42:04 PM] Creating Station Folder
+[2/2/2015 2:42:25 PM] Connection to station PSRF could not be established.
+[2/2/2015 2:42:25 PM] Creating Station Folder
+[2/2/2015 2:42:46 PM] Connection to station PSTC could not be established.
+[2/2/2015 2:42:46 PM] Creating Station Folder
+[2/2/2015 2:43:07 PM] Connection to station PTAG could not be established.
+[2/2/2015 2:43:07 PM] Creating Station Folder
+[2/2/2015 2:43:29 PM] Connection to station PSOL could not be established.
+[2/2/2015 2:43:29 PM] Creating Station Folder
+[2/2/2015 2:43:29 PM] Downloading File: PBAY032a.m00
+[2/2/2015 2:43:29 PM] Downloading File from site to temp folder: PBAY032a.m00 with a File Size of 1685872
+[2/2/2015 2:43:29 PM] Downloading File: PBAY032b.m00
+[2/2/2015 2:43:29 PM] Downloading File from site to temp folder: PBAY032b.m00 with a File Size of 1545207
+[2/2/2015 2:43:29 PM] PBAY032a.m00 Size Downloaded: 1685872
+[2/2/2015 2:43:29 PM] PBAY032b.m00 Size Downloaded: 1545207
+[2/2/2015 2:43:30 PM] Compressing File
+[2/2/2015 2:43:30 PM] Compressing File
+[2/2/2015 2:43:30 PM] File Compression Finished
+[2/2/2015 2:43:30 PM] Deleting File from Temp Folder
+[2/2/2015 2:43:30 PM] File Deletion Completed
+[2/2/2015 2:43:30 PM] File Compression Finished
+[2/2/2015 2:43:30 PM] Deleting File from Temp Folder
+[2/2/2015 2:43:30 PM] File Deletion Completed
+[2/2/2015 2:44:04 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:04 PM] File Deletion Completed
+[2/2/2015 2:44:04 PM] Downloading File: PBAY032c.m00
+[2/2/2015 2:44:04 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:04 PM] File Deletion Completed
+[2/2/2015 2:44:04 PM] Downloading File: PBAY032c.m00
+[2/2/2015 2:44:04 PM] Downloading File from site to temp folder: PBAY032c.m00 with a File Size of 1432443
+[2/2/2015 2:44:05 PM] PBAY032c.m00 Size Downloaded: 1432443
+[2/2/2015 2:44:06 PM] Compressing File
+[2/2/2015 2:44:06 PM] File Compression Finished
+[2/2/2015 2:44:06 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:06 PM] File Deletion Completed
+[2/2/2015 2:44:06 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:06 PM] File Deletion Completed
+[2/2/2015 2:44:06 PM] Downloading File: PBAY032d.m00
+[2/2/2015 2:44:06 PM] Downloading File from site to temp folder: PBAY032d.m00 with a File Size of 1449892
+[2/2/2015 2:44:06 PM] PBAY032d.m00 Size Downloaded: 1449892
+[2/2/2015 2:44:07 PM] Compressing File
+[2/2/2015 2:44:07 PM] File Compression Finished
+[2/2/2015 2:44:07 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:07 PM] File Deletion Completed
+[2/2/2015 2:44:07 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:07 PM] File Deletion Completed
+[2/2/2015 2:44:07 PM] Downloading File: PBAY032e.m00
+[2/2/2015 2:44:07 PM] Downloading File from site to temp folder: PBAY032e.m00 with a File Size of 1473173
+[2/2/2015 2:44:08 PM] PBAY032e.m00 Size Downloaded: 1473173
+[2/2/2015 2:44:08 PM] Compressing File
+[2/2/2015 2:44:09 PM] File Compression Finished
+[2/2/2015 2:44:09 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:09 PM] File Deletion Completed
+[2/2/2015 2:44:09 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:09 PM] File Deletion Completed
+[2/2/2015 2:44:09 PM] Downloading File: PBAY032f.m00
+[2/2/2015 2:44:09 PM] Downloading File from site to temp folder: PBAY032f.m00 with a File Size of 1554854
+[2/2/2015 2:44:09 PM] PBAY032f.m00 Size Downloaded: 1554854
+[2/2/2015 2:44:10 PM] Compressing File
+[2/2/2015 2:44:10 PM] File Compression Finished
+[2/2/2015 2:44:10 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:10 PM] File Deletion Completed
+[2/2/2015 2:44:10 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:10 PM] File Deletion Completed
+[2/2/2015 2:44:10 PM] Downloading File: PBAY032g.m00
+[2/2/2015 2:44:10 PM] Downloading File from site to temp folder: PBAY032g.m00 with a File Size of 1498751
+[2/2/2015 2:44:11 PM] PBAY032g.m00 Size Downloaded: 1498751
+[2/2/2015 2:44:11 PM] Compressing File
+[2/2/2015 2:44:12 PM] File Compression Finished
+[2/2/2015 2:44:12 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:12 PM] File Deletion Completed
+[2/2/2015 2:44:12 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:12 PM] File Deletion Completed
+[2/2/2015 2:44:12 PM] Downloading File: PBAY032h.m00
+[2/2/2015 2:44:12 PM] Downloading File from site to temp folder: PBAY032h.m00 with a File Size of 1579302
+[2/2/2015 2:44:12 PM] PBAY032h.m00 Size Downloaded: 1579302
+[2/2/2015 2:44:13 PM] Compressing File
+[2/2/2015 2:44:13 PM] File Compression Finished
+[2/2/2015 2:44:13 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:13 PM] File Deletion Completed
+[2/2/2015 2:44:13 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:13 PM] File Deletion Completed
+[2/2/2015 2:44:13 PM] Downloading File: PBAY032i.m00
+[2/2/2015 2:44:13 PM] Downloading File from site to temp folder: PBAY032i.m00 with a File Size of 1489809
+[2/2/2015 2:44:14 PM] PBAY032i.m00 Size Downloaded: 1489809
+[2/2/2015 2:44:14 PM] Compressing File
+[2/2/2015 2:44:14 PM] File Compression Finished
+[2/2/2015 2:44:14 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:14 PM] File Deletion Completed
+[2/2/2015 2:44:14 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:14 PM] File Deletion Completed
+[2/2/2015 2:44:14 PM] Downloading File: PBAY032j.m00
+[2/2/2015 2:44:14 PM] Downloading File from site to temp folder: PBAY032j.m00 with a File Size of 1387490
+[2/2/2015 2:44:15 PM] PBAY032j.m00 Size Downloaded: 1387490
+[2/2/2015 2:44:15 PM] Compressing File
+[2/2/2015 2:44:16 PM] File Compression Finished
+[2/2/2015 2:44:16 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:16 PM] File Deletion Completed
+[2/2/2015 2:44:16 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:16 PM] File Deletion Completed
+[2/2/2015 2:44:16 PM] Downloading File: PBAY032k.m00
+[2/2/2015 2:44:16 PM] Downloading File from site to temp folder: PBAY032k.m00 with a File Size of 1442659
+[2/2/2015 2:44:16 PM] PBAY032k.m00 Size Downloaded: 1442659
+[2/2/2015 2:44:17 PM] Compressing File
+[2/2/2015 2:44:17 PM] File Compression Finished
+[2/2/2015 2:44:17 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:17 PM] File Deletion Completed
+[2/2/2015 2:44:17 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:17 PM] File Deletion Completed
+[2/2/2015 2:44:17 PM] Downloading File: PBAY032l.m00
+[2/2/2015 2:44:17 PM] Downloading File from site to temp folder: PBAY032l.m00 with a File Size of 1563005
+[2/2/2015 2:44:18 PM] PBAY032l.m00 Size Downloaded: 1563005
+[2/2/2015 2:44:18 PM] Compressing File
+[2/2/2015 2:44:19 PM] File Compression Finished
+[2/2/2015 2:44:19 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:19 PM] File Deletion Completed
+[2/2/2015 2:44:19 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:19 PM] File Deletion Completed
+[2/2/2015 2:44:19 PM] Downloading File: PBAY032m.m00
+[2/2/2015 2:44:19 PM] Downloading File from site to temp folder: PBAY032m.m00 with a File Size of 1584165
+[2/2/2015 2:44:19 PM] PBAY032m.m00 Size Downloaded: 1584165
+[2/2/2015 2:44:20 PM] Compressing File
+[2/2/2015 2:44:20 PM] File Compression Finished
+[2/2/2015 2:44:20 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:20 PM] File Deletion Completed
+[2/2/2015 2:44:20 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:20 PM] File Deletion Completed
+[2/2/2015 2:44:20 PM] Downloading File: PBAY032n.m00
+[2/2/2015 2:44:20 PM] Downloading File from site to temp folder: PBAY032n.m00 with a File Size of 1628288
+[2/2/2015 2:44:21 PM] PBAY032n.m00 Size Downloaded: 1628288
+[2/2/2015 2:44:22 PM] Compressing File
+[2/2/2015 2:44:22 PM] File Compression Finished
+[2/2/2015 2:44:22 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:22 PM] File Deletion Completed
+[2/2/2015 2:44:22 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:22 PM] File Deletion Completed
+[2/2/2015 2:44:22 PM] Downloading File: PBAY032o.m00
+[2/2/2015 2:44:22 PM] Downloading File from site to temp folder: PBAY032o.m00 with a File Size of 1685035
+[2/2/2015 2:44:22 PM] PBAY032o.m00 Size Downloaded: 1685035
+[2/2/2015 2:44:23 PM] Compressing File
+[2/2/2015 2:44:23 PM] File Compression Finished
+[2/2/2015 2:44:23 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:23 PM] File Deletion Completed
+[2/2/2015 2:44:23 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:23 PM] File Deletion Completed
+[2/2/2015 2:44:23 PM] Downloading File: PBAY032p.m00
+[2/2/2015 2:44:23 PM] Downloading File from site to temp folder: PBAY032p.m00 with a File Size of 1788846
+[2/2/2015 2:44:24 PM] PBAY032p.m00 Size Downloaded: 1788846
+[2/2/2015 2:44:25 PM] Compressing File
+[2/2/2015 2:44:25 PM] File Compression Finished
+[2/2/2015 2:44:25 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:25 PM] File Deletion Completed
+[2/2/2015 2:44:25 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:25 PM] File Deletion Completed
+[2/2/2015 2:44:25 PM] Downloading File: PBAY032q.m00
+[2/2/2015 2:44:25 PM] Downloading File from site to temp folder: PBAY032q.m00 with a File Size of 1914142
+[2/2/2015 2:44:26 PM] PBAY032q.m00 Size Downloaded: 1914142
+[2/2/2015 2:44:26 PM] Compressing File
+[2/2/2015 2:44:26 PM] File Compression Finished
+[2/2/2015 2:44:26 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:26 PM] File Deletion Completed
+[2/2/2015 2:44:26 PM] Deleting File from Temp Folder
+[2/2/2015 2:44:26 PM] File Deletion Completed
+[2/2/2015 11:29:21 AM] Connection to station PGEN could not be established.
+[2/2/2015 11:29:21 AM] PBAY032a.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:21 AM] File Size:1685872
+[2/2/2015 11:29:21 AM] PBAY032b.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:21 AM] File Size:1545207
+[2/2/2015 11:29:21 AM] PBAY032c.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:21 AM] File Size:1432443
+[2/2/2015 11:29:21 AM] PBAY032h.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:21 AM] File Size:1579302
+[2/2/2015 11:29:21 AM] PBAY032j.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:21 AM] File Size:1387490
+[2/2/2015 11:29:22 AM] PBAY032k.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:22 AM] File Size:1442659
+[2/2/2015 11:29:22 AM] PBAY032l.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:22 AM] File Size:1563005
+[2/2/2015 11:29:22 AM] PBAY032m.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:22 AM] File Size:300908544
+[2/2/2015 11:29:23 AM] PBAY032n.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:23 AM] File Size:1628288
+[2/2/2015 11:29:23 AM] PBAY032o.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:23 AM] File Size:1685035
+[2/2/2015 11:29:24 AM] PBAY032q.m00 File Does not exist in the destination server!
+[2/2/2015 11:29:24 AM] File Size:1914142
+[2/2/2015 11:29:45 AM] Connection to station PILC could not be established.
+[2/2/2015 11:30:06 AM] Connection to station PPPC could not be established.
+[2/2/2015 11:30:27 AM] Connection to station PSRF could not be established.
+[2/2/2015 11:30:48 AM] Connection to station PSTC could not be established.
+[2/2/2015 11:31:09 AM] Connection to station PTAG could not be established.
+[2/2/2015 11:31:30 AM] Connection to station PSOL could not be established.
+[2/2/2015 11:31:30 AM] Downloading File: PBAY032a.m00
+[2/2/2015 11:31:30 AM] Downloading File: PBAY032b.m00
+[2/2/2015 11:36:21 AM] Connection to station PGEN could not be established.
+[2/2/2015 11:36:21 AM] PBAY032a.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:1685872
+[2/2/2015 11:36:21 AM] PBAY032b.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:1545207
+[2/2/2015 11:36:21 AM] PBAY032c.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:1432443
+[2/2/2015 11:36:21 AM] PBAY032h.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:1579302
+[2/2/2015 11:36:21 AM] PBAY032j.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:1387490
+[2/2/2015 11:36:21 AM] PBAY032k.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:1442659
+[2/2/2015 11:36:21 AM] PBAY032l.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:1563005
+[2/2/2015 11:36:21 AM] PBAY032m.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:300908544
+[2/2/2015 11:36:21 AM] PBAY032n.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:1628288
+[2/2/2015 11:36:21 AM] PBAY032o.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:1685035
+[2/2/2015 11:36:21 AM] PBAY032q.m00 File Does not exist in the destination server!
+[2/2/2015 11:36:21 AM] File Size:1914142
+[2/2/2015 11:36:42 AM] Connection to station PILC could not be established.
+[2/2/2015 11:37:03 AM] Connection to station PPPC could not be established.
+[2/2/2015 11:37:24 AM] Connection to station PSRF could not be established.
+[2/2/2015 11:37:45 AM] Connection to station PSTC could not be established.
+[2/2/2015 11:38:06 AM] Connection to station PTAG could not be established.
+[2/2/2015 11:38:07 AM] Connection to station PSOL could not be established.
+[2/2/2015 11:38:07 AM] Downloading File: PBAY032a.m00
+[2/2/2015 11:38:07 AM] Downloading File from site to temp folder: PBAY032a.m00 with a File Size of 1685872
+[2/2/2015 11:38:08 AM] Downloading File: PBAY032b.m00
+[2/2/2015 11:38:08 AM] Downloading File from site to temp folder: PBAY032b.m00 with a File Size of 1545207
+[2/2/2015 11:38:08 AM] PBAY032b.m00 Size Downloaded: 1545207
+[2/2/2015 11:38:09 AM] Compressing File
+[2/2/2015 11:38:09 AM] File Compression Finished
+[2/2/2015 11:38:09 AM] Deleting File from Temp Folder
+[2/2/2015 11:38:09 AM] File Deletion Completed
+[2/2/2015 11:38:10 AM] PBAY032a.m00 Size Downloaded: 1685872
+[2/2/2015 11:38:11 AM] Compressing File
+[2/2/2015 11:38:11 AM] File Compression Finished
+[2/2/2015 11:38:11 AM] Deleting File from Temp Folder
+[2/2/2015 11:38:11 AM] File Deletion Completed
+[2/2/2015 11:38:45 AM] Deleting File from Temp Folder
+[2/2/2015 11:38:45 AM] File Deletion Completed
+[2/2/2015 11:38:45 AM] Deleting File from Temp Folder
+[2/2/2015 11:38:45 AM] File Deletion Completed
+[2/2/2015 11:42:07 AM] Downloading File: PBAY032c.m00
+[2/2/2015 11:42:07 AM] Downloading File: PBAY032c.m00
+[2/2/2015 11:42:07 AM] Downloading File from site to temp folder: PBAY032c.m00 with a File Size of 1432443
+[2/2/2015 11:42:09 AM] PBAY032c.m00 Size Downloaded: 1432443
+[2/2/2015 11:42:09 AM] File Conversion Started.
+[2/2/2015 11:42:10 AM] File Conversion Finished.
+[2/2/2015 11:42:10 AM] Compressing File
+[2/2/2015 11:42:10 AM] File Compression Finished
+[2/2/2015 11:42:10 AM] Deleting Raw & RNX File from Temp Folder
+[2/2/2015 11:42:10 AM] File Raw & RNX File Deletion Completed
+[2/2/2015 11:42:10 AM] File Uploading Started.

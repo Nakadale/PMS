@@ -1,0 +1,46 @@
+[7/15/2015 2:25:56 PM] Downloading File: PBAY032d.m00
+[7/15/2015 2:25:56 PM] Downloading File: PBAY032d.m00
+[7/15/2015 2:25:56 PM] Downloading File from site to temp folder: PBAY032d.m00 with a File Size of 1449892
+[7/15/2015 2:25:57 PM] PBAY032d.m00 Size Downloaded: 1449892
+[7/15/2015 2:25:57 PM] Compressing File
+[7/15/2015 2:25:58 PM] File Compression Finished
+[7/15/2015 2:25:58 PM] Deleting File from Temp Folder
+[7/15/2015 2:25:58 PM] File Deletion Completed
+[7/15/2015 2:27:53 PM] Downloading File: PBAY032a.m00
+[7/15/2015 2:27:53 PM] Downloading File: PBAY032a.m00
+[7/15/2015 2:27:54 PM] Downloading File from site to temp folder: PBAY032a.m00 with a File Size of 1685872
+[7/15/2015 2:27:54 PM] PBAY032a.m00 Size Downloaded: 1685872
+[7/15/2015 2:27:55 PM] Compressing File
+[7/15/2015 2:27:55 PM] File Compression Finished
+[7/15/2015 2:27:55 PM] Deleting File from Temp Folder
+[7/15/2015 2:27:55 PM] File Deletion Completed
+[7/15/2015 2:29:07 PM] Downloading File: PBAY032a.m00
+[7/15/2015 2:29:07 PM] Downloading File: PBAY032a.m00
+[7/15/2015 2:29:07 PM] Downloading File from site to temp folder: PBAY032a.m00 with a File Size of 1685872
+[7/15/2015 2:29:07 PM] PBAY032a.m00 Size Downloaded: 1685872
+[7/15/2015 2:29:08 PM] Compressing File
+[7/15/2015 2:29:08 PM] File Compression Finished
+[7/15/2015 2:29:08 PM] Deleting File from Temp Folder
+[7/15/2015 2:29:08 PM] File Deletion Completed
+[7/15/2015 2:30:21 PM] Deleting File from Temp Folder
+[7/15/2015 2:30:21 PM] File Deletion Completed
+[7/15/2015 2:31:59 PM] Downloading File: PBAY032b.m00
+[7/15/2015 2:31:59 PM] Downloading File: PBAY032b.m00
+[7/15/2015 2:31:59 PM] Downloading File from site to temp folder: PBAY032b.m00 with a File Size of 1545207
+[7/15/2015 2:32:00 PM] PBAY032b.m00 Size Downloaded: 1545207
+[7/15/2015 2:32:00 PM] Compressing File
+[7/15/2015 2:32:01 PM] File Compression Finished
+[7/15/2015 2:32:01 PM] Deleting File from Temp Folder
+[7/15/2015 2:32:01 PM] File Deletion Completed
+[7/15/2015 2:32:11 PM] Downloading File: PBAY032c.m00
+[7/15/2015 2:32:11 PM] Downloading File: PBAY032c.m00
+[7/15/2015 2:32:11 PM] Downloading File from site to temp folder: PBAY032c.m00 with a File Size of 1432443
+[7/15/2015 2:32:12 PM] PBAY032c.m00 Size Downloaded: 1432443
+[7/15/2015 2:32:12 PM] Compressing File
+[7/15/2015 2:32:12 PM] File Compression Finished
+[7/15/2015 2:32:12 PM] Deleting File from Temp Folder
+[7/15/2015 2:32:12 PM] File Deletion Completed
+[7/15/2015 2:32:41 PM] Deleting File from Temp Folder
+[7/15/2015 2:32:41 PM] File Deletion Completed
+[7/15/2015 2:33:18 PM] Deleting File from Temp Folder
+[7/15/2015 2:33:18 PM] File Deletion Completed

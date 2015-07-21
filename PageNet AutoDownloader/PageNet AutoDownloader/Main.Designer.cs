@@ -53,22 +53,11 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.Grid2 = new System.Windows.Forms.DataGridView();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Convert = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Compression_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Upload_Progress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.url = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RowNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -86,10 +75,10 @@
             this.stationListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeDestinationFileServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeDestinationForConvertedFilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.setTeqCArgumentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lbldate1 = new System.Windows.Forms.Label();
-            this.setTeqCArgumentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -98,7 +87,6 @@
             this.statusStrip1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid2)).BeginInit();
-            this.groupBox6.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.SuspendLayout();
@@ -147,6 +135,7 @@
             this.Grid.AllowUserToDeleteRows = false;
             this.Grid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.Grid.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid.Location = new System.Drawing.Point(3, 18);
             this.Grid.Name = "Grid";
@@ -322,13 +311,10 @@
             this.Grid2.AllowUserToDeleteRows = false;
             this.Grid2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.Grid2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Grid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Grid2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FileName,
-            this.Progress,
-            this.Convert,
-            this.Compression_Progress,
-            this.Upload_Progress,
             this.FileSize,
             this.url,
             this.UserName,
@@ -350,32 +336,6 @@
             this.FileName.Name = "FileName";
             this.FileName.ReadOnly = true;
             this.FileName.Width = 150;
-            // 
-            // Progress
-            // 
-            this.Progress.FillWeight = 150F;
-            this.Progress.HeaderText = "Download Progress";
-            this.Progress.Name = "Progress";
-            this.Progress.ReadOnly = true;
-            this.Progress.Width = 150;
-            // 
-            // Convert
-            // 
-            this.Convert.HeaderText = "Conversion Progress";
-            this.Convert.Name = "Convert";
-            this.Convert.ReadOnly = true;
-            // 
-            // Compression_Progress
-            // 
-            this.Compression_Progress.HeaderText = "Compression Progress";
-            this.Compression_Progress.Name = "Compression_Progress";
-            this.Compression_Progress.ReadOnly = true;
-            // 
-            // Upload_Progress
-            // 
-            this.Upload_Progress.HeaderText = "Upload Progress";
-            this.Upload_Progress.Name = "Upload_Progress";
-            this.Upload_Progress.ReadOnly = true;
             // 
             // FileSize
             // 
@@ -411,71 +371,6 @@
             this.RowNum.Name = "RowNum";
             this.RowNum.ReadOnly = true;
             this.RowNum.Visible = false;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.label6);
-            this.groupBox6.Controls.Add(this.label7);
-            this.groupBox6.Controls.Add(this.label8);
-            this.groupBox6.Controls.Add(this.textBox6);
-            this.groupBox6.Controls.Add(this.textBox7);
-            this.groupBox6.Controls.Add(this.textBox8);
-            this.groupBox6.Location = new System.Drawing.Point(10, 453);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(279, 163);
-            this.groupBox6.TabIndex = 12;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Data Server";
-            this.groupBox6.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 106);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 13);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "Password";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 60);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 13);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "Username";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 16);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(68, 13);
-            this.label8.TabIndex = 25;
-            this.label8.Text = "FTP Address";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(13, 123);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.PasswordChar = '*';
-            this.textBox6.Size = new System.Drawing.Size(260, 20);
-            this.textBox6.TabIndex = 24;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(13, 79);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(260, 20);
-            this.textBox7.TabIndex = 23;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(13, 35);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(260, 20);
-            this.textBox8.TabIndex = 22;
             // 
             // menuStrip1
             // 
@@ -613,6 +508,13 @@
             this.changeDestinationForConvertedFilesToolStripMenuItem.Text = "Destination for RNX Files";
             this.changeDestinationForConvertedFilesToolStripMenuItem.Click += new System.EventHandler(this.changeDestinationForConvertedFilesToolStripMenuItem_Click);
             // 
+            // setTeqCArgumentsToolStripMenuItem
+            // 
+            this.setTeqCArgumentsToolStripMenuItem.Name = "setTeqCArgumentsToolStripMenuItem";
+            this.setTeqCArgumentsToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.setTeqCArgumentsToolStripMenuItem.Text = "Set TeqC Arguments";
+            this.setTeqCArgumentsToolStripMenuItem.Click += new System.EventHandler(this.setTeqCArgumentsToolStripMenuItem_Click);
+            // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
@@ -641,20 +543,12 @@
             this.lbldate1.TabIndex = 4;
             this.lbldate1.Text = "Time";
             // 
-            // setTeqCArgumentsToolStripMenuItem
-            // 
-            this.setTeqCArgumentsToolStripMenuItem.Name = "setTeqCArgumentsToolStripMenuItem";
-            this.setTeqCArgumentsToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.setTeqCArgumentsToolStripMenuItem.Text = "Set TeqC Arguments";
-            this.setTeqCArgumentsToolStripMenuItem.Click += new System.EventHandler(this.setTeqCArgumentsToolStripMenuItem_Click);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1309, 695);
             this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -683,8 +577,6 @@
             this.statusStrip1.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Grid2)).EndInit();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -715,10 +607,6 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView Grid2;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ToolStripStatusLabel TSStatus;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -728,9 +616,6 @@
         private System.Windows.Forms.ToolStripMenuItem stationListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeDestinationFileServerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeDestinationForConvertedFilesToolStripMenuItem;
-        public System.Windows.Forms.TextBox textBox6;
-        public System.Windows.Forms.TextBox textBox7;
-        public System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox7;
@@ -745,17 +630,13 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem clearFileListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hideProgramToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem setTeqCArgumentsToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Progress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Convert;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Compression_Progress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Upload_Progress;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn url;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn RowNum;
-        private System.Windows.Forms.ToolStripMenuItem setTeqCArgumentsToolStripMenuItem;
     }
 }
 

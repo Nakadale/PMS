@@ -114,6 +114,7 @@
       <DependentUpon>AddStn.cs</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="Class2.cs" />
     <Compile Include="Destination.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +132,12 @@
     </Compile>
     <Compile Include="DestinationRNX.Designer.cs">
       <DependentUpon>DestinationRNX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Teqc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Teqc.Designer.cs">
+      <DependentUpon>Teqc.cs</DependentUpon>
     </Compile>
     <Compile Include="IniParser.cs" />
     <Compile Include="ManualDownload.cs">
@@ -167,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DestinationRNX.resx">
       <DependentUpon>DestinationRNX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Teqc.resx">
+      <DependentUpon>Teqc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
