@@ -34,7 +34,7 @@ namespace PageNet_AutoDownloader
         private void button2_Click(object sender, EventArgs e)
         {
             sql_con.Open();
-            string CommandText = "Update TeqC set TeqC_Argument='" + this.textBox1.Text;
+            string CommandText = "Update TeqC set TeqC_Argument='" + this.textBox1.Text + "'";
             SQLiteCommand command = new SQLiteCommand(CommandText, sql_con);
             command.ExecuteNonQuery();
             sql_con.Close();

@@ -66,6 +66,17 @@ namespace PageNet_AutoDownloader
             sql_con.Close();
             Grid.Columns[2].Visible = false;
             Grid.Columns[3].Visible = false;
+            Grid.Columns[0].HeaderText = "Station Code";
+            Grid.Columns[1].HeaderText = "FTP Address";
+            Grid.Columns[1].Width = 200;
+
+            if (Grid.RowCount == 0)
+            {
+                button1.Enabled = false;
+                button2.Enabled = false;
+                button4.Enabled = false;
+
+            }
 
         }
 
@@ -134,18 +145,21 @@ namespace PageNet_AutoDownloader
             DataGridViewProgressColumn column3 = new DataGridViewProgressColumn(); //upload
 
             column.HeaderText = "Download Progress (%)";
-
+            column.Name = "Download";
             Grid2.Columns.Add(column);
 
             column1.HeaderText = "Conversion Progress (%)";
+            column.Name = "Conversion";
 
             Grid2.Columns.Add(column1);
 
             column2.HeaderText = "Compress Progress (%)";
+            column.Name = "Compress";
 
             Grid2.Columns.Add(column2);
             
             column3.HeaderText = "Upload Progress (%)";
+            column.Name = "Upload";
 
             Grid2.Columns.Add(column3);
 
@@ -178,13 +192,28 @@ namespace PageNet_AutoDownloader
                         DTPCheck.Value.Day.ToString("00") + @"\" + Grid.Rows[currRow].Cells[0].Value.ToString() 
                         + @"\" + i.FileName.Substring(0, 12).ToString() + ".zip";
 
-                        //File exist code is in the if statement
-                        if (File.Exists(FileLoc) == false)
+                                                //File exist code is in the if statement
+                        if ((File.Exists(FileLoc) == false) && (File.Exists((@"C:\Temp\" + i.FileName.Substring(0, 12).ToString())) == false ))
                         {                            
                             Grid2.Rows.Add(i.FileName.Substring(0, 12).ToString(), i.FileBytes, Grid.Rows[currRow].Cells[1].Value.ToString(), Grid.Rows[currRow].Cells[2].Value.ToString(), Grid.Rows[currRow].Cells[3].Value.ToString(), currRow,0,0,0,0);
                             
                             Grid2.Update();
                         }
+
+                        if ((File.Exists((@"C:\Temp\" + i.FileName.Substring(0, 12).ToString())) == true) && (File.Exists(FileLoc) == false))
+                        {
+                            Grid2.Rows.Add(i.FileName.Substring(0, 12).ToString(), i.FileBytes, Grid.Rows[currRow].Cells[1].Value.ToString(), Grid.Rows[currRow].Cells[2].Value.ToString(), Grid.Rows[currRow].Cells[3].Value.ToString(), currRow,0,0,0,0);
+                            Grid2.Update();
+
+                            FileInfo file1 = new FileInfo((@"C:\Temp\" + i.FileName.Substring(0, 12).ToString()));
+                            Grid2.Rows[(Grid2.Rows.Count - 1)].Cells[6].Value = (Convert.ToInt32((Convert.ToDouble(file1.Length) / Convert.ToDouble(i.FileBytes)) * 100));
+                            Grid2.Update();
+
+                        }
+                    }
+                    if (Grid2.RowCount == 0 && ftpfiles.Count != 0)
+                    {
+                        MessageBox.Show("Raw files from this date " + DTPCheck.Value.ToShortDateString() + " are all downloaded.");
                     }
                 }
             }
@@ -202,8 +231,7 @@ namespace PageNet_AutoDownloader
            
             lock (_object)
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
-                {
+                
 
                     try
                     {
@@ -231,17 +259,27 @@ namespace PageNet_AutoDownloader
                             string line = reader.ReadLine();
                             var varsam = line.Split(new Char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                             FTPFiles ftptemp = new FTPFiles();
-                            if ((JulianDate == varsam[8].Substring(4, 3)) && (varsam[8].Substring(9, 1) == "m"))
+
+                            if (varsam[8].Length > 8)
                             {
-                                ftptemp.FileName = varsam[8].ToString();
-                                ftptemp.FileBytes = long.Parse(varsam[4].ToString());
-                                ftpfiles.Add(ftptemp);
-                                FileCounter = FileCounter + 1;
+
+                                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
+                                {
+                                    file.WriteLine("[" + DateTime.Now + "] " + "JulianDate: " + JulianDate + " varsam[8]: " + varsam[8] + " varsam[8].Substring(4, 3)): " + varsam[8].Substring(4, 3) + " varsam[8].Substring(9, 1)):" + varsam[8].Substring(9, 1));
+                                }
+
+                                if ((JulianDate == varsam[8].Substring(4, 3)) && (varsam[8].Substring(9, 1) == "m"))
+                                {
+                                    ftptemp.FileName = varsam[8].ToString();
+                                    ftptemp.FileBytes = long.Parse(varsam[4].ToString());
+                                    ftpfiles.Add(ftptemp);
+                                    FileCounter = FileCounter + 1;
+                                }
                             }
                         }
-                        if (FileCounter == 0)
+                        if (FileCounter == 0 )
                         {
-                             MessageBox.Show("Raw files from this date " + DTPCheck.Value.ToShortDateString() + " are either downloaded or no Raw Files is available.");
+                             MessageBox.Show("There are no available Raw files from this date " + DTPCheck.Value.ToShortDateString() + ".");
                         }
                         //UpdateStatusBar("[" + DateTime.Now + "] " + FileCounter + " File(s) Information collected.");
                     }
@@ -250,19 +288,25 @@ namespace PageNet_AutoDownloader
                         //MessageBox.Show(ex.Message.ToString());
                         if (ex.Status == WebExceptionStatus.ProtocolError)
                         {
-                            file.WriteLine("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established. Invalid Username or Password");
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
+                            {
+                                file.WriteLine("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established. Invalid Username or Password");
+                            }
                             //Update("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established." + "\r\n");
                             MessageBox.Show("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established. Invalid Username or Password");
                         }
                         if (ex.Status == WebExceptionStatus.ConnectFailure)
                         {
-                            file.WriteLine("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established.");
-                            //Update("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established." + "\r\n");
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
+                            {
+                                file.WriteLine("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established.");
+                            }
+                                //Update("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established." + "\r\n");
                             MessageBox.Show("[" + DateTime.Now + "] " + "Connection to station " + Grid.Rows[CurrRow].Cells[0].Value.ToString() + " could not be established.");                            
                             return;
                         }
-                    }
-                }
+                   }
+                
             }
         }
 
@@ -286,16 +330,24 @@ namespace PageNet_AutoDownloader
 
         public void DoCheckOfAvailableFile(object num)
         {
+            if (Grid2.RowCount == 0 )
+            {
+                return;
+            }
             int row = 0;
             int.TryParse(num.ToString(), out row);
             for (int y = 0; y == row; y++)
             {
-                if ((Grid2.Rows[y].Cells[6].Value.ToString() != "") && (Grid2.Rows[y].Cells[7].Value.ToString() != "") && (Grid2.Rows[y].Cells[8].Value.ToString() != "") && (Grid2.Rows[y].Cells[9].Value.ToString() != ""))
+                if ((Grid2.Rows[y].Cells[6].Value.ToString() != "0") && (Grid2.Rows[y].Cells[7].Value.ToString() != "0") && (Grid2.Rows[y].Cells[8].Value.ToString() != "0") && (Grid2.Rows[y].Cells[9].Value.ToString() != "0"))
                 {
                     row = y;
                     break;
                 }
-
+                else if ((Convert.ToInt32(Grid2.Rows[y].Cells["Download"].Value) < 100) || (Convert.ToInt32(Grid2.Rows[y].Cells["Upload"].Value) < 100))
+                {
+                    row = y;
+                    break;
+                }
             }
             lock (_object)
             {
@@ -345,13 +397,13 @@ namespace PageNet_AutoDownloader
                     return;
                 }
                 Downloadfile(
-                        Grid2.Rows[counter].Cells[2].Value.ToString(),//url
-                        Grid2.Rows[counter].Cells[0].Value.ToString(),//filename
-                        Grid2.Rows[counter].Cells[3].Value.ToString(),//user
-                        Grid2.Rows[counter].Cells[4].Value.ToString(),//pass
-                        Grid2.Rows[counter].Cells[5].Value.ToString(),//rownumbergrid1
+                        Grid2.Rows[counter].Cells["url1"].Value.ToString(),//url
+                        Grid2.Rows[counter].Cells["filename1"].Value.ToString(),//filename
+                        Grid2.Rows[counter].Cells["UserName1"].Value.ToString(),//user
+                        Grid2.Rows[counter].Cells["Password1"].Value.ToString(),//pass
+                        Grid2.Rows[counter].Cells["Rownum1"].Value.ToString(),//rownumbergrid1
                         counter, //rownumbergrid2
-                        Grid2.Rows[counter].Cells[1].Value.ToString());//file size;
+                        Grid2.Rows[counter].Cells["FileSize1"].Value.ToString());//file size;
             }
             catch (Exception e)
             {
@@ -388,7 +440,7 @@ namespace PageNet_AutoDownloader
             string LocalDirectory = "C:\\Temp\\";  //Local directory where the files will be downloaded
 
             DateTime DT = DTPCheck.Value;
-
+            FileStream writeStream;
             //UpdateGrid2("Downloading File", Grid2RowNumber,2);
 
             try
@@ -400,13 +452,26 @@ namespace PageNet_AutoDownloader
                     return;
 
                 }
+                FileInfo file1 = new FileInfo(@"C:\Temp\" + FileName);
                 FtpWebRequest requestFileDownload = (FtpWebRequest)WebRequest.Create(new Uri(URL + FileName));
                 requestFileDownload.Credentials = new NetworkCredential(UserName, Password);
+                requestFileDownload.Proxy = null;
                 //requestFileDownload.Credentials = new NetworkCredential();
                 requestFileDownload.Method = WebRequestMethods.Ftp.DownloadFile;
+                //FileStream writeStream = new FileStream(LocalDirectory + "/" + FileName, FileMode.Create);
+
+                if (file1.Exists)
+                {
+                    requestFileDownload.ContentOffset = file1.Length;
+                    writeStream = new FileStream(@"C:\Temp\" + FileName, FileMode.Append, FileAccess.Write);
+                }
+                else
+                {
+                    writeStream = new FileStream(@"C:\Temp\" + FileName, FileMode.Create, FileAccess.Write);
+                }
                 FtpWebResponse responseFileDownload = (FtpWebResponse)requestFileDownload.GetResponse();
                 Stream responseStream = responseFileDownload.GetResponseStream();
-                FileStream writeStream = new FileStream(LocalDirectory + "/" + FileName, FileMode.Create);
+
                 int Length = 2048;
                 Byte[] buffer = new Byte[Length];
                 int bytesRead = responseStream.Read(buffer, 0, Length);
@@ -441,6 +506,12 @@ namespace PageNet_AutoDownloader
                     writeStream.Write(buffer, 0, bytesRead);
                     bytesRead = responseStream.Read(buffer, 0, Length);
                     FileSize = FileSize + bytesRead;
+                    if (CancelProg == true)
+                    {
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        return;
+
+                    }
                 }
 
                 //logs activity in the Logs.Txt file.
@@ -460,6 +531,8 @@ namespace PageNet_AutoDownloader
 
 
                 requestFileDownload = null;
+                UpdateGrid2(100, Grid2RowNumber, 6);
+
                 //********************************************************************************************
                 // end of download code
                 //********************************************************************************************
@@ -657,22 +730,34 @@ namespace PageNet_AutoDownloader
                     @"\" + Grid.Rows[int.Parse(RowNumber)].Cells[0].Value.ToString() + @"\";  //Local directory where the files will be uploaded/copied for the compressed RNX files
 
                 NetworkCredential readCredentials = new NetworkCredential(@User_ID, Password_File);
-                using (new NetworkConnection(File_Location.ToString(), readCredentials))
+                using (new NetworkConnection(File_Location.ToString(),readCredentials))
                 {
-                    PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory1, DestinationDirectory + FileName + ".zip");
+                    PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory1, DestinationDirectory + FileName + ".zip", @User_ID.ToString(), Password_File.ToString() ,File_Location.ToString());
                     //fc.OnProgressChanged += filecopyprogress;
                     //fc.OnProgressChanged += filecopyprogress(Grid2RowNumber, Grid2RowNumber);
                     fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 9);
                     fc.OnComplete += filecopycomplete;
                     fc.Copy();
+                    if (CancelProg == true)
+                    {
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        return;
+
+                    }
                 }
 
                 using (new NetworkConnection(File_LocationRNX, readCredentials))
                 {
-                    PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory2, DestinationDirectory2 + FileName.Substring(0,8) + ".RNX.zip");
+                    PageNet_AutoDownloader.CustomFileCopier fc = new PageNet_AutoDownloader.CustomFileCopier(LocalDirectory2, DestinationDirectory2 + FileName.Substring(0, 8) + ".RNX.zip", @User_ID.ToString(), Password_File.ToString(), File_Location.ToString());
                     fc.OnProgressChanged += (double Persentage, ref bool Cancel) => filecopyprogress(Persentage, Grid2RowNumber, 9);
                     fc.OnComplete += filecopycomplete;
                     fc.Copy();
+                    if (CancelProg == true)
+                    {
+                        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
+                        return;
+
+                    }
                 }
                 //end of upload code
                 if (CancelProg == true)
@@ -741,8 +826,8 @@ namespace PageNet_AutoDownloader
                         UpdateStatusBar("[" + DateTime.Now + "] Retrying Download of file " + FileName + "");
                         //Update("[" + DateTime.Now + "] " + ex.Message.ToString() + "\r\n");
                         //Update("[" + DateTime.Now + "] Retrying Download of file " + FileName + "\r\n");
-                        Downloadfile(URL, FileName, user, pass, RowNumber, Grid2RowNumber, File_Size);
                         DownCounter++;
+                        Downloadfile(URL, FileName, user, pass, RowNumber, Grid2RowNumber, File_Size);
                         if (CancelProg == true)
                         {
                             UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");

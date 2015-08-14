@@ -58,6 +58,7 @@
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RowNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -79,6 +80,7 @@
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lbldate1 = new System.Windows.Forms.Label();
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -100,7 +102,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 44);
             this.button1.TabIndex = 0;
-            this.button1.Text = "        Start";
+            this.button1.Text = "        &Start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -114,7 +116,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 44);
             this.button2.TabIndex = 1;
-            this.button2.Text = "            Stop";
+            this.button2.Text = "            St&op";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -122,7 +124,7 @@
             // 
             this.groupBox1.Controls.Add(this.Grid);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(900, 27);
+            this.groupBox1.Location = new System.Drawing.Point(831, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(402, 318);
             this.groupBox1.TabIndex = 4;
@@ -140,14 +142,14 @@
             this.Grid.Location = new System.Drawing.Point(3, 18);
             this.Grid.Name = "Grid";
             this.Grid.ReadOnly = true;
-            this.Grid.Size = new System.Drawing.Size(393, 297);
+            this.Grid.Size = new System.Drawing.Size(394, 297);
             this.Grid.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.TxtLogs);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(900, 348);
+            this.groupBox2.Location = new System.Drawing.Point(831, 348);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(402, 318);
             this.groupBox2.TabIndex = 5;
@@ -159,12 +161,12 @@
             this.TxtLogs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.TxtLogs.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.TxtLogs.Location = new System.Drawing.Point(6, 19);
+            this.TxtLogs.Location = new System.Drawing.Point(3, 19);
             this.TxtLogs.Multiline = true;
             this.TxtLogs.Name = "TxtLogs";
             this.TxtLogs.ReadOnly = true;
             this.TxtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.TxtLogs.Size = new System.Drawing.Size(390, 296);
+            this.TxtLogs.Size = new System.Drawing.Size(394, 296);
             this.TxtLogs.TabIndex = 0;
             // 
             // groupBox3
@@ -176,7 +178,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(12, 27);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(278, 206);
+            this.groupBox3.Size = new System.Drawing.Size(211, 206);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Date and Time";
@@ -229,7 +231,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(12, 309);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(278, 87);
+            this.groupBox4.Size = new System.Drawing.Size(211, 87);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Download Schedule";
@@ -269,7 +271,7 @@
             this.TSStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 673);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1309, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1238, 22);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -298,7 +300,7 @@
             // 
             this.groupBox5.Controls.Add(this.Grid2);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(296, 27);
+            this.groupBox5.Location = new System.Drawing.Point(229, 27);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(598, 639);
             this.groupBox5.TabIndex = 9;
@@ -319,7 +321,8 @@
             this.url,
             this.UserName,
             this.Password,
-            this.RowNum});
+            this.RowNum,
+            this.FileDate});
             this.Grid2.Location = new System.Drawing.Point(5, 18);
             this.Grid2.Name = "Grid2";
             this.Grid2.ReadOnly = true;
@@ -327,7 +330,7 @@
             this.Grid2.ShowCellToolTips = false;
             this.Grid2.ShowEditingIcon = false;
             this.Grid2.ShowRowErrors = false;
-            this.Grid2.Size = new System.Drawing.Size(589, 615);
+            this.Grid2.Size = new System.Drawing.Size(589, 618);
             this.Grid2.TabIndex = 0;
             // 
             // FileName
@@ -372,6 +375,13 @@
             this.RowNum.ReadOnly = true;
             this.RowNum.Visible = false;
             // 
+            // FileDate
+            // 
+            this.FileDate.HeaderText = "FileDate";
+            this.FileDate.Name = "FileDate";
+            this.FileDate.ReadOnly = true;
+            this.FileDate.Visible = false;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -381,7 +391,7 @@
             this.exitToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1309, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1238, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -490,28 +500,28 @@
             // stationListToolStripMenuItem
             // 
             this.stationListToolStripMenuItem.Name = "stationListToolStripMenuItem";
-            this.stationListToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.stationListToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.stationListToolStripMenuItem.Text = "Station &List";
             this.stationListToolStripMenuItem.Click += new System.EventHandler(this.stationListToolStripMenuItem_Click);
             // 
             // changeDestinationFileServerToolStripMenuItem
             // 
             this.changeDestinationFileServerToolStripMenuItem.Name = "changeDestinationFileServerToolStripMenuItem";
-            this.changeDestinationFileServerToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.changeDestinationFileServerToolStripMenuItem.Text = "Destination File Server";
+            this.changeDestinationFileServerToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.changeDestinationFileServerToolStripMenuItem.Text = "File Server";
             this.changeDestinationFileServerToolStripMenuItem.Click += new System.EventHandler(this.changeDestinationFileServerToolStripMenuItem_Click);
             // 
             // changeDestinationForConvertedFilesToolStripMenuItem
             // 
             this.changeDestinationForConvertedFilesToolStripMenuItem.Name = "changeDestinationForConvertedFilesToolStripMenuItem";
-            this.changeDestinationForConvertedFilesToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.changeDestinationForConvertedFilesToolStripMenuItem.Text = "Destination for RNX Files";
+            this.changeDestinationForConvertedFilesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.changeDestinationForConvertedFilesToolStripMenuItem.Text = "RINEX Server";
             this.changeDestinationForConvertedFilesToolStripMenuItem.Click += new System.EventHandler(this.changeDestinationForConvertedFilesToolStripMenuItem_Click);
             // 
             // setTeqCArgumentsToolStripMenuItem
             // 
             this.setTeqCArgumentsToolStripMenuItem.Name = "setTeqCArgumentsToolStripMenuItem";
-            this.setTeqCArgumentsToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.setTeqCArgumentsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
             this.setTeqCArgumentsToolStripMenuItem.Text = "Set TeqC Arguments";
             this.setTeqCArgumentsToolStripMenuItem.Click += new System.EventHandler(this.setTeqCArgumentsToolStripMenuItem_Click);
             // 
@@ -528,7 +538,7 @@
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(12, 238);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(277, 65);
+            this.groupBox7.Size = new System.Drawing.Size(211, 65);
             this.groupBox7.TabIndex = 17;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Date to Check";
@@ -543,11 +553,15 @@
             this.lbldate1.TabIndex = 4;
             this.lbldate1.Text = "Time";
             // 
+            // timer3
+            // 
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1309, 695);
+            this.ClientSize = new System.Drawing.Size(1238, 695);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.statusStrip1);
@@ -559,11 +573,12 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PageNet Auto Downloader Bot";
+            this.Text = "Data Completeness Control Module";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();
@@ -631,12 +646,14 @@
         private System.Windows.Forms.ToolStripMenuItem clearFileListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hideProgramToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setTeqCArgumentsToolStripMenuItem;
+        private System.Windows.Forms.Timer timer3;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn url;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn RowNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileDate;
     }
 }
 

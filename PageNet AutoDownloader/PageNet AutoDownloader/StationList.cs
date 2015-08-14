@@ -59,11 +59,18 @@ namespace PageNet_AutoDownloader
 
         private void BtnEditStn_Click(object sender, EventArgs e)
         {
-             int rowIndex = Grid.SelectedRows[0].Index;
+            try
+            {
+                int rowIndex = Grid.SelectedRows[0].Index;
 
-             FrmEditStn StnEdit = new FrmEditStn(rowIndex,DTMain,DBMain);
+                FrmEditStn StnEdit = new FrmEditStn(rowIndex, DTMain, DBMain);
 
-             StnEdit.ShowDialog();
+                StnEdit.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No Record Selected.");
+            }
         }
 
         private void Grid_Click(object sender, DataGridViewCellEventArgs e)
@@ -74,23 +81,37 @@ namespace PageNet_AutoDownloader
 
         private void button1_Click(object sender, EventArgs e)
         {
-            sql_con.Open();
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Are you sure you want to remove this station?", "Remove Station", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.No)
+                {
+                    return;
+                }
 
-            SQLiteCommand cmd = new SQLiteCommand("Delete From Main where StationCode = '" + Grid.SelectedCells[0].Value.ToString() + "'", sql_con);
+                
+                sql_con.Open();
 
-            cmd.ExecuteNonQuery();
-            DTMain.AcceptChanges();
-            DBMain.UpdateCommand = cmd;
-            DBMain.Update(DTMain);
+                SQLiteCommand cmd = new SQLiteCommand("Delete From Main where StationCode = '" + Grid.SelectedCells[0].Value.ToString() + "'", sql_con);
 
-            sql_con.Close();
+                cmd.ExecuteNonQuery();
+                DTMain.AcceptChanges();
+                DBMain.UpdateCommand = cmd;
+                DBMain.Update(DTMain);
 
-            LoadData();
+                sql_con.Close();
 
-            MessageBox.Show("Station Information Deleted Successfully.");
-            Main M = new Main();
-            M.LoadData();
+                LoadData();
 
+                MessageBox.Show("Station Information Deleted Successfully.");
+                Main M = new Main();
+                M.LoadData();
+            }
+            catch
+            {
+                MessageBox.Show("Please Select a Record.");
+
+            }
             //Close();
         }
     }

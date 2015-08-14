@@ -43,3 +43,6 @@ C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownload
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.DestinationRNX.resources
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet_AutoDownloader.TeqcSet.resources
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.csprojResolveAssemblyReference.cache
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader - Copy (2)\PageNet AutoDownloader\bin\Debug\PageNet AutoDownloader.exe.config
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader - Copy (2)\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.exe
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader - Copy (2)\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.pdb

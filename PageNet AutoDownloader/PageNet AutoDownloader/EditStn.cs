@@ -42,7 +42,7 @@ namespace PageNet_AutoDownloader
             dr["FTPAddress"] = this.txtIPAdd.Text;
             dr["StationCode"] = this.TxtStnCode.Text;
 
-            SQLiteCommand cmd = new SQLiteCommand("Update main set FTPAddress = '" + txtIPAdd.Text + "' where StationCode = '" + TxtStnCode.Text + "'", sql_con);
+            SQLiteCommand cmd = new SQLiteCommand("Update main set FTPAddress = '" + txtIPAdd.Text + "', UserName = '" + txtUserName.Text + "', Password = '" + txtPassword.Text + "' where StationCode = '" + TxtStnCode.Text + "'", sql_con);
 
             cmd.ExecuteNonQuery();
             DTMain.AcceptChanges();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEditStn));
             this.BtnSave = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -88,7 +89,7 @@
             // TxtStnCode
             // 
             this.TxtStnCode.Location = new System.Drawing.Point(15, 25);
-            this.TxtStnCode.MaxLength = 10;
+            this.TxtStnCode.MaxLength = 4;
             this.TxtStnCode.Name = "TxtStnCode";
             this.TxtStnCode.ReadOnly = true;
             this.TxtStnCode.Size = new System.Drawing.Size(251, 20);
@@ -146,6 +147,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmEditStn";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Station/Site";

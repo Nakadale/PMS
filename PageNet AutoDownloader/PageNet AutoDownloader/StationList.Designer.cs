@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StationList));
             this.BtnClose = new System.Windows.Forms.Button();
             this.BtnAddStn = new System.Windows.Forms.Button();
             this.BtnEditStn = new System.Windows.Forms.Button();
@@ -102,6 +103,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Grid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "StationList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PageNet Station/Site List";

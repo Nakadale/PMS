@@ -230,13 +230,13 @@
             this.restartToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 92);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(115, 92);
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.startToolStripMenuItem.Text = "Download";
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.startToolStripMenuItem.Text = "Process";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
             // stopToolStripMenuItem
@@ -244,6 +244,7 @@
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.stopToolStripMenuItem.Text = "Stop";
+            this.stopToolStripMenuItem.Visible = false;
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // restartToolStripMenuItem
@@ -319,7 +320,7 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(209, 42);
             this.button4.TabIndex = 20;
-            this.button4.Text = "&Stop Processes";
+            this.button4.Text = "&Stop All Processes";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -392,9 +393,10 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ManualDownload";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Download Manually";
+            this.Text = "Manual Download";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();
