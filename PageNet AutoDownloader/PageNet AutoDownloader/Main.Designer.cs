@@ -521,8 +521,8 @@
             // setTeqCArgumentsToolStripMenuItem
             // 
             this.setTeqCArgumentsToolStripMenuItem.Name = "setTeqCArgumentsToolStripMenuItem";
-            this.setTeqCArgumentsToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.setTeqCArgumentsToolStripMenuItem.Text = "Set TeqC Arguments";
+            this.setTeqCArgumentsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.setTeqCArgumentsToolStripMenuItem.Text = "Set TeqC Argument";
             this.setTeqCArgumentsToolStripMenuItem.Click += new System.EventHandler(this.setTeqCArgumentsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
@@ -578,7 +578,7 @@
             this.MaximizeBox = false;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Data Completeness Control Module";
+            this.Text = "PageNET Management System";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Grid)).EndInit();

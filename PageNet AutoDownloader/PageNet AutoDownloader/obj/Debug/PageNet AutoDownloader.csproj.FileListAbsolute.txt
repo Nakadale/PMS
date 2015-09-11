@@ -42,4 +42,9 @@ C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownload
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNET Management System.pdb
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNET Management System.exe
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNET Management System.pdb
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNET Management System.exe.manifest
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\bin\Debug\PageNET Management System.application
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNET Management System.TrustInfo.xml
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNET Management System.exe.manifest
+C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNET Management System.application
 C:\Users\SherwinAquino\Documents\PMS\PageNet AutoDownloader\PageNet AutoDownloader\obj\Debug\PageNet AutoDownloader.csprojResolveAssemblyReference.cache

@@ -1120,6 +1120,19 @@ namespace PageNet_AutoDownloader
                     int counter = GetNextRow(x+ 1);
                     DoDownloadFile(counter);
                 }
+                else
+                {
+                    lock (_object)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
+                        {
+                            //logs activity into Logs.Txt file
+                            file.WriteLine("[" + DateTime.Now + "] " + e.Message.ToString() + "");
+                        }
+                    }
+                    int counter = GetNextRow(x + 1);
+                    DoDownloadFile(counter);
+                }
             }
         }
 
@@ -1541,9 +1554,8 @@ namespace PageNet_AutoDownloader
                         
                         UpdateGrid2(1, Grid2RowNumber, 11);
                         //Thread.CurrentThread.Abort();
-                        //int counter = GetNextRow(Grid2RowNumber + 1);
-                        //DoCheckOfAvailableFile(counter);
-
+                        int counter = GetNextRow(Grid2RowNumber + 1);
+                        DoCheckOfAvailableFile(counter);
 
                         return;
                     }
@@ -1624,31 +1636,6 @@ namespace PageNet_AutoDownloader
             {
                 if (e.HResult.ToString() == "-2146232800")
                 {
-                    //if (DownCounter[Grid2RowNumber] < 3)
-                    //{
-                    //    //if the connection has a timeout
-                    //    UpdateStatusBar("[" + DateTime.Now + "] Retrying Download of file " + FileName);
-
-                    //    Update("[" + DateTime.Now + "] Retrying Download of file " + FileName + " for the " + (DownCounter[Grid2RowNumber]+1) + "\r\n");
-                    //    DownCounter[Grid2RowNumber]++;
-                    //    //DownCounter[Grid2RowNumber]++;
-                    //    //ResumeFtpFileDownload((URL + FileName), LocalDirectory, User_ID, Password, Grid2RowNumber);
-                    //    //Download(URL, FileName, UserName, Password, File_Size, Grid2RowNumber);
-
-                    //    if (CancelProg == true)
-                    //    {
-                    //        this.timer2.Enabled = false;
-                    //        UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-                    //        Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
-
-                    //        return;
-
-                    //    }
-                    //}
-                    //else
-                    //{
-
-                    //}
                     UpdateStatusBar("[" + DateTime.Now + "] Download of file " + FileName + " failed.");
 
                     Update("[" + DateTime.Now + "] Download of file " + FileName + " failed. Moving to next file.\r\n");
@@ -1668,7 +1655,15 @@ namespace PageNet_AutoDownloader
                 }
                 else
                 {
-                    //MessageBox.Show(e.Message.ToString());
+                    lock (_object)
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@AppDomain.CurrentDomain.BaseDirectory + StrDate + "_Logs.txt", true))
+                        {
+                            //logs activity into Logs.Txt file
+                            file.WriteLine("[" + DateTime.Now + "] " + e.Message.ToString() + "");
+
+                        }
+                    }
                     responseStream.Close();
                     writeStream.Close();
                     int counter = GetNextRow(Grid2RowNumber + 1);
@@ -1699,118 +1694,6 @@ namespace PageNet_AutoDownloader
 
         }
 
-        //public void ResumeFtpFileDownload(string sourceUri, string destinationFile, string user, string pass, int Grid2RowNumber)
-        //{
-        //    FileInfo file = new FileInfo(destinationFile);
-        //    FileStream localfileStream;
-        //    WebResponse response = null;
-        //    FtpWebRequest request = (FtpWebRequest)WebRequest.Create(sourceUri);
-        //    request.Credentials = new NetworkCredential(user, pass);
-        //    //requestFileDownload.Credentials = new NetworkCredential();
-        //    request.Method = WebRequestMethods.Ftp.DownloadFile;
-        //    request.Timeout = 5000;
-        //    if (file.Exists)
-        //    {
-        //        request.ContentOffset = file.Length;
-        //        localfileStream = new FileStream(destinationFile, FileMode.Append, FileAccess.Write);
-        //    }
-        //    else
-        //    {
-        //        localfileStream = new FileStream(destinationFile, FileMode.Create, FileAccess.Write);
-        //    }
-        //    //WebResponse response = request.GetResponse();
-        //    try
-        //    {
-        //        response = request.GetResponse();
-
-        //    }
-        //    catch (WebException ex)
-        //    {
-        //        if (ex.Status == WebExceptionStatus.Timeout)
-        //        {
-        //            if (DownCounter[Grid2RowNumber] < 3)
-        //            {
-        //                //if the connection has a timeout
-        //                UpdateStatusBar("[" + DateTime.Now + "] " + ex.Message.ToString() + "");
-        //                UpdateStatusBar("[" + DateTime.Now + "] Retrying Download of file " + file.Name);
-
-        //                Update("[" + DateTime.Now + "] " + ex.Message.ToString() + "\r\n");
-        //                Update("[" + DateTime.Now + "] Retrying Download of file " + file.Name+ " for the " + (DownCounter[Grid2RowNumber] + 1) + "\r\n");
-        //                DownCounter[Grid2RowNumber]++;
-        //                ResumeFtpFileDownload(sourceUri, destinationFile, user, pass,Grid2RowNumber);
-        //                //Download(URL, FileName, UserName, Password, File_Size, Grid2RowNumber);
-
-        //                if (CancelProg == true)
-        //                {
-        //                    this.timer2.Enabled = false;
-        //                    UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-        //                    Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
-        //                    return;
-
-        //                }
-        //            }
-        //            else
-        //            {
-        //                DoCheckOfAvailableFile(Grid2RowNumber + 1);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show(ex.Message.ToString());
-        //        }
-        //    }
-        //    Stream responseStream = response.GetResponseStream();
-        //    byte[] buffer = new byte[1024];
-        //    int bytesRead = responseStream.Read(buffer, 0, 1024);
-        //    try
-        //    {
-        //        while (bytesRead != 0)
-        //        {
-        //            localfileStream.Write(buffer, 0, bytesRead);
-        //            bytesRead = responseStream.Read(buffer, 0, 1024);
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        if (e.HResult.ToString() == "-2146232800")
-        //        {
-        //            if (DownCounter[Grid2RowNumber] < 3)
-        //            {
-        //                //if the connection has a timeout
-        //                UpdateStatusBar("[" + DateTime.Now + "] Retrying Download of file " + FileName);
-
-        //                Update("[" + DateTime.Now + "] Retrying Download of file " + FileName + " for the " + (DownCounter[Grid2RowNumber] + 1) + "\r\n");
-        //                DownCounter[Grid2RowNumber]++;
-        //                //DownCounter[Grid2RowNumber]++;
-        //                ResumeFtpFileDownload(sourceUri, destinationFile, user, pass, Grid2RowNumber);
-        //                //Download(URL, FileName, UserName, Password, File_Size, Grid2RowNumber);
-
-        //                if (CancelProg == true)
-        //                {
-        //                    this.timer2.Enabled = false;
-        //                    UpdateStatusBar("[" + DateTime.Now + "] " + "Process Stopped");
-        //                    Update("[" + DateTime.Now + "] " + "Process Stopped\r\n");
-
-        //                    return;
-
-        //                }
-        //            }
-        //            else
-        //            {
-
-        //            }
-
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show(e.Message.ToString());
-        //        }
-        //    }
-
-
-        //    localfileStream.Close();
-        //    responseStream.Close();
-        //}
         private void UploadData(string FileName, int Grid2RowNumber, string RowNumber, string datedir)
         {
             string LocalDirectory1 = @"C:\Temp\" + FileName + ".zip";

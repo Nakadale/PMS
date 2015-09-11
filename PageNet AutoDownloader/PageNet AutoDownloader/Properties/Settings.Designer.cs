@@ -26,8 +26,7 @@ namespace PageNet_AutoDownloader.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=C:\\Users\\SherwinAquino\\Documents\\StationList.db;Version=3;New=False;C" +
-            "ompress=True;")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=C:\\Users\\SherwinAquino\\Documents\\StationList.db;")]
         public string sql_con {
             get {
                 return ((string)(this["sql_con"]));
