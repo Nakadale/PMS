@@ -500,29 +500,29 @@
             // stationListToolStripMenuItem
             // 
             this.stationListToolStripMenuItem.Name = "stationListToolStripMenuItem";
-            this.stationListToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.stationListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stationListToolStripMenuItem.Text = "Station &List";
             this.stationListToolStripMenuItem.Click += new System.EventHandler(this.stationListToolStripMenuItem_Click);
             // 
             // changeDestinationFileServerToolStripMenuItem
             // 
             this.changeDestinationFileServerToolStripMenuItem.Name = "changeDestinationFileServerToolStripMenuItem";
-            this.changeDestinationFileServerToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.changeDestinationFileServerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeDestinationFileServerToolStripMenuItem.Text = "File Server";
             this.changeDestinationFileServerToolStripMenuItem.Click += new System.EventHandler(this.changeDestinationFileServerToolStripMenuItem_Click);
             // 
             // changeDestinationForConvertedFilesToolStripMenuItem
             // 
             this.changeDestinationForConvertedFilesToolStripMenuItem.Name = "changeDestinationForConvertedFilesToolStripMenuItem";
-            this.changeDestinationForConvertedFilesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.changeDestinationForConvertedFilesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.changeDestinationForConvertedFilesToolStripMenuItem.Text = "RINEX Server";
             this.changeDestinationForConvertedFilesToolStripMenuItem.Click += new System.EventHandler(this.changeDestinationForConvertedFilesToolStripMenuItem_Click);
             // 
             // setTeqCArgumentsToolStripMenuItem
             // 
             this.setTeqCArgumentsToolStripMenuItem.Name = "setTeqCArgumentsToolStripMenuItem";
-            this.setTeqCArgumentsToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.setTeqCArgumentsToolStripMenuItem.Text = "Set TeqC Argument";
+            this.setTeqCArgumentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setTeqCArgumentsToolStripMenuItem.Text = "Set TEQC Argument";
             this.setTeqCArgumentsToolStripMenuItem.Click += new System.EventHandler(this.setTeqCArgumentsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1

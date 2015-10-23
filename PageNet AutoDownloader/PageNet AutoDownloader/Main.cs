@@ -39,7 +39,7 @@ namespace PageNet_AutoDownloader
 
         // SQLite Connection Parameters
 
-        private SQLiteConnection sql_con = new SQLiteConnection(ConfigurationManager.ConnectionStrings["PageNet_AutoDownloader.Properties.Settings.sql_con"].ConnectionString);
+        private SQLiteConnection sql_con = new SQLiteConnection(@"Data Source=" + Application.StartupPath + @"\StationList.db;Version=3;New=False;Compress=True;");
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter DBMain;
         private DataSet DSMain = new DataSet();
@@ -232,9 +232,22 @@ namespace PageNet_AutoDownloader
             Grid2.Columns.Add(column3);
 
             column4.HeaderText = "Started";
-            //acolumn4.Visible = false;
+            column4.Visible = false;
             column4.Name = "started";
             Grid2.Columns.Add(column4);
+
+            
+            //Checks for Temp folder if it exists
+            if (CheckFolder(@"C:\Temp\") == true)
+            {
+                //does nothing since every folder is created.
+            }
+            else
+            {
+                TopCreateFolder(@"C:\Temp\");
+            }
+
+
 
         }
 

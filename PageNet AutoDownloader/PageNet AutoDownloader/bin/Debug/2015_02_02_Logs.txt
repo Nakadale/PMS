@@ -1,0 +1,91 @@
+[2/2/2015 2:57:06 PM] PBAY032a.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:06 PM] File Size:1685872
+[2/2/2015 2:57:06 PM] PBAY032b.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:06 PM] File Size:1545207
+[2/2/2015 2:57:06 PM] PBAY032c.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:06 PM] File Size:1432443
+[2/2/2015 2:57:06 PM] PBAY032d.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:06 PM] File Size:1449892
+[2/2/2015 2:57:06 PM] PBAY032e.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:06 PM] File Size:1473173
+[2/2/2015 2:57:07 PM] PBAY032f.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1554854
+[2/2/2015 2:57:07 PM] PBAY032g.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1498751
+[2/2/2015 2:57:07 PM] PBAY032h.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1579302
+[2/2/2015 2:57:07 PM] PBAY032i.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1489809
+[2/2/2015 2:57:07 PM] PBAY032j.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1387490
+[2/2/2015 2:57:07 PM] PBAY032k.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1442659
+[2/2/2015 2:57:07 PM] PBAY032l.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1563005
+[2/2/2015 2:57:07 PM] PBAY032n.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1628288
+[2/2/2015 2:57:07 PM] PBAY032o.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1685035
+[2/2/2015 2:57:07 PM] PBAY032p.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1788846
+[2/2/2015 2:57:07 PM] PBAY032q.m00 File Does not exist in the destination server!
+[2/2/2015 2:57:07 PM] File Size:1914142
+[2/2/2015 2:57:28 PM] Connection to station PCAN could not be established.
+[2/2/2015 2:57:49 PM] Connection to station PGEN could not be established.
+[2/2/2015 2:58:10 PM] Connection to station PPPC could not be established.
+[2/2/2015 2:58:31 PM] Connection to station PSRF could not be established.
+[2/2/2015 2:58:31 PM] Checking file if Process is finished.
+[2/2/2015 2:58:31 PM] Downloading File from site to temp folder: PBAY032a.m00 with a File Size of 1685872
+[2/2/2015 2:58:31 PM] Checking file if Process is finished.
+[2/2/2015 2:58:31 PM] Downloading File from site to temp folder: PBAY032b.m00 with a File Size of 1545207
+[2/2/2015 2:58:32 PM] PBAY032a.m00 Size Downloaded: 1685872
+[2/2/2015 2:58:32 PM] PBAY032b.m00 Size Downloaded: 1545207
+[2/2/2015 2:58:32 PM] Conversion of RAW File to Rinex Started
+[2/2/2015 2:58:32 PM] Conversion of RAW File to Rinex Started
+[2/2/2015 2:58:32 PM] Conversion of RAW File to Rinex Finished
+[2/2/2015 2:58:32 PM] Conversion of RAW File to Rinex Finished
+[2/2/2015 2:58:33 PM] Compressing File
+[2/2/2015 2:58:33 PM] Compressing File
+[2/2/2015 2:58:33 PM] File Compression Finished
+[2/2/2015 2:58:33 PM] Deleting File from Temp Folder
+[2/2/2015 2:58:33 PM] File Deletion Completed
+[2/2/2015 2:58:33 PM] Uploading Files to File Server.
+[2/2/2015 2:58:33 PM] File Compression Finished
+[2/2/2015 2:58:33 PM] Deleting File from Temp Folder
+[2/2/2015 2:58:33 PM] File Deletion Completed
+[2/2/2015 2:58:33 PM] Uploading Files to File Server.
+[2/2/2015 2:59:08 PM] Uploading Files to File Server Finished
+[2/2/2015 2:59:08 PM] Deleting File from Temp Folder
+[2/2/2015 2:59:08 PM] File Deletion Completed
+[2/2/2015 2:59:08 PM] Uploading Files to File Server Finished
+[2/2/2015 2:59:08 PM] Deleting File from Temp Folder
+[2/2/2015 2:59:08 PM] File Deletion Completed
+[2/2/2015 2:59:08 PM] Downloading File from site to temp folder: PBAY032c.m00 with a File Size of 1432443
+[2/2/2015 2:59:08 PM] Retrying Download of file PBAY032c.m00
+[2/2/2015 2:59:08 PM] PBAY032c.m00 Size Downloaded: 1432443
+[2/2/2015 2:59:08 PM] Conversion of RAW File to Rinex Started
+[2/2/2015 2:59:08 PM] Retrying Download of file PBAY032c.m00
+[2/2/2015 2:59:08 PM] Conversion of RAW File to Rinex Finished
+[2/2/2015 2:59:08 PM] Compressing File
+[2/2/2015 2:59:08 PM] File Compression Finished
+[2/2/2015 2:59:08 PM] Deleting File from Temp Folder
+[2/2/2015 2:59:08 PM] File Deletion Completed
+[2/2/2015 2:59:08 PM] Uploading Files to File Server.
+[2/2/2015 2:59:08 PM] Uploading Files to File Server Finished
+[2/2/2015 2:59:08 PM] Deleting File from Temp Folder
+[2/2/2015 2:59:08 PM] File Deletion Completed
+[2/2/2015 3:00:08 PM] The operation has timed out
+[2/2/2015 3:00:08 PM] Retrying Download of file PBAY032c.m00
+[2/2/2015 3:00:09 PM] The operation has timed out
+[2/2/2015 3:00:09 PM] Retrying Download of file PBAY032d.m00
+[2/2/2015 3:01:09 PM] The operation has timed out
+[2/2/2015 3:01:09 PM] Retrying Download of file PBAY032d.m00
+[2/2/2015 3:02:08 PM] The operation has timed out
+[2/2/2015 3:02:08 PM] Retrying Download of file PBAY032d.m00
+[2/2/2015 3:03:09 PM] The operation has timed out
+[2/2/2015 3:03:09 PM] Retrying Download of file PBAY032e.m00
+[2/2/2015 3:04:08 PM] The operation has timed out
+[2/2/2015 3:04:08 PM] Retrying Download of file PBAY032f.m00
+[2/2/2015 3:04:09 PM] The operation has timed out
+[2/2/2015 3:04:09 PM] Retrying Download of file PBAY032e.m00
+[2/2/2015 3:04:35 PM] Scheduler Process Ended.

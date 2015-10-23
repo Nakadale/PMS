@@ -22,7 +22,7 @@ namespace PageNet_AutoDownloader
         }
 
         // SQLite Connection Parameters
-        private SQLiteConnection sql_con = new SQLiteConnection(ConfigurationManager.ConnectionStrings["PageNet_AutoDownloader.Properties.Settings.sql_con"].ConnectionString);
+        private SQLiteConnection sql_con = new SQLiteConnection(@"Data Source=" + Application.StartupPath + @"\StationList.db;Version=3;New=False;Compress=True;");
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter DBMain;
         private SQLiteDataReader reader;

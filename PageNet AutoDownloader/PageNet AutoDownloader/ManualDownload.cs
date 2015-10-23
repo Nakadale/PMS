@@ -44,7 +44,7 @@ namespace PageNet_AutoDownloader
         List<FTPFiles> ftpfiles = new List<FTPFiles>(); // for storing of file list coming from the site
 
 
-        private SQLiteConnection sql_con = new SQLiteConnection(ConfigurationManager.ConnectionStrings["PageNet_AutoDownloader.Properties.Settings.sql_con"].ConnectionString);
+        private SQLiteConnection sql_con = new SQLiteConnection(@"Data Source=" + Application.StartupPath + @"\StationList.db;Version=3;New=False;Compress=True;");
         private SQLiteCommand sql_cmd;
         private SQLiteDataAdapter DBMain;
         private DataSet DSMain = new DataSet();
@@ -343,7 +343,7 @@ namespace PageNet_AutoDownloader
                     row = y;
                     break;
                 }
-                else if ((Convert.ToInt32(Grid2.Rows[y].Cells["Download"].Value) < 100) || (Convert.ToInt32(Grid2.Rows[y].Cells["Upload"].Value) < 100))
+                else if ((Convert.ToInt32(Grid2.Rows[y].Cells[6].Value) < 100) || (Convert.ToInt32(Grid2.Rows[y].Cells[9].Value) < 100))
                 {
                     row = y;
                     break;

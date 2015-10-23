@@ -86,7 +86,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TeqcSet";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Set TeqC Argument";
+            this.Text = "Set TEQC Argument";
             this.Load += new System.EventHandler(this.TeqcSet_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
